@@ -1,0 +1,65 @@
+{
+    "title": "Kanban",
+    "cols": [
+        {
+            "title": "Bugs",
+            "tasks": [],
+            "id": "clkfq8u1h000a4164mbcw2q6b",
+            "color": "#eb144c"
+        },
+        {
+            "title": "To-Do",
+            "tasks": [
+                {
+                    "text": "User stories",
+                    "id": "clkfq8u1i000b4164yy5ohklj"
+                },
+                {
+                    "text": "Test unitari",
+                    "id": "clki2zjqv000a4164rd4erskd"
+                },
+                {
+                    "text": "Test di accettazione",
+                    "id": "clkfq9c5t000f4164k09em0hg"
+                },
+                {
+                    "text": "Diagramma entità-relazioni",
+                    "id": "clkfq9iyr000g4164kb3czwsd"
+                },
+                {
+                    "text": "Diagramma delle classi",
+                    "id": "clkfqaeh2000h4164nbl6p9yf"
+                },
+                {
+                    "text": "Creazione modelli",
+                    "id": "clkfqavvc000i4164on09e5wz"
+                },
+                {
+                    "text": "Creazione templates (in html)",
+                    "id": "clkfqb3xe000j4164zs3t8etc"
+                },
+                {
+                    "text": "Creazione views e integrazione di Django nell'html",
+                    "id": "clkfqbkpo000k4164fkf3lyy9"
+                }
+            ],
+            "id": "clkfq8u1i000c4164wtmq9bgh",
+            "color": "#fcb900"
+        },
+        {
+            "title": "Doing",
+            "tasks": [],
+            "id": "clkfq8u1i000d4164erfp1odt",
+            "color": "#0693e3"
+        },
+        {
+            "title": "Done",
+            "tasks": [],
+            "id": "clkfq8u1i000e4164rmuhx3xh",
+            "color": "#00d084"
+        }
+    ],
+    "autosave": true,
+    "saveToFile": true,
+    "timestamp": 1690276514889
+}
