@@ -11,10 +11,6 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "User stories",
-                    "id": "clkfq8u1i000b4164yy5ohklj"
-                },
-                {
                     "text": "Test unitari",
                     "id": "clki2zjqv000a4164rd4erskd"
                 },
@@ -54,12 +50,17 @@
         },
         {
             "title": "Done",
-            "tasks": [],
+            "tasks": [
+                {
+                    "text": "User stories",
+                    "id": "clkfq8u1i000b4164yy5ohklj"
+                }
+            ],
             "id": "clkfq8u1i000e4164rmuhx3xh",
             "color": "#00d084"
         }
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1690276514889
+    "timestamp": 1690305936343
 }
