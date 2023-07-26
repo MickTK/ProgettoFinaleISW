@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Carrello</title>
+        <meta name="description" content="Carrello" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>      
+        <div class="Carrello">
+
+            <!-- Div contenente il filtro e il logout -->
+            <div>
+                <h1>Carrello</h1> 
+                <a href="./home.html"><button type="button" value="Home">Home</button></a>
+                <a href="../login.html"><button type="button" value="Logout">Logout</button></a>
+            </div>
+
+            <!-- Tabella contenente i prodotti presenti nel negozio -->
+            <div>
+                <table id="prodottiCarrello">
+                    <tr>
+                        <th><b>Nome prodotto</b></th>
+                        <th><b>Tipologia</b></th>
+                        <th><b>Quantità</b></th>
+                        <th><b>Azione</b></th>
+                        <th><b>Prezzo</b></th>
+                    </tr>
+                    <!-- Qui verranno inserite le righe per i prodotti -->
+                </table>   
+
+                <!-- Indecisione su come implementare il totale -->
+                <table id="totale">
+                    <tr>
+                        <th><b>Totale</b></th>
+                        <th></th>   <!-- Qui verrà inserito il totale -->
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Div per il checkout-->
+            <div>
+                <a href="./checkout.html"><button type="button" value="checkout">Checkout</button></a>
+            </div>
+
+        </div>
+    </body>
+</html>
