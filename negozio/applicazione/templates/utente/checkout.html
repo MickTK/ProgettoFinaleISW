@@ -11,8 +11,25 @@
     </head>
 
     <body>
-        <div class="login">
-            <h1>Checkout</h1>  
-        </div>    
+        <!-- Div per il button del carrello -->
+        <div class="checkout">
+            <div>
+                <h1>Checkout</h1>  
+                <a href="./carrello.html"><button type="button" value="carrello">Carrello</button></a>
+            </div>
+
+        <!-- Div per il form inerente l'indirizzo e il metodo di pagamento -->
+            <div>
+                <form>
+                    <label>Indirizzo</label>
+                    <input type="text" placeholder="Inserire indirizzo" name="indirizzo" required><br>
+                    <label>Metodo di pagamento</label>
+                    <input type="text" placeholder="Inserire il metodo di pagamento" 
+                    name="metodoPagamento" required><br>
+
+                    <button type="submit">Ordina</button><br>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
