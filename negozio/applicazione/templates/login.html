@@ -7,19 +7,22 @@
         <meta name="description" content="Login Page" />
         <meta name="keywords" content="" />
         <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body>
-        <h1>Login page</h1>  
-        <form>  
-            <div class="container">   
-                <label>Username : </label>   
-                <input type="text" placeholder="Inserisci username" name="username" required><br>
-                <label>Password : </label>   
-                <input type="password" placeholder="Inserisci Password" name="password" required><br>
+        <!-- div che contiene il form per il login -->
+        <div class="login">
+            <h1>Login page</h1>  
+            <form action="./utente/home.html">   
+                <label>Username</label><br>  
+                <input type="text" placeholder="Inserire username" name="username" required><br>
+                <label>Password</label><br> 
+                <input type="password" placeholder="Inserire Password" name="password" required><br>
+                
                 <button type="submit">Login</button><br>  
-                <p>Non sei registrato? <a href="./utente/registrazione.html">Registrati qui!</a></p>
-            </div>   
-        </form>     
+                <p>Non sei registrato? <a href="./utente/registrazione.html">Registrati qui!</a></p>  
+            </form>  
+        </div>    
     </body>
 </html>
