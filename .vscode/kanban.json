@@ -11,31 +11,19 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "Test unitari",
+                    "text": "1 - Test unitari",
                     "id": "clki2zjqv000a4164rd4erskd"
                 },
                 {
-                    "text": "Test di accettazione",
+                    "text": "2 - Test di accettazione",
                     "id": "clkfq9c5t000f4164k09em0hg"
                 },
                 {
-                    "text": "Diagramma entità-relazioni",
-                    "id": "clkfq9iyr000g4164kb3czwsd"
-                },
-                {
-                    "text": "Diagramma delle classi",
-                    "id": "clkfqaeh2000h4164nbl6p9yf"
-                },
-                {
-                    "text": "Creazione modelli",
+                    "text": "5 - Creazione modelli",
                     "id": "clkfqavvc000i4164on09e5wz"
                 },
                 {
-                    "text": "Creazione templates (in html)",
-                    "id": "clkfqb3xe000j4164zs3t8etc"
-                },
-                {
-                    "text": "Creazione views e integrazione di Django nell'html",
+                    "text": "7 - Creazione views e integrazione di Django nell'html",
                     "id": "clkfqbkpo000k4164fkf3lyy9"
                 }
             ],
@@ -44,7 +32,24 @@
         },
         {
             "title": "Doing",
-            "tasks": [],
+            "tasks": [
+                {
+                    "text": "Diagrammi di sequenza",
+                    "id": "clkjpdn8v000a4164b857uhf0"
+                },
+                {
+                    "text": "3 - Diagramma entità-relazioni",
+                    "id": "clkfq9iyr000g4164kb3czwsd"
+                },
+                {
+                    "text": "4 - Diagramma delle classi",
+                    "id": "clkfqaeh2000h4164nbl6p9yf"
+                },
+                {
+                    "text": "6 - Creazione templates (in html)",
+                    "id": "clkfqb3xe000j4164zs3t8etc"
+                }
+            ],
             "id": "clkfq8u1i000d4164erfp1odt",
             "color": "#0693e3"
         },
@@ -52,7 +57,7 @@
             "title": "Done",
             "tasks": [
                 {
-                    "text": "User stories",
+                    "text": "0 - User stories",
                     "id": "clkfq8u1i000b4164yy5ohklj"
                 }
             ],
@@ -62,5 +67,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1690305936343
+    "timestamp": 1690374587408
 }
