@@ -7,5 +7,5 @@
 - Come amministratore, voglio modificare i dettagli di un prodotto esistente, come il prezzo e la descrizione.
 
 - Come amministratore, voglio rimuovere prodotti dal negozio.
-- 
+
 - Come amministratore, voglio visualizzare un resoconto delle vendite, includendo i dettagli degli ordini effettuati dai clienti e l'importo totale delle vendit
