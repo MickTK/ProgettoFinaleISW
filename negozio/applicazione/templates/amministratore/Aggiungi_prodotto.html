@@ -13,14 +13,31 @@
     <body>      
         <div class="homeAmm">
 
-            <!-- Div contenente il filtro e il logout -->
+            <!-- Div contenente la home -->
             <div>
                 <h1>Aggiungi prodotto</h1> 
-                <button type="button" value="filtra">Filtra</button>
-                <a href="./Aggiungi_prodotto.html"><button type="button" 
-                    value="aggiungiProdotto">Aggiungi prodotto</button></a>
-                <a href="../login.html"><button type="button" value="logout">Logout</button></a>
+                <a href="./Home_amministratore.html"><button type="button" value="home">Home</button></a>
             </div>
+
+            <br>
+
+            <!-- Form per inserire un nuovo prodotto -->
+            <div>
+                <h2>Inserisci le informazioni del prodotto</h2>
+                <form>
+                    <label for="nomeProdotto">Nome del prodotto</label><br>  
+                    <input type="text" placeholder="Inserire il nome" name="nomeProdotto" required><br>
+                    <label for="tipologiaProdotto">Tipologia di prodotto</label><br>  
+                    <input type="text" placeholder="Inserire tipologia" name="tipologiaProdotto" required><br>
+                    <label for="descrizioneProdotto">Descrizione del prodotto</label><br>  
+                    <textarea type="text" placeholder="Inserire descrizione" name="descrizioneProdotto" required></textarea><br>
+                    <label for="prezzoProdotto">Prezzo del prodotto (€)</label><br>  
+                    <input type="number" placeholder="Inserire prezzo" name="prezzoProdotto" required><br>
+                    <label for="quantitàProdotto">Quantità dell prodotto</label><br>  
+                    <input type="number" placeholder="Inserire quantità" name="quantitàProdotto" required><br>
+
+                    <input type="submit" value="Inserisci il prodotto">
+            </form>   
 
         </div>
     </body>
