@@ -8,6 +8,7 @@
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../static\./CSS/style.css">
     </head>
 
     <body>      
@@ -16,7 +17,14 @@
             <!-- Div contenente i Filtri e il logout -->
             <div>
                 <h1>Home</h1> 
-                <button type="button" value="Filtri">Filtri</button>
+
+                <!-- Filtro per cercare mediante una parola chiave -->
+                <label for="nomeP">Inserisci parola chiave:</label>
+                <input type="text" id="nomeP"><br>
+
+                <button onclick="filtraTabella()">Cerca</button>
+
+                <a href="./carrello.html"><button type="button" value="carrello">Carrello</button></a>
                 <a href="../login.html"><button type="button" value="logout">Logout</button></a>
             </div>
 
