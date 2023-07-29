@@ -22,7 +22,7 @@ class Autenticatore:
 #==============================================================================
 
 class Stock(models.Model):
-  nome = models.CharField(max_length=100, default="")
+  nome = models.CharField(max_length=100, default="", unique=True)
 
   # Aggiunge un nuovo prodotto al negozio
   def aggiungi_nuovo_prodotto(self,nome,tipologia,descrizione,prezzo,quantita=1):
@@ -37,16 +37,11 @@ class Stock(models.Model):
 
   # Rimuove completamente un prodotto dal negozio
   def rimuovi_prodotto(self,prodotto):
-    prod = Prodotto.objects.get(
-      nome = prodotto.nome,
-      tipologia = prodotto.tipologia,
-      descrizione = prodotto.descrizione,
-      prezzo = prodotto.prezzo,
-      quantita = prodotto.quantita,
-      stock = self
-    )
-    if prod == prodotto:
+    if prodotto.stock.id == self.id:
       prodotto.delete()
+
+  def __eq__(self, other):
+    return self.id == other.id
 
 class Carrello(models.Model):
 
@@ -98,15 +93,15 @@ class Prodotto(models.Model):
   # Modifica le informazioni del Prodotto
   # @params (string)nome, (string)tipologia, (string)descrizione, (float)prezzo, (integer)quantita
   def modifica(self, **kwargs):
-    if kwargs["nome"] != None:
+    if "nome" in kwargs:
       self.nome = kwargs["nome"]
-    if kwargs["tipologia"] != None:
+    if "tipologia" in kwargs:
       self.tipologia = kwargs["tipologia"]
-    if kwargs["descrizione"] != None:
+    if "descrizione" in kwargs:
       self.descrizione = kwargs["descrizione"]
-    if kwargs["prezzo"] != None:
+    if "prezzo" in kwargs:
       self.prezzo = kwargs["prezzo"]
-    if kwargs["quantita"] != None:
+    if "quantita" in kwargs:
       self.quantita = kwargs["quantita"]
     self.save()
 
@@ -133,7 +128,7 @@ class ProdottoCarrello(models.Model):
       prezzo = self.prodotto.prezzo,
       quantita = self.quantita
     ).save()
-    Stock.objects.get(pk=1).rimuovi_prodotto(self.prodotto, self.quantita)
+    Stock.objects.get(name="negozio").rimuovi_prodotto(self.prodotto, self.quantita)
     self.delete()
 
 # Informazioni relative ad un prodotto venduto (serve per il resoconto)
