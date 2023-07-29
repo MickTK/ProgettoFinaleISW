@@ -1,3 +1,42 @@
-body{
-    background-color: #b0ffb0;
-}
+/* Colore del background di tutte le pagine html */
+body {
+    background-color: #caeff8;
+ }
+
+/* Reset dello stile predefinito del button */
+button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+/* Nuono stile del button */
+.tasto {
+    border-radius: 50px; /* raggio di curvatura */
+    padding: 10px 20px; /* dimensione del button */
+    background-color: #81cafa; /* sfondo */
+    color: #fff; /* colore del testo */
+    font-size: 16px; /* dimensione del testo */
+  }
+
+/* Reset dello stile predefinito del button input di tipo submit */
+input[type="submit"] {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+ }
+
+  /* Nuono stile del button input di tipo submit */
+  .tastoInput {
+    border-radius: 50px; /* raggio di curvatura */
+    padding: 10px 20px; /* dimensione del button */
+    background-color: #81cafa; /* colore dello sfondo */
+    color: #fff; /* colore del testo */
+    font-size: 16px; /* dimensione del testo */
+ }
