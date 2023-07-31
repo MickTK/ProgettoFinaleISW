@@ -33,22 +33,23 @@
                         <th><b>Azione</b></th>
                         <th><b>Prezzo</b></th>
                     </tr>
+
                     <!-- Qui verranno inserite le righe per i prodotti -->
-                    {% for prodotto in prodotti %}
-                        <td> {{ prodottiCarrello.prodotto.nome }} </td>
-                        <td> {{ prodottiCarrello.prodotto.tipologia }} </td>
-                        <td> {{ prodottiCarrello.quantita }} </td>
+                    {% for prodottoCarrello in prodottiCarrello %}
+                        <td> {{ prodottoCarrello.prodotto.nome }} </td>
+                        <td> {{ prodottoCarrello.prodotto.tipologia }} </td>
+                        <td> {{ prodottoCarrello.quantita }} </td>
                         <td> <button class="button2" 
                             onclick="rimuoviProdottoCarrello()">Rimuovi prodotto</button> </td>
-                        <td> <!-- Qui bisogna mettere il totale del prezzo --></td>
+                        <td> {{ ((prodottoCarrello.quantita)*(prodottoCarrello.prodotto.prezzo)) }}</td>
                     {% endfor %}
                 </table>   
 
-                <!-- Indecisione su come implementare il totale -->
+                <!-- Prezzo totale di tutti i prodotti del carrello -->
                 <table id="totale">
                     <tr>
                         <th><b>Totale</b></th>
-                        <th></th>   <!-- Qui verrà inserito il totale -->
+                        <th> {{ carrello.totale }} </th>   
                     </tr>
                 </table>
             </div>
