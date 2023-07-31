@@ -127,4 +127,13 @@ class ProdottoCarrelloTestCase(MasterTestCase):
     self.assertEqual(prodotto.quantita, quantita_magazzino - quantita_carrello)
 
 class ProdottoVendutoTestCase(MasterTestCase):
-  pass
+  
+  def setUp(self):
+    super().setUp()
+    self.prodotto = self.stock.prodotti.get(nome = "Motorino")
+    self.carrello.aggiungi_prodotto(self.prodotto, 2).acquista()
+    self.prodotto_venduto = self.stock.prodotti_venduti.get(nome = "Motorino")
+
+  def test_ricavo(self):
+    ricavo_atteso = self.prodotto.prezzo * 2
+    self.assertEqual(self.prodotto_venduto.ricavo(), ricavo_atteso)

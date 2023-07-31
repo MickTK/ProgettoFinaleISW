@@ -137,8 +137,14 @@ class ProdottoCarrello(models.Model):
     self.delete()
 
 # Informazioni relative ad un prodotto venduto (serve per il resoconto)
-class ProdottoVenduto(Prodotto):
-  
+class ProdottoVenduto(models.Model):
+  nome = models.CharField(max_length=100)
+  tipologia = models.CharField(max_length=100)
+  descrizione = models.CharField(max_length=500)
+  prezzo = models.FloatField()
+  quantita = models.IntegerField()
+  stock = models.ForeignKey(Stock,on_delete=models.CASCADE,related_name='prodotti_venduti')
+
   # Calcola il ricavo dato dalla vendita dei prodotti dello stesso tipo
   def ricavo(self):
     return self.quantita * self.prezzo

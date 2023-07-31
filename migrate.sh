@@ -1,2 +1,2 @@
-python negozio/manage.py makemigrations
-python negozio/manage.py migrate
+python negozio/manage.py makemigrations applicazione
+python negozio/manage.py migrate applicazione
