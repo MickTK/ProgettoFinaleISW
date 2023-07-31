@@ -51,3 +51,19 @@ hr{
 .registrati:hover {
     color: #02178f;
 }
+
+/* Modifica del form del login*/
+.login{
+    background-color: white;
+    margin: auto;
+    width: 37%;
+    border: 2px solid #02178f;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Modifica la dimensione del link alla pagina della registrazione */
+p {
+    font-size: 16px;
+}
