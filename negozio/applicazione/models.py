@@ -27,6 +27,7 @@ class Stock(models.Model):
       prodotto.delete()
 
 class Carrello(models.Model):
+  user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='carrello')
 
   # Aggiunge un'unità di prodotto al carrello
   def aggiungi_prodotto(self, prodotto, quantita=1):
@@ -132,28 +133,3 @@ class ProdottoVenduto(models.Model):
   # Calcola il ricavo dato dalla vendita dei prodotti dello stesso tipo
   def ricavo(self):
     return self.quantita * self.prezzo
-
-#==============================================================================
-# Attori
-#==============================================================================
-
-# Utente (generico)
-class Utente(models.Model):
-  username = models.CharField(max_length=100, primary_key=True)
-  password = models.CharField(max_length=100)
-
-  def tipo(self):
-    return self.__class__.__name__
-
-# Cliente (utilizza il Carrello e acquista i prodotti)
-class Cliente(Utente):
-  carrello = models.ForeignKey(Carrello, null=True, on_delete=models.SET_NULL)
-
-  def __str__(self):
-    return f"Cliente: {self.username}"
-
-# Amministratore (gestisce il negozio)
-class Amministratore(Utente):
-
-  def __str__(self):
-    return f"Amministratore: {self.username}"
