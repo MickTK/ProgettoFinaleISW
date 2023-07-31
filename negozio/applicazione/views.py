@@ -20,8 +20,10 @@ def registrazione(request):
 def home(request):
   template = loader.get_template("utente/home.html")
   stock = Stock.objects.get(nome="Negozio")
-  context = {"prodotti" : Prodotto.objects.get(stock = stock)}
+  context = {"prodotti" : Prodotto.objects.filter(stock = stock).all()}
   return HttpResponse(template.render(context, request))
+
+#get restituisce un solo oggetto, filter tutti quelli che soddisfano la condizione
 
 def checkout(request):
   template = loader.get_template("utente/checkout.html")
