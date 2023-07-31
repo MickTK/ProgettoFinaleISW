@@ -1,5 +1,6 @@
 from django.test import TestCase
 from applicazione.models import *
+from datetime import datetime, timezone
 
 class MasterTestCase(TestCase):
   def setUp(self):
@@ -11,11 +12,12 @@ class MasterTestCase(TestCase):
       499.99,
       25
     )
-    self.cliente = Cliente.objects.create(
+    self.cliente = User.objects.create(
       username = "user",
-      password = "pass"
+      password = "pass",
+      last_login = datetime.now(timezone.utc)
     )
-    self.carrello = self.cliente = Carrello.objects.create()
+    self.carrello = Carrello.objects.create(user = self.cliente)
 
 #==============================================================================
 # Negozio
