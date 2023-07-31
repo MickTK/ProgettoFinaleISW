@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.contrib.auth import authenticate, login
 from applicazione.models import *
 
-def login(request):
+def login_view(request):
+  login(request, User.objects.get(username = "cliente"))
   template = loader.get_template("login.html")
   context = {}
   return HttpResponse(template.render(context, request))
@@ -30,9 +32,12 @@ def checkout(request):
   context = {}
   return HttpResponse(template.render(context, request))
 
-def carrello(request):
+#Come visualizzo il carrello dell'utente? "prodottiCarrello" Request.user
+def carrello_view(request):
+  login(request, User.objects.get(username = "cliente"))
   template = loader.get_template("utente/carrello.html")
-  context = {}
+  carrello = request.user.carrello
+  context = {"prodottiCarrello" : request.user.carrello.prodotti.all(), "carrello" : carrello}
   return HttpResponse(template.render(context, request))
 
 def aggiungi_prodotto(request):
@@ -40,11 +45,13 @@ def aggiungi_prodotto(request):
   context = {}
   return HttpResponse(template.render(context, request))
 
+#"prodottiNegozio"
 def home_amministratore(request):
   template = loader.get_template("amministratore/Home_amministratore.html")
   context = {}
   return HttpResponse(template.render(context, request))
 
+#"resocontoVendite"
 def resoconto_vendite(request):
   template = loader.get_template("amministratore/Resoconto_vendite.html")
   context = {}
