@@ -3,12 +3,23 @@ body {
     background-color: #caeff8;
  }
 
+ /* Modifica lo stile degli h1*/
+h1 {
+    background-color: #6171ff;
+    font-size: 30px;
+    text-align: center;
+}
+
+h2{
+    font-size: 24px;
+}
+
  /* Modifica dello stile dei bottoni */
  .button {
-    background-color: #02bd8e; /* Green */
-    border: none;
+    background-color: #02bd8e; 
+    border: 2px solid #6171ff;
     color: white;
-    padding: 15px 32px;
+    padding: 9px 26px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -16,7 +27,27 @@ body {
     border-radius: 8px;
   }
 
+/* Modifica dello stile dei bottoni quando vengono puntati dal cursore */
+.button:hover {
+    background-color: #1b3dff; 
+    color: white;
+}
+
+/* Modifica lo stile delle tabelle */
   table, th, td {
     border: 1px solid;
     border-collapse: collapse;
   }
+
+/* Modifica lo stile degli <hr> */
+hr{
+    border-top: 2px solid #6171ff;
+}
+
+/* Modifica dello stile del link per registrarsi */
+.registrati {
+    color: #1b3dff;
+}
+.registrati:hover {
+    color: #02178f;
+}

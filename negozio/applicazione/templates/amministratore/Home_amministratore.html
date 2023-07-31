@@ -17,16 +17,20 @@
             <!-- Div contenente il filtro e il logout -->
             <div>
                 <h1>Home amministratore</h1> 
-                
+
+                <a href="./Aggiungi_prodotto.html"><button class="button" type="button" 
+                    value="aggiungiProdotto">Aggiungi prodotto</button></a>
+                <a href="../login.html"><button class="button" type="button" value="logout">Logout</button></a>
+            </div>
+
+            <hr>
+
+            <div>
                 <!-- Filtro per cercare mediante una parola chiave -->
                 <label for="nomeP">Inserisci parola chiave:</label>
                 <input type="text" id="nomeP"><br>
     
                 <button class="button" class="tasto" onclick="filtraTabella()">Cerca</button>
-
-                <a href="./Aggiungi_prodotto.html"><button class="button" type="button" 
-                    value="aggiungiProdotto">Aggiungi prodotto</button></a>
-                <a href="../login.html"><button class="button" type="button" value="logout">Logout</button></a>
             </div>
 
             <!-- Tabella contenente i prodotti presenti nel negozio -->
@@ -44,6 +48,8 @@
                 </table>        
             </div>
 
+            <hr>
+    
             <div>
                 <a href="./Resoconto_vendite.html"><button class="button" type="button" 
                     value="aggiungiProdotto">Resoconto vendite</button></a>
