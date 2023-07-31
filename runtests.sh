@@ -1,1 +1,2 @@
-python negozio/manage.py test || python3 negozio/manage.py test
+cd negozio/
+python manage.py test || python3 manage.py test

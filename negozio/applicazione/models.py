@@ -1,21 +1,5 @@
 from django.db import models
-
-class Autenticatore:
-  def registra_cliente(self,username,password):
-    if login_cliente(username,password) == None and login_amministratore(username,password) == None:
-      Cliente(username=username,password = password).save()
-      return True
-    else:
-      return False
-    
-  def login_cliente(self,username,password):
-    return Cliente.objects.get(username=username,password=password)
-  
-  def login_amministratore(self,username,password):
-    return Amministratore.objects.get(username=username,password=password)
-  
-  def logout(self):
-    pass
+from django.contrib.auth.models import User
 
 #==============================================================================
 # Negozio

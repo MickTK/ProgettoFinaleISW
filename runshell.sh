@@ -1,1 +1,2 @@
-python negozio/manage.py shell || python3 negozio/manage.py shell
+cd negozio/
+python manage.py shell || python3 manage.py shell

@@ -1,1 +1,2 @@
-python negozio/manage.py runserver || python3 negozio/manage.py runserver
+cd negozio/
+python manage.py runserver || python3 manage.py runserver
