@@ -34,6 +34,14 @@
                         <th><b>Prezzo</b></th>
                     </tr>
                     <!-- Qui verranno inserite le righe per i prodotti -->
+                    {% for prodotto in prodotti %}
+                        <td> {{ prodottiCarrello.prodotto.nome }} </td>
+                        <td> {{ prodottiCarrello.prodotto.tipologia }} </td>
+                        <td> {{ prodottiCarrello.quantita }} </td>
+                        <td> <button class="button2" 
+                            onclick="rimuoviProdottoCarrello()">Rimuovi prodotto</button> </td>
+                        <td> <!-- Qui bisogna mettere il totale del prezzo --></td>
+                    {% endfor %}
                 </table>   
 
                 <!-- Indecisione su come implementare il totale -->

@@ -47,6 +47,15 @@
                         <th><b>Azione</b></th>
                     </tr>
                     <!-- Qui verranno inserite le righe per i prodotti -->
+                    {% for prodotto in prodotti %}
+                        <td> {{ prodotto.nome }} </td>
+                        <td> {{ prodotto.tipologia }} </td>
+                        <td> {{ prodotto.descrizione }} </td>
+                        <td> {{ prodotto.prezzo }} </td>
+                        <td> {{ prodotto.quantita }} </td>
+                        <td> <button class="button2" 
+                            onclick="aggiungiProdottoCarrello()">Aggiungi prodotto</button> </td>
+                    {% endfor %}
                 </table>        
             </div>
         </div>
