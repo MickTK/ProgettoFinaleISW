@@ -27,7 +27,7 @@ class Stock(models.Model):
       prodotto.delete()
 
 class Carrello(models.Model):
-  user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='carrello')
+  user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='carrello')
 
   # Aggiunge un'unità di prodotto al carrello
   def aggiungi_prodotto(self, prodotto, quantita=1):
