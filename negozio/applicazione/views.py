@@ -42,10 +42,34 @@ def home_view(request):
 
 #get restituisce un solo oggetto, filter tutti quelli che soddisfano la condizione
 
+#def checkout_view(request):
+ # template = loader.get_template("utente/checkout.html")
+ # context = {}
+ # return HttpResponse(template.render(context, request))
+
+#Vista del checkout NON TESTATA, DA PROVARE, impostata la logica
 def checkout_view(request):
-  template = loader.get_template("utente/checkout.html")
-  context = {}
-  return HttpResponse(template.render(context, request))
+    template = loader.get_template("utente/checkout.html")
+
+    # Utente Autenticato
+    if request.user.is_authenticated:
+        carrello = request.user.carrello
+        prodottiCarrello = carrello.prodotti.all()
+
+        # Calcolo del totale del carrello
+        total_price = sum(prodotto.prezzo for prodotto in prodottiCarrello)
+
+        context = {
+            "prodottiCarrello": prodottiCarrello,
+            "carrello": carrello,
+            "total_price": total_price,
+        }
+    else:
+        # Se non è autenticato torna al login
+        return HttpResponseRedirect("/login/")
+
+    return HttpResponse(template.render(context, request))
+
 
 #Come visualizzo il carrello dell'utente? "prodottiCarrello" Request.user
 def carrello_view(request):

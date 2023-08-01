@@ -38,7 +38,7 @@
 |---------|-----|------------------|-----------------|
 | aggiungi nuovo prodotto   | aggiunta di un prodotto non ancora presente nel carrello  | interazione con il bottone aggiungi al carrello  | prodotto aggiunto nel carrello
 | aggiungi prodotto   | aggiungere un prodotto già presente nel carrello |          |        |
-| visualizza carrello  | collegamento con la pagina carrello.html | interazione con il bottone carrello        | accesso al carrello         |
+| visualizza carrello  | collegamento con la pagina carrello.html | interazione con il bottone carrello        | accesso al carrello,html         |
 | modifica quantità | cambio della quantità di un prodotto del carrello | 1. accesso al carrello 2. interazione con la selezione delle unità del prodotto       | aggiornamento del numero relativo alle unità del prodotto        |
 | rimozione prodotto | rimozione prodotto dal carrello | 1. accesso al carrello 2. interazione con la selezione delle unità del prodotto       | rimozione del prodotto dal carrello 
 ------------------
