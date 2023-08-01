@@ -106,6 +106,9 @@ class ProdottoCarrello(models.Model):
     self.quantita += quantita
     self.delete() if self.quantita < 1 else self.save()
 
+  def totale(self):
+    return self.quantita * self.prodotto.prezzo
+
   # Rimuove il ProdottoCarrello corrente e ne crea una copia come ProdottoVenduto
   def acquista(self):
     ProdottoVenduto.objects.create(
