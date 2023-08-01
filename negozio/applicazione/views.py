@@ -47,7 +47,7 @@ def home_view(request):
  # context = {}
  # return HttpResponse(template.render(context, request))
 
-#Vista del checkout NON TESTATA, DA PROVARE, impostata la logica
+#Vista del checkout impostata la logica
 def checkout_view(request):
     template = loader.get_template("utente/checkout.html")
 
@@ -72,12 +72,33 @@ def checkout_view(request):
 
 
 #Come visualizzo il carrello dell'utente? "prodottiCarrello" Request.user
+#def carrello_view(request):
+ # login(request, User.objects.get(username = "cliente"))
+ # template = loader.get_template("utente/carrello.html")
+ # carrello = request.user.carrello
+ # context = {"prodottiCarrello" : request.user.carrello.prodotti.all(), "carrello" : carrello}
+ # return HttpResponse(template.render(context, request))
+
+#Vista del carrello impostata la logica
 def carrello_view(request):
-  login(request, User.objects.get(username = "cliente"))
-  template = loader.get_template("utente/carrello.html")
-  carrello = request.user.carrello
-  context = {"prodottiCarrello" : request.user.carrello.prodotti.all(), "carrello" : carrello}
-  return HttpResponse(template.render(context, request))
+    template = loader.get_template("utente/carrello.html")
+
+    # Utente Autenticato e con carrello
+    if request.user.is_authenticated:
+        carrello = request.user.carrello
+        prodottiCarrello = carrello.prodotti.all()
+
+        context = {
+            "prodottiCarrello": prodottiCarrello,
+            "carrello": carrello,
+        }
+    else:
+        # Se non è autenticato torna al login
+        return HttpResponseRedirect("/login/")
+
+    return HttpResponse(template.render(context, request))
+
+
 
 def aggiungi_prodotto_view(request):
   template = loader.get_template("amministratore/Aggiungi_prodotto.html")
