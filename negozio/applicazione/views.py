@@ -19,11 +19,9 @@ def login_view(request):
 
       if user is None : 
         return HttpResponse(template.render(context, request))
-
-      login(request, user)
-      return home_view(request)
-    
-
+      else:
+        login(request, user)
+        return home_view(request)
   return HttpResponse(template.render(context, request))
 
 
