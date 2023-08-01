@@ -6,23 +6,30 @@ from applicazione.forms import *
 from applicazione.models import *
 
 def login_view(request):
-  login(request, User.objects.get(username = "cliente"))
   form = LoginForm()
   template = loader.get_template("login.html")
   context = {"form" : form}
-  return HttpResponse(template.render(context, request))
 
-def login_form_result(request):
   if request.method =='POST':
     form = LoginForm(request.POST)
     if form.is_valid():
       username = form.cleaned_data['username']
       password = form.cleaned_data['password']
+      user = authenticate(request, username=username, password=password)
+
+      if user is None : 
+        return HttpResponse(template.render(context, request))
+
+      login(request, user)
       return home_view(request)
+    
+
+  return HttpResponse(template.render(context, request))
+
 
 #Devo fare una funzione per ogni pagina request è il PAYLOAD, context passo i valori alla pagina
 
-#Form con Python(?)
+
 def registrazione_view(request):
   template = loader.get_template("utente/registrazione.html")
   context = {}
