@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,7 +10,7 @@
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../static\./CSS/style.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 
     <body>      
@@ -45,6 +47,13 @@
                         <th><b>Totale</b></th>
                     </tr>
                     <!-- Qui verranno inserite le righe per i prodotti -->
+                    {% for prodottoVenduto in resocontoVendite %}
+                        <td> {{ prodottoVenduto.nome }} </td>
+                        <td> {{ prodottoVenduto.tipologia }} </td>
+                        <td> {{ prodottoVenduto.prezzo }} </td>
+                        <td> {{ prodottoVenduto.numeroPezziVenduti }} </td>
+                        <td> {{ prodottoVenduto.totale }}</td>
+                    {% endfor %}
                 </table>  
                 
                 <!-- Indecisione su come implementare il totale -->

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,7 +10,7 @@
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../static\./CSS/style.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 
     <body>      
@@ -39,7 +41,7 @@
                         <td> {{ prodottoCarrello.prodotto.nome }} </td>
                         <td> {{ prodottoCarrello.prodotto.tipologia }} </td>
                         <td> {{ prodottoCarrello.quantita }} </td>
-                        <td> <button class="button2" 
+                        <td> <button id={{prodottoCarrello.id}} class="button" 
                             onclick="rimuoviProdottoCarrello()">Rimuovi prodotto</button> </td>
                         <td> {{ prodottoCarrello.totale }}</td>
                     {% endfor %}

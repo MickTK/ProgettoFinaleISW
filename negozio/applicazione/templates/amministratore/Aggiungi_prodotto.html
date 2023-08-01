@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,7 +10,7 @@
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../static\./CSS/style.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 
     <body>      
@@ -26,20 +28,11 @@
             <!-- Form per inserire un nuovo prodotto -->
             <div>
                 <h2>Inserisci le informazioni del prodotto</h2>
-                <form>
-                    <label for="nomeProdotto">Nome del prodotto</label><br>  
-                    <input type="text" placeholder="Inserire il nome" name="nomeProdotto" required><br><br>
-                    <label for="tipologiaProdotto">Tipologia di prodotto</label><br>  
-                    <input type="text" placeholder="Inserire tipologia" name="tipologiaProdotto" required><br><br>
-                    <label for="descrizioneProdotto">Descrizione del prodotto</label><br>  
-                    <textarea type="text" placeholder="Inserire descrizione" name="descrizioneProdotto" required></textarea><br><br>
-                    <label for="prezzoProdotto">Prezzo del prodotto (€)</label><br>  
-                    <input type="number" placeholder="Inserire prezzo" name="prezzoProdotto" required><br><br>
-                    <label for="quantitàProdotto">Quantità dell prodotto</label><br>  
-                    <input type="number" placeholder="Inserire quantità" name="quantitàProdotto" required><br><br>
-
-                    <input class="button" class="tastoInput" type="submit" value="Inserisci il prodotto">
-            </form>   
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="button" type="submit" value="Aggiungi il prodotto">
+                </form>
 
         </div>
     </body>

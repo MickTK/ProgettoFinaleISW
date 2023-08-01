@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,7 +10,7 @@
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../static\./CSS/style.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 
     <body>      
@@ -47,6 +49,15 @@
                         <th><b>Azione</b></th>
                     </tr>
                     <!-- Qui verranno inserite le righe per i prodotti -->
+                    {% for prodotto in prodotti %}
+                        <td> {{ prodotto.nome }} </td>
+                        <td> {{ prodotto.tipologia }} </td>
+                        <td> {{ prodotto.descrizione }} </td>
+                        <td> {{ prodotto.prezzo }} </td>
+                        <td> {{ prodotto.disponibilita }} </td>
+                        <td> <button id={{prodotto.id}} class="button" 
+                            onclick="modificaProdotto()">Modifica prodotto</button> </td>
+                    {% endfor %}
                 </table>        
             </div>
 
