@@ -1,3 +1,7 @@
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,7 +12,7 @@
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../static\./CSS/style.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 
     <body>
@@ -18,8 +22,8 @@
         <div class="login">
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}i
-                <input type="submit" value="Logn">
+                {{ form.as_p }}
+                <input type="submit" value="Login">
                 <p>Non sei registrato? <a class="registrati" href="./utente/registrazione.html">Registrati qui!</a></p>  
             </form>
         </div>    
