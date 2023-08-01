@@ -4,7 +4,7 @@ LOGIN:
 
 | Nome    | Descrizione | Passi       | Cosa ci aspettiamo           |
 |---------|-----|------------------|-----------------|
-| successo   | login va a buon fine  | 1.inserimento username 3.inserimento password 4. invio    | Reindirizzamento alla home            |
+| successo   | login va a buon fine  | 1.inserimento username 2.inserimento password 3. invio    | Reindirizzamento alla home            |
 | username sbagliato    | username non presente o non conforme alle regole |          | errore:inserisci nuovamente          |
 | password sbagliata   | La password non segue le regole o non è collegata a quell'account  |         | errore:inserisci nuovamente         |
 ------------------
@@ -26,7 +26,7 @@ ADMIN LOGIN:
 
 | Nome    | Descrizione | Passi       | Cosa ci aspettiamo           |
 |---------|-----|------------------|-----------------|
-| successo   | login va a buon fine  | 1.inserimento username 3.inserimento password 4. invio    | Reindirizzamento alla home_amministratore            |
+| successo   | login va a buon fine  | 1.inserimento username 2.inserimento password 3. invio    | Reindirizzamento alla home_amministratore            |
 | username sbagliato    | username non presente o non conforme alle regole |          | errore:inserisci nuovamente          |
 | password sbagliata   | La password non segue le regole o non è collegata a quell'account  |         | errore:inserisci nuovamente         |
 ------------------
