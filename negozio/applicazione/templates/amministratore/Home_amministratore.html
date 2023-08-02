@@ -20,34 +20,20 @@
             <div>
                 <h1>Home amministratore</h1> 
 
-                <a href="./Aggiungi_prodotto"><button class="button" type="button" 
+                <a href="../Aggiungi_prodotto"><button class="button" type="button" 
                     value="aggiungiProdotto">Aggiungi prodotto</button></a>
                 <a href="../login"><button class="button" type="button" value="logout">Logout</button></a>
             </div>
 
             <br><hr><br>
 
-            <div>
+            <div class="FiltroHomeAmmin">
                 <!-- Filtro per cercare mediante un form -->
-                <label for="nome">Cerca per nome:</label>
-                <input type="text" id="nome">
-    
-                <label for="tipologia">Cerca per tipologia:</label>
-                <input type="text" id="tipologia">
-
-                <label for="minPrezzo">Prezzo minimo:</label>
-                <input type="number" id="minPrezzo">
-
-                <label for="maxPrezzo">Prezzo massimo:</label>
-                <input type="number" id="maxPrezzo">
-
-                <label for="minNumPezziDisponibili">Numero minimo pezzi disponibili:</label>
-                <input type="number" id="minNumPezziDisponibili">
-    
-                <label for="maxNumPezziDisponibili">Numero massimo pezzi disponibili:</label>
-                <input type="number" id="maxNumPezziDisponibili">
-
-                <button class="button" onclick="filtraTabella()">Filtra</button>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="button" type="submit" value="Filtra">
+                </form> 
             </div>
 
             <br>
@@ -79,7 +65,7 @@
             <br><hr><br>
     
             <div>
-                <a href="./Resoconto_vendite.html"><button class="button" type="button" 
+                <a href="../Resoconto_vendite.html"><button class="button" type="button" 
                     value="aggiungiProdotto">Resoconto vendite</button></a>
             </div>
         </div>

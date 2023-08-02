@@ -96,14 +96,6 @@ def checkout_view(request):
     return HttpResponse(template.render(context, request))
 
 
-#Come visualizzo il carrello dell"utente? "prodottiCarrello" Request.user
-#def carrello_view(request):
- # login(request, User.objects.get(username = "cliente"))
- # template = loader.get_template("utente/carrello.html")
- # carrello = request.user.carrello
- # context = {"prodottiCarrello" : request.user.carrello.prodotti.all(), "carrello" : carrello}
- # return HttpResponse(template.render(context, request))
-
 #Vista del carrello impostata la logica
 def carrello_view(request):
     template = loader.get_template("utente/carrello.html")

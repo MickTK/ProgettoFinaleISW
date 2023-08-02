@@ -20,27 +20,19 @@
             <div>
                 <h1>Home</h1> 
 
-                <a href="./carrello"><button class="button" type="button" value="carrello">Carrello</button></a>
+                <a href="../carrello"><button class="button" type="button" value="carrello">Carrello</button></a>
                 <a href="../login"><button class="button" type="button" value="logout">Logout</button></a>
             </div>
 
             <br><hr><br>
 
-            <div>
+            <div class="FiltroHomeUtente">
                 <!-- Filtro per cercare mediante un form -->
-                <label for="nome">Cerca per nome:</label>
-                <input type="text" id="nome">
-    
-                <label for="tipologia">Cerca per tipologia:</label>
-                <input type="text" id="tipologia">
-
-                <label for="minPrezzo">Prezzo minimo:</label>
-                <input type="number" id="minPrezzo">
-
-                <label for="maxPrezzo">Prezzo massimo:</label>
-                <input type="number" id="maxPrezzo">
-
-                <button class="button" onclick="filtraTabella()">Filtra</button>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="button" type="submit" value="Filtra">
+                </form> 
             </div>
 
             <br>
