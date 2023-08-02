@@ -53,7 +53,6 @@ class FiltroHomeUtenteForm(forms.Form):
 class FiltroHomeAmministratoreForm(forms.Form):
   nome = forms.CharField(label="Nome", min_length=3, max_length=100)
   tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100)
-  descrizione = forms.CharField(label="Descrizione", min_length=1, max_length=500)
   minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}))
   maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}))
   minNumPezziDisponibili = forms.IntegerField(label="minNumPezziDisponibili", min_value=1, widget=forms.NumberInput(attrs={'min': 1}))
@@ -81,7 +80,6 @@ class FiltroHomeAmministratoreForm(forms.Form):
 class FiltroResocontoVenditeForm(forms.Form):
   nome = forms.CharField(label="Nome", min_length=3, max_length=100)
   tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100)
-  descrizione = forms.CharField(label="Descrizione", min_length=1, max_length=500)
   minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}))
   maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}))
   minNumPezziVenduti = forms.IntegerField(label="minNumPezziVenduti", min_value=0, widget=forms.NumberInput(attrs={'min': 0}))
