@@ -44,4 +44,21 @@
 ------------------
 ------------------
 
+### RICERCA TEST
+| Nome    | Descrizione | Passi       | Cosa ci aspettiamo           |
+|---------|-----|------------------|-----------------|
+| successo   | la ricerca ha prodotto il risultato atteso  | 1. inserimento parola nella barra di ricerca 2. avvio   | viene visualizzato il prodotto cercato            |
+| errore   | il prodotto cercato non esiste |          | errore: prodotto mancante         |
+------------------
+------------------
+
+
+### FILTRO TEST
+| Nome    | Descrizione | Passi       | Cosa ci aspettiamo           |
+|---------|-----|------------------|-----------------|
+| aggiunta filtro   | scelta di un filtro da applicare alla ricerca | 1. inserimento del filtro nella barra 2. avvio   | viene visualizzata la lista dei prodotti cercati tenendo conto del filtro applicato            |
+| rimozione filtro   | rimozione del filtro applicato | 1. interazione con il bottone del filtro 2. rimozione del filtro         | filtro rimosso e visualizzazione della lista di base         |
+------------------
+------------------
+
 
