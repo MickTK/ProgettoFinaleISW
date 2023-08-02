@@ -52,6 +52,11 @@ hr{
     color: #02178f;
 }
 
+/* Modifica la dimensione del link alla pagina della registrazione */
+p {
+    font-size: 16px;
+}
+
 /* Modifica del form del login*/
 .login{
     background-color: white;
@@ -63,8 +68,5 @@ hr{
     font-size: 20px;
 }
 
-/* Modifica la dimensione del link alla pagina della registrazione */
-p {
-    font-size: 16px;
-}
+
 
