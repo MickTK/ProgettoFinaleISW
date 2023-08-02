@@ -136,3 +136,27 @@ class FiltroCercaHomeAmministratoreFormTestCase(TestCase):
       "maxNumPezziDisponibili": "10"
     })
     self.assertFalse(form.is_valid())
+    
+class FiltroResocontoVenditeFormTestCase(TestCase):
+  
+  def test_FiltroResocontoVendite_form_valid(self):
+    form = FiltroResocontoVenditeForm(data={
+      "nome": "Iphone 14",
+      "tipologia": "Cellulare"
+      "minPrezzo": "3.00"
+      "maxPrezzo": "1200.00"
+      "minNumPezziVenduti": "5"
+      "maxNumPezziVenduti": "50"
+    })
+    self.assertTrue(form.is_valid())
+
+  def test_FiltroResocontoVendite_form_invalid(self):
+    form = FiltroResocontoVenditeForm(data={
+      "nome": "Iphone 14",
+      "tipologia": "Cellulare"
+      "minPrezzo": "50.00"
+      "maxPrezzo": "1500.00"
+      "minNumPezziVenduti": "20"
+      "maxNumPezziVenduti": "10"
+    })
+    self.assertFalse(form.is_valid())
