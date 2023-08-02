@@ -92,3 +92,23 @@ class AggiuntaNuovoProdottoFormTestCase(TestCase):
       "quantita": "200.1"
     })
     self.assertFalse(form.is_valid())
+
+class FiltroCercaHomeUtenteFormTestCase(TestCase):
+
+  def test_FiltroCercaHomeUtente_form_valid(self):
+    form = FiltroHomeUtenteForm(data={
+      "nome": "Iphone 14",
+      "tipologia": "Cellulare"
+      "minPrezzo": "3.00"
+      "maxPrezzo": "1200.00"
+    })
+    self.assertTrue(form.is_valid())
+
+  def test_FiltroCercaHomeUtente_form_invalid(self):
+    form = FiltroHomeUtenteForm(data={
+      "nome": "Iphone 14",
+      "tipologia": "Cellulare"
+      "minPrezzo": "50.00"
+      "maxPrezzo": "20.00"
+    })
+    self.assertFalse(form.is_valid())
