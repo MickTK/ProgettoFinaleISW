@@ -2,51 +2,33 @@
     "title": "Kanban",
     "cols": [
         {
-            "title": "Bugs",
-            "tasks": [],
-            "id": "clkfq8u1h000a4164mbcw2q6b",
-            "color": "#eb144c"
-        },
-        {
-            "title": "To-Do",
+            "title": "Da fare",
             "tasks": [
                 {
-                    "text": "1 - Test unitari",
-                    "id": "clki2zjqv000a4164rd4erskd"
+                    "text": "Test unitari (viste)",
+                    "id": "clku02exl000d4164t1tt0kql"
                 },
                 {
-                    "text": "2 - Test di accettazione",
+                    "text": "Templates (js)",
+                    "id": "clku04sd9000g4164an30c2sl"
+                },
+                {
+                    "text": "Test di accettazione",
                     "id": "clkfq9c5t000f4164k09em0hg"
-                },
-                {
-                    "text": "5 - Creazione modelli",
-                    "id": "clkfqavvc000i4164on09e5wz"
-                },
-                {
-                    "text": "7 - Creazione views e integrazione di Django nell'html",
-                    "id": "clkfqbkpo000k4164fkf3lyy9"
                 }
             ],
             "id": "clkfq8u1i000c4164wtmq9bgh",
             "color": "#fcb900"
         },
         {
-            "title": "Doing",
+            "title": "In corso",
             "tasks": [
                 {
-                    "text": "Diagrammi di sequenza",
-                    "id": "clkjpdn8v000a4164b857uhf0"
+                    "text": "Viste",
+                    "id": "clktzz7fd000c4164mhn9e757"
                 },
                 {
-                    "text": "3 - Diagramma entità-relazioni",
-                    "id": "clkfq9iyr000g4164kb3czwsd"
-                },
-                {
-                    "text": "4 - Diagramma delle classi",
-                    "id": "clkfqaeh2000h4164nbl6p9yf"
-                },
-                {
-                    "text": "6 - Creazione templates (in html)",
+                    "text": "Templates (django)",
                     "id": "clkfqb3xe000j4164zs3t8etc"
                 }
             ],
@@ -54,11 +36,47 @@
             "color": "#0693e3"
         },
         {
-            "title": "Done",
+            "title": "Completato",
             "tasks": [
                 {
-                    "text": "0 - User stories",
+                    "text": "User stories",
                     "id": "clkfq8u1i000b4164yy5ohklj"
+                },
+                {
+                    "text": "Diagrammi di sequenza",
+                    "id": "clkjpdn8v000a4164b857uhf0"
+                },
+                {
+                    "text": "Diagramma entità-relazioni",
+                    "id": "clkfq9iyr000g4164kb3czwsd"
+                },
+                {
+                    "text": "Diagramma delle classi",
+                    "id": "clkfqaeh2000h4164nbl6p9yf"
+                },
+                {
+                    "text": "Modelli",
+                    "id": "clkfqavvc000i4164on09e5wz"
+                },
+                {
+                    "text": "Test unitari (modelli)",
+                    "id": "clki2zjqv000a4164rd4erskd"
+                },
+                {
+                    "text": "Form",
+                    "id": "clktzyxf4000b41645we7m372"
+                },
+                {
+                    "text": "Test unitari (form)",
+                    "id": "clktzwpst000a4164na2w6owx"
+                },
+                {
+                    "text": "Templates (html)",
+                    "id": "clku04596000e41647puwzjq3"
+                },
+                {
+                    "text": "Templates (css)",
+                    "id": "clku04fln000f4164778o32hh"
                 }
             ],
             "id": "clkfq8u1i000e4164rmuhx3xh",
@@ -67,5 +85,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1690374587408
+    "timestamp": 1690997387540
 }

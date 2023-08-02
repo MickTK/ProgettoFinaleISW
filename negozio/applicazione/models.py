@@ -26,6 +26,13 @@ class Stock(models.Model):
     if prodotto.stock.id == self.id:
       prodotto.delete()
 
+  # Restituisce il totale sui prodotti venduti
+  def totale_prodotti_venduti(self):
+    totale = 0
+    for prodotto in self.prodotti_venduti:
+      totale += prodotto.prezzo * prodotto.quantita
+    return totale
+
 class Carrello(models.Model):
   user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='carrello')
 
