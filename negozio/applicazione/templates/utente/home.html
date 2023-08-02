@@ -20,19 +20,27 @@
             <div>
                 <h1>Home</h1> 
 
-                <a href="./carrello.html"><button class="button" type="button" value="carrello">Carrello</button></a>
-                <a href="../login.html"><button class="button" type="button" value="logout">Logout</button></a>
+                <a href="./carrello"><button class="button" type="button" value="carrello">Carrello</button></a>
+                <a href="../login"><button class="button" type="button" value="logout">Logout</button></a>
             </div>
 
             <br><hr><br>
 
             <div>
-                <!-- Filtro per cercare mediante una parola chiave -->
-                <label for="nomeP">Inserisci parola chiave:</label>
-                <input type="text" id="nomeP"><br>
+                <!-- Filtro per cercare mediante un form -->
+                <label for="nome">Cerca per nome:</label>
+                <input type="text" id="nome">
+    
+                <label for="tipologia">Cerca per tipologia:</label>
+                <input type="text" id="tipologia">
 
-                <button class="button" onclick="filtraTabella()">Cerca</button>
+                <label for="minPrezzo">Prezzo minimo:</label>
+                <input type="number" id="minPrezzo">
 
+                <label for="maxPrezzo">Prezzo massimo:</label>
+                <input type="number" id="maxPrezzo">
+
+                <button class="button" onclick="filtraTabella()">Filtra</button>
             </div>
 
             <br>

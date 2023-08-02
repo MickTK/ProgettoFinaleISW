@@ -20,18 +20,35 @@
             <div>
                 <h1>Resoconto vendite</h1> 
 
-                <a href="./Home_amministratore.html"><button class="button" type="button" value="home">Home</button></a>
+                <a href="./Home_amministratore"><button class="button" type="button" value="home">Home</button></a>
                 
             </div>
 
             <br><hr><br>
 
             <div>
-                <!-- Filtro per cercare mediante una parola chiave -->
-                <label for="nomeP">Inserisci parola chiave:</label>
-                <input type="text" id="nomeP"><br>
+                <div>
+                    <!-- Filtro per cercare mediante un form -->
+                    <label for="nome">Cerca per nome:</label>
+                    <input type="text" id="nome">
+        
+                    <label for="tipologia">Cerca per tipologia:</label>
+                    <input type="text" id="tipologia">
     
-                <button class="button" onclick="filtraTabella()">Cerca</button>
+                    <label for="minPrezzo">Prezzo minimo:</label>
+                    <input type="number" id="minPrezzo">
+    
+                    <label for="maxPrezzo">Prezzo massimo:</label>
+                    <input type="number" id="maxPrezzo">
+
+                    <label for="minNumPezziVenduti">Numero minimo pezzi venduti:</label>
+                    <input type="number" id="minNumPezziVenduti">
+    
+                    <label for="maxNumPezziVenduti">Numero massimo pezzi venduti:</label>
+                    <input type="number" id="maxNumPezziVenduti">
+
+                    <button class="button" onclick="filtraTabella()">Filtra</button>
+                </div>
             </div>
 
             <br>

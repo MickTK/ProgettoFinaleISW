@@ -9,5 +9,5 @@ import os
 #test prova
 
 driver = webdriver.Chrome() 
-driver.get("https://www.google.com") 
+driver.get("login/") 
 time.sleep(15) 
