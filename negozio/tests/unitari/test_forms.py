@@ -121,8 +121,8 @@ class FiltroCercaHomeAmministratoreFormTestCase(TestCase):
       "tipologia": "Cellulare",
       "minPrezzo": "3.00",
       "maxPrezzo": "1200.00",
-      "minNumPezziDisponibili": "5",
-      "maxNumPezziDisponibili": "50"
+      "minNumPezzi": "5",
+      "maxNumPezzi": "50"
     })
     self.assertTrue(form.is_valid())
 
@@ -132,8 +132,8 @@ class FiltroCercaHomeAmministratoreFormTestCase(TestCase):
       "tipologia": "Cellulare",
       "minPrezzo": "50.00",
       "maxPrezzo": "1500.00",
-      "minNumPezziDisponibili": "20",
-      "maxNumPezziDisponibili": "10"
+      "minNumPezzi": "20",
+      "maxNumPezzi": "10"
     })
     self.assertFalse(form.is_valid())
     

@@ -55,22 +55,22 @@ class FiltroHomeAmministratoreForm(forms.Form):
   tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, required=False)
   minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}), required=False)
   maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
-  minNumPezziDisponibili = forms.IntegerField(label="minNumPezziDisponibili", min_value=1, widget=forms.NumberInput(attrs={'min': 1}), required=False)
-  maxNumPezziDisponibili = forms.IntegerField(label="maxNumPezziDisponibili", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
+  minNumPezzi = forms.IntegerField(label="minNumPezzi", min_value=1, widget=forms.NumberInput(attrs={'min': 1}), required=False)
+  maxNumPezzi = forms.IntegerField(label="maxNumPezzi", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
   
   def clean(self):
         cleaned_data = super().clean()
         min_prezzo = cleaned_data.get("minPrezzo")
         max_prezzo = cleaned_data.get("maxPrezzo")
-        min_prodotti = cleaned_data.get("minNumPezziDisponibili")
-        max_prodotti = cleaned_data.get("maxNumPezziDisponibili")
+        minNumPezzi = cleaned_data.get("minNumPezzi")
+        maxNumPezzi = cleaned_data.get("maxNumPezzi")
 
         if min_prezzo is not None and max_prezzo is not None:
             if min_prezzo >= max_prezzo:
                 raise forms.ValidationError("Il prezzo minimo deve essere strettamente minore del prezzo massimo.")
         
-        if min_prodotti is not None and max_prodotti is not None:
-            if min_prodotti > max_prodotti:
+        if minNumPezzi is not None and maxNumPezzi is not None:
+            if minNumPezzi > maxNumPezzi:
                 raise forms.ValidationError("Il numero minimo di prodotti disponibili non può essere maggiore del numero massimo.")
 
         return cleaned_data

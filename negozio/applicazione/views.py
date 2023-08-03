@@ -208,8 +208,8 @@ def home_amministratore_view(request):
       tipologia = form.cleaned_data["tipologia"]
       minPrezzo = form.cleaned_data["minPrezzo"]
       maxPrezzo = form.cleaned_data["maxPrezzo"]
-      min_prodotti = form.cleaned_data("minNumPezziDisponibili")
-      max_prodotti = form.cleaned_data("maxNumPezziDisponibili")
+      minNumPezzi = form.cleaned_data("minNumPezzi")
+      maxNumPezzi = form.cleaned_data("maxNumPezzi")
       
       nome_check = tipologia_check = prezzo_check = prodotti_disponibili_check = None
 
@@ -230,13 +230,13 @@ def home_amministratore_view(request):
         if minPrezzo is not None and maxPrezzo is not None:
           prezzo_check = minPrezzo < prodotto.prezzo and prodotto.prezzo < maxPrezzo
           
-        if min_prodotti is not None:
-          prodotti_disponibili_check = min_prodotti < prodotto.quantita
-        if max_prodotti is not None:
-          prodotti_disponibili_check = prodotto.quantita < max_prodotti
+        if minNumPezzi is not None:
+          prodotti_disponibili_check = minNumPezzi < prodotto.quantita
+        if maxNumPezzi is not None:
+          prodotti_disponibili_check = prodotto.quantita < maxNumPezzi
           
-        if min_prodotti is not None and max_prodotti is not None:
-          prodotti_disponibili_check = min_prodotti < prodotto.quantita and prodotto.quantita < max_prodotti
+        if minNumPezzi is not None and maxNumPezzi is not None:
+          prodotti_disponibili_check = minNumPezzi < prodotto.quantita and prodotto.quantita < maxNumPezzi
 
         if (nome_check or nome_check is None) and (tipologia_check or tipologia_check is None) and (prezzo_check or prezzo_check is None) and (prodotti_disponibili_check or prodotti_disponibili_check is None):
           context["prodotti"].append(prodotto)
@@ -246,8 +246,8 @@ def home_amministratore_view(request):
         "tipologia": tipologia,
         "minPrezzo": minPrezzo,
         "maxPrezzo": maxPrezzo,
-        "minNumPezziDisponibili": min_prodotti,
-        "maxNumPezziDisponibili": max_prodotti
+        "minNumPezzi": minNumPezzi,
+        "maxNumPezzi": maxNumPezzi
       }
       context["form"] = FiltroHomeAmministratoreForm(initial = valori_iniziali_form)
 
