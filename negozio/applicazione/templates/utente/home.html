@@ -40,24 +40,29 @@
             <!-- Tabella contenente i prodotti presenti nel negozio -->
             <div>
                 <table id="prodottiNegozio">
-                    <tr>
-                        <th><b>Nome prodotto</b></th>
-                        <th><b>Tipologia</b></th>
-                        <th><b>Descrizione</b></th>
-                        <th><b>Prezzo</b></th>
-                        <th><b>Quantità</b></th>
-                        <th><b>Azione</b></th>
-                    </tr>
-                    <!-- Qui verranno inserite le righe per i prodotti -->
-                    {% for prodotto in prodotti %}
-                        <td> {{ prodotto.nome }} </td>
-                        <td> {{ prodotto.tipologia }} </td>
-                        <td> {{ prodotto.descrizione }} </td>
-                        <td> {{ prodotto.prezzo }} </td>
-                        <td> {{ prodotto.quantita }} </td>
-                        <td> <button id={{prodotto.id}} class="button" 
-                            onclick="aggiungiProdottoCarrello()">Aggiungi prodotto</button> </td>
-                    {% endfor %}
+                    <thead>
+                        <tr>
+                            <th><b>Nome prodotto</b></th>
+                            <th><b>Tipologia</b></th>
+                            <th><b>Descrizione</b></th>
+                            <th><b>Prezzo</b></th>
+                            <th><b>Quantità</b></th>
+                            <th><b>Azione</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Qui verranno inserite le righe per i prodotti -->
+                        <tr>
+                        {% for prodotto in prodotti %}
+                            <td> {{ prodotto.nome }} </td>
+                            <td> {{ prodotto.tipologia }} </td>
+                            <td> {{ prodotto.descrizione }} </td>
+                            <td> {{ prodotto.prezzo }} </td>
+                            <td> {{ prodotto.quantita }} </td>
+                            <td> <button id={{prodotto.id}} class="button" onclick="aggiungiProdottoCarrello()">Aggiungi prodotto</button> </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>        
             </div>
         </div>

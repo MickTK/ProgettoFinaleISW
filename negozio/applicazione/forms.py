@@ -33,10 +33,10 @@ class AggiuntaNuovoProdottoForm(forms.Form):
 
 # filtro per cercare all'interno della home utente
 class FiltroHomeUtenteForm(forms.Form):
-  nome = forms.CharField(label="Nome", min_length=3, max_length=100)
-  tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100)
-  minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}))
-  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}))
+  nome = forms.CharField(label="Nome", max_length=100, required=False)
+  tipologia = forms.CharField(label="Tipologia", max_length=100, required=False)
+  minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}), required=False)
+  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
   
   def clean(self):
         cleaned_data = super().clean()
