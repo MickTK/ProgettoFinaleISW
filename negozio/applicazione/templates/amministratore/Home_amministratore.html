@@ -51,6 +51,7 @@
                     </tr>
                     <!-- Qui verranno inserite le righe per i prodotti -->
                     {% for prodotto in prodotti %}
+                    <tr>
                         <td> {{ prodotto.nome }} </td>
                         <td> {{ prodotto.tipologia }} </td>
                         <td> {{ prodotto.descrizione }} </td>
@@ -58,6 +59,7 @@
                         <td> {{ prodotto.disponibilita }} </td>
                         <td> <button id={{prodotto.id}} class="button" 
                             onclick="modificaProdotto()">Modifica prodotto</button> </td>
+                    </tr>        
                     {% endfor %}
                 </table>        
             </div>
