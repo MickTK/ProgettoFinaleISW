@@ -40,7 +40,10 @@
                     {% for prodottoCarrello in prodottiCarrello %}
                         <td> {{ prodottoCarrello.prodotto.nome }} </td>
                         <td> {{ prodottoCarrello.prodotto.tipologia }} </td>
-                        <td> {{ prodottoCarrello.quantita }} </td>
+                        <td><input type="number" step="1" 
+                            value="{{ prodottoCarrello.quantita }}"
+                            min="1" max="{{prodottoCarrello.prodotto.quantita}}"
+                        ></td>
                         <td> <button id={{prodottoCarrello.id}} class="button" 
                             onclick="rimuoviProdottoCarrello()">Rimuovi prodotto</button> </td>
                         <td> {{ prodottoCarrello.totale }}</td>
@@ -60,7 +63,7 @@
 
             <!-- Div per il checkout-->
             <div>
-                <a href="../checkout.html"><button class="button" type="button" value="checkout">Checkout</button></a>
+                <a href="../checkout"><button class="button" type="button" value="checkout">Checkout</button></a>
             </div>
 
         </div>

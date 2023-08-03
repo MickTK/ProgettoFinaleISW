@@ -127,6 +127,7 @@ class ProdottoCarrello(models.Model):
       stock = self.prodotto.stock
     )
     self.prodotto.quantita -= self.quantita
+    self.prodotto.save()
     if self.prodotto.quantita < 1:
       self.prodotto.stock.rimuovi_prodotto(self.prodotto)
     self.delete()
