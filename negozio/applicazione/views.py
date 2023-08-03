@@ -208,8 +208,8 @@ def home_amministratore_view(request):
       tipologia = form.cleaned_data["tipologia"]
       minPrezzo = form.cleaned_data["minPrezzo"]
       maxPrezzo = form.cleaned_data["maxPrezzo"]
-      minNumPezzi = form.cleaned_data("minNumPezzi")
-      maxNumPezzi = form.cleaned_data("maxNumPezzi")
+      minNumPezzi = form.cleaned_data["minNumPezzi"]
+      maxNumPezzi = form.cleaned_data["maxNumPezzi"]
       
       nome_check = tipologia_check = prezzo_check = prodotti_disponibili_check = None
 
