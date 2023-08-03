@@ -15,7 +15,7 @@
 
 | Nome    | Descrizione | Passi       | Cosa ci aspettiamo           | Risultati ottenuti |
 |---------|-----|------------------|-----------------|-------------------|
-| successo   | La registrazione va a buon fine  | 1. (inserimento di tutte le altre informazioni) 2. inserimento username 3. inserimento password 4. invio    | Reindirizzamento al Login            |                   |
+| successo   | La registrazione va a buon fine  | 1. inserimento username 2. inserimento password 3. invio    | Reindirizzamento al Login            |                   |
 | password non conforme   | La password non segue le regole  |         | errore: inserisci nuovamente         |                   |
 | controllo ripetizione password   | le due password inserite non sono uguali  |      | errore: inserisci nuovamente          |                   |
 | controllo username   | username già presente |      | errore: inserisci nuovamente          |                   |
