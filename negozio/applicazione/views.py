@@ -236,7 +236,7 @@ def home_amministratore_view(request):
           prodotti_disponibili_check = prodotto.quantita < max_prodotti
           
         if min_prodotti is not None and max_prodotti is not None:
-          prodotti_disponibili_check = min_prodotti < prodotto.quantita and prodotto.prezzo < max_prodotti
+          prodotti_disponibili_check = min_prodotti < prodotto.quantita and prodotto.quantita < max_prodotti
 
         if (nome_check or nome_check is None) and (tipologia_check or tipologia_check is None) and (prezzo_check or prezzo_check is None) and (prodotti_disponibili_check or prodotti_disponibili_check is None):
           context["prodotti"].append(prodotto)
