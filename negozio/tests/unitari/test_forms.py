@@ -12,7 +12,7 @@ class LoginFormTestCase(TestCase):
 
   def test_login_form_invalid(self):
     form = LoginForm(data={
-      "username": "mario",
+      "username": "mar",
       "password": "12345"
     })
     self.assertFalse(form.is_valid())
@@ -28,7 +28,7 @@ class RegistrazioneFormTestCase(TestCase):
 
   def test_registrazione_form_invalid(self):
     form = RegistrazioneForm(data={
-      "username": "mario",
+      "username": "mar",
       "password": "12345"
     })
     self.assertFalse(form.is_valid())
