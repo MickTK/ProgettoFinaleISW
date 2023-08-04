@@ -266,6 +266,7 @@ def resoconto_vendite_view(request):
   stock = Stock.objects.get(nome=NOME_STOCK)  
   context = {
     "resocontoVendite" : ProdottoVenduto.objects.filter(stock=stock).all(),
+    "stock": stock,
     "form" : FiltroResocontoVenditeForm()
   }
 
