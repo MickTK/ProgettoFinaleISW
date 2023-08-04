@@ -326,10 +326,22 @@ class AggiungiProdottoViewTestCase(TestCase):
     def setUp(self):
         user = User.objects.create_user(username = "admin", password = "testpassword")
         user.is_superuser = True
-        user.save() 
+        user.save()
         self.stock = Stock.objects.create(nome = NOME_STOCK)
+        
 
-   # def test_aggiungi_prodotto_view_valid(self):
+    def test_aggiungi_prodotto_view_valid(self):
+
+        # Effettuo il login
+        data = {
+            "username": "admin",
+            "password": "testpassword",
+        }
+        self.client.post("/login/", data)
+
+        # Cerca e trova la pagina del carrello
+        response = self.client.get("/Aggiungi_prodotto/") 
+        self.assertEqual(response.status_code, 200)
 
     
     def test_aggiungi_prodotto_view_invalid(self):
