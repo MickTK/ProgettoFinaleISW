@@ -255,9 +255,71 @@ def home_amministratore_view(request):
 
   
   
+  
+  
+  
 
 #"resocontoVendite"
 def resoconto_vendite_view(request):
+  
   template = loader.get_template("amministratore/Resoconto_vendite.html")
-  context = {}
+  stock = Stock.objects.get(nome=NOME_STOCK)  
+  context = {
+    "resocontoVendite" : ProdottoVenduto.objects.filter(stock=stock).all(),
+    "form" : FiltroResocontoVenditeForm()
+  }
+
+
+  if request.method == "POST":
+    form = FiltroResocontoVenditeForm(request.POST)  # Form per gestire i filtri
+
+    if form.is_valid():
+      nome = form.cleaned_data["nome"]
+      tipologia = form.cleaned_data["tipologia"]
+      minPrezzo = form.cleaned_data["minPrezzo"]
+      maxPrezzo = form.cleaned_data["maxPrezzo"]
+      minPezziVenduti = form.cleaned_data["minPezziVenduti"]
+      maxPezziVenduti = form.cleaned_data["maxPezziVenduti"]
+      
+      nome_check = tipologia_check = prezzo_check = prodotti_venduti_check = None
+
+      resocontoVendite = context["resocontoVendite"]
+      context["resocontoVendite"] = list()
+
+      for prodottoVenduto in resocontoVendite:
+        if nome is not None:
+          nome_check = prodottoVenduto.nome.lower().find(nome.lower()) > -1
+        if tipologia is not None:
+          tipologia_check = prodottoVenduto.tipologia.lower().find(tipologia.lower()) > -1
+          
+        if minPrezzo is not None:
+          prezzo_check = minPrezzo < prodottoVenduto.prezzo
+        if maxPrezzo is not None:
+          prezzo_check = prodottoVenduto.prezzo < maxPrezzo
+          
+        if minPrezzo is not None and maxPrezzo is not None:
+          prezzo_check = minPrezzo < prodottoVenduto.prezzo and prodottoVenduto.prezzo < maxPrezzo
+          
+        if minPezziVenduti is not None:
+          prodotti_venduti_check = minPezziVenduti < prodottoVenduto.quantita
+        if maxPezziVenduti is not None:
+          prodotti_venduti_check = prodottoVenduto.quantita < maxPezziVenduti
+          
+        if minPezziVenduti is not None and maxPezziVenduti is not None:
+          prodotti_venduti_check = minPezziVenduti < prodottoVenduto.quantita and prodottoVenduto.quantita < maxPezziVenduti
+
+        if (nome_check or nome_check is None) and (tipologia_check or tipologia_check is None) and (prezzo_check or prezzo_check is None) and (prodotti_venduti_check or prodotti_venduti_check is None):
+          context["resocontoVendite"].append(prodottoVenduto)
+
+      valori_iniziali_form = {
+        "nome": nome,
+        "tipologia": tipologia,
+        "minPrezzo": minPrezzo,
+        "maxPrezzo": maxPrezzo,
+        "minPezziVenduti": minPezziVenduti,
+        "maxPezziVenduti": maxPezziVenduti
+      }
+      context["form"] = FiltroResocontoVenditeForm(initial = valori_iniziali_form)
+
   return HttpResponse(template.render(context, request))
+  

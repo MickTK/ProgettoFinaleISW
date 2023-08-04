@@ -81,23 +81,23 @@ class FiltroResocontoVenditeForm(forms.Form):
   nome = forms.CharField(label="Nome", min_length=3, max_length=100, required=False)
   tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, required=False)
   minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}), required=False)
-  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}))
-  minNumPezziVenduti = forms.IntegerField(label="minNumPezziVenduti", min_value=0, widget=forms.NumberInput(attrs={'min': 0}), required=False)
-  maxNumPezziVenduti = forms.IntegerField(label="maxNumPezziVenduti", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
+  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
+  minPezziVenduti = forms.IntegerField(label="minPezziVenduti", min_value=0, widget=forms.NumberInput(attrs={'min': 0}), required=False)
+  maxPezziVenduti = forms.IntegerField(label="maxPezziVenduti", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
   
   def clean(self):
     cleaned_data = super().clean()
     min_prezzo = cleaned_data.get("minPrezzo")
     max_prezzo = cleaned_data.get("maxPrezzo")
-    min_prodotti = cleaned_data.get("minNumPezziVenduti")
-    max_prodotti = cleaned_data.get("maxNumPezziVenduti")
+    minPezziVenduti = cleaned_data.get("minPezziVenduti")
+    maxPezziVenduti = cleaned_data.get("maxPezziVenduti")
 
     if min_prezzo is not None and max_prezzo is not None:
       if min_prezzo >= max_prezzo:
         raise forms.ValidationError("Il prezzo minimo deve essere strettamente minore del prezzo massimo.")
         
-      if min_prodotti is not None and max_prodotti is not None:
-        if min_prodotti > max_prodotti:
+      if minPezziVenduti is not None and maxPezziVenduti is not None:
+        if minPezziVenduti > maxPezziVenduti:
           raise forms.ValidationError("Il numero minimo di prodotti venduti non può essere maggiore del numero massimo.")
 
         return cleaned_data

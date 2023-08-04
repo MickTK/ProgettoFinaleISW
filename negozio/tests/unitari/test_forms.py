@@ -145,8 +145,8 @@ class FiltroResocontoVenditeFormTestCase(TestCase):
       "tipologia": "Cellulare",
       "minPrezzo": "3.00",
       "maxPrezzo": "1200.00",
-      "minNumPezziVenduti": "5",
-      "maxNumPezziVenduti": "50"
+      "minPezziVenduti": "5",
+      "maxPezziVenduti": "50"
     })
     self.assertTrue(form.is_valid())
 
@@ -156,7 +156,7 @@ class FiltroResocontoVenditeFormTestCase(TestCase):
       "tipologia": "Cellulare",
       "minPrezzo": "50.00",
       "maxPrezzo": "1500.00",
-      "minNumPezziVenduti": "20",
-      "maxNumPezziVenduti": "10"
+      "minPezziVenduti": "20",
+      "maxPezziVenduti": "10"
     })
     self.assertFalse(form.is_valid())
