@@ -63,6 +63,8 @@ def home_view(request):
   
   # Gestione richieste
   if request.method =="POST":
+
+    # Filtro
     form = FiltroHomeUtenteForm(request.POST)
     if form.is_valid():
       nome = form.cleaned_data["nome"]
@@ -95,6 +97,16 @@ def home_view(request):
         "maxPrezzo": maxPrezzo
       }
       context["form"] = FiltroHomeUtenteForm(initial = valori_iniziali_form)
+
+    # Aggiunta prodotto al carrello
+    prodotto_id = int(request.POST["prodotto_id"])
+    if prodotto_id is not None:
+      user = get_user(request)
+      if user is not None:
+        prodotto = Prodotto.objects.get(id = prodotto_id)
+        prodotto_carrello = user.carrello.prodotti.filter(prodotto = prodotto)
+        if prodotto_carrello.count() == 0 or (prodotto_carrello.count() > 0 and prodotto_carrello.all()[0].quantita < prodotto.quantita):
+          user.carrello.aggiungi_prodotto(prodotto)
 
 
 
@@ -133,6 +145,14 @@ def carrello_view(request):
     "prodottiCarrello": user.carrello.prodotti.all(),
     "carrello": user.carrello,
   }
+
+  if request.method =="POST":
+    prodotto_id = int(request.POST["prodotto_id"])
+    if prodotto_id is not None:
+      user = get_user(request)
+      if user is not None:
+        ProdottoCarrello.objects.get(id = prodotto_id).delete()
+
   return HttpResponse(template.render(context, request))
 
 @login_required
@@ -142,6 +162,9 @@ def checkout_view(request):
     "form": CheckoutForm()
   }
   user = get_user(request)
+
+  if user.carrello.prodotti.count() == 0:
+    return redirect("../carrello")
 
   if request.method == "POST":
     form = CheckoutForm(request.POST)
@@ -159,11 +182,40 @@ def checkout_view(request):
 @login_required
 def aggiungi_prodotto_view(request):
   template = loader.get_template("amministratore/Aggiungi_prodotto.html")
-  context = {"form": AggiuntaNuovoProdottoForm()}
+  context = {
+    "prodotto_id": "-1",
+    "form": AggiuntaNuovoProdottoForm()
+  }
 
   if request.method =="POST":
     form = AggiuntaNuovoProdottoForm(request.POST)
-    if form.is_valid():
+
+    # Modifica un prodotto
+    if form.is_valid() and request.POST["prodotto_id"] != "":
+      nome = form.cleaned_data["nome"]
+      tipologia = form.cleaned_data["tipologia"]
+      descrizione = form.cleaned_data["descrizione"]
+      prezzo = form.cleaned_data["prezzo"]
+      quantita = form.cleaned_data["quantita"]
+
+      prodotto = Prodotto.objects.get(id = int(request.POST["prodotto_id"]))
+
+      # Elimina il prodotto
+      if quantita < 1:
+        prodotto.delete()
+      # Modifica il prodotto
+      else:
+        prodotto.modifica(
+          nome = nome,
+          tipologia = tipologia,
+          descrizione = descrizione,
+          prezzo = prezzo,
+          quantita = quantita
+        )
+      return redirect("../Home_amministratore")
+
+    # Aggiunge un prodotto
+    elif form.is_valid():
       nome = form.cleaned_data["nome"]
       tipologia = form.cleaned_data["tipologia"]
       descrizione = form.cleaned_data["descrizione"]
@@ -179,6 +231,19 @@ def aggiungi_prodotto_view(request):
         stock = Stock.objects.get(nome = NOME_STOCK)
       )
       return redirect("../Home_amministratore")
+
+    # Vai a "Modifica prodotto"
+    elif (not form.is_valid()) and int(request.POST["prodotto_id"]) >= 0:
+      prodotto = Prodotto.objects.get(id = int(request.POST["prodotto_id"]))
+      valori_iniziali_form = {
+        "nome": prodotto.nome,
+        "tipologia": prodotto.tipologia,
+        "descrizione": prodotto.descrizione,
+        "prezzo": prodotto.prezzo,
+        "quantita": prodotto.quantita
+      }
+      context["prodotto_id"] = prodotto.id
+      context["form"] = AggiuntaNuovoProdottoForm(initial = valori_iniziali_form)
 
   return HttpResponse(template.render(context, request))
 
@@ -223,20 +288,20 @@ def home_amministratore_view(request):
           tipologia_check = prodotto.tipologia.lower().find(tipologia.lower()) > -1
           
         if minPrezzo is not None:
-          prezzo_check = minPrezzo < prodotto.prezzo
+          prezzo_check = minPrezzo <= prodotto.prezzo
         if maxPrezzo is not None:
-          prezzo_check = prodotto.prezzo < maxPrezzo
+          prezzo_check = prodotto.prezzo <= maxPrezzo
           
         if minPrezzo is not None and maxPrezzo is not None:
           prezzo_check = minPrezzo < prodotto.prezzo and prodotto.prezzo < maxPrezzo
           
         if minNumPezzi is not None:
-          prodotti_disponibili_check = minNumPezzi < prodotto.quantita
+          prodotti_disponibili_check = minNumPezzi <= prodotto.quantita
         if maxNumPezzi is not None:
-          prodotti_disponibili_check = prodotto.quantita < maxNumPezzi
+          prodotti_disponibili_check = prodotto.quantita <= maxNumPezzi
           
         if minNumPezzi is not None and maxNumPezzi is not None:
-          prodotti_disponibili_check = minNumPezzi < prodotto.quantita and prodotto.quantita < maxNumPezzi
+          prodotti_disponibili_check = minNumPezzi <= prodotto.quantita and prodotto.quantita <= maxNumPezzi
 
         if (nome_check or nome_check is None) and (tipologia_check or tipologia_check is None) and (prezzo_check or prezzo_check is None) and (prodotti_disponibili_check or prodotti_disponibili_check is None):
           context["prodotti"].append(prodotto)
@@ -294,20 +359,20 @@ def resoconto_vendite_view(request):
           tipologia_check = prodottoVenduto.tipologia.lower().find(tipologia.lower()) > -1
           
         if minPrezzo is not None:
-          prezzo_check = minPrezzo < prodottoVenduto.prezzo
+          prezzo_check = minPrezzo <= prodottoVenduto.prezzo
         if maxPrezzo is not None:
-          prezzo_check = prodottoVenduto.prezzo < maxPrezzo
+          prezzo_check = prodottoVenduto.prezzo <= maxPrezzo
           
         if minPrezzo is not None and maxPrezzo is not None:
           prezzo_check = minPrezzo < prodottoVenduto.prezzo and prodottoVenduto.prezzo < maxPrezzo
           
         if minPezziVenduti is not None:
-          prodotti_venduti_check = minPezziVenduti < prodottoVenduto.quantita
+          prodotti_venduti_check = minPezziVenduti <= prodottoVenduto.quantita
         if maxPezziVenduti is not None:
-          prodotti_venduti_check = prodottoVenduto.quantita < maxPezziVenduti
+          prodotti_venduti_check = prodottoVenduto.quantita <= maxPezziVenduti
           
         if minPezziVenduti is not None and maxPezziVenduti is not None:
-          prodotti_venduti_check = minPezziVenduti < prodottoVenduto.quantita and prodottoVenduto.quantita < maxPezziVenduti
+          prodotti_venduti_check = minPezziVenduti <= prodottoVenduto.quantita and prodottoVenduto.quantita <= maxPezziVenduti
 
         if (nome_check or nome_check is None) and (tipologia_check or tipologia_check is None) and (prezzo_check or prezzo_check is None) and (prodotti_venduti_check or prodotti_venduti_check is None):
           context["resocontoVendite"].append(prodottoVenduto)
@@ -323,4 +388,3 @@ def resoconto_vendite_view(request):
       context["form"] = FiltroResocontoVenditeForm(initial = valori_iniziali_form)
 
   return HttpResponse(template.render(context, request))
-  

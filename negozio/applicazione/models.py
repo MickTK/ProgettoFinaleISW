@@ -43,6 +43,7 @@ class Carrello(models.Model):
       quantita = 1
     # Incrementa la quantità
     if prodotto_carrello.count() > 0:
+      prodotto_carrello = prodotto_carrello.all()[0]
       prodotto_carrello.quantita += quantita
       prodotto_carrello.save()
     # Aggiunge il prodotto al carrello

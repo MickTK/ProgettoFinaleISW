@@ -14,6 +14,7 @@ urlpatterns = [
   
   # Amministratore
   path("Aggiungi_prodotto/", views.aggiungi_prodotto_view, name="aggiungi_prodotto_view"),
+  path("Modifica_prodotto/", views.aggiungi_prodotto_view, name="aggiungi_prodotto_view"),
   path("Home_amministratore/", views.home_amministratore_view, name="home_amministratore_view"),
   path("Resoconto_vendite/", views.resoconto_vendite_view, name="resoconto_vendite_view"),
 ]

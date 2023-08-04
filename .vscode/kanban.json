@@ -9,10 +9,6 @@
                     "id": "clku02exl000d4164t1tt0kql"
                 },
                 {
-                    "text": "Templates (js)",
-                    "id": "clku04sd9000g4164an30c2sl"
-                },
-                {
                     "text": "Test di accettazione",
                     "id": "clkfq9c5t000f4164k09em0hg"
                 }
@@ -85,5 +81,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1690997387540
+    "timestamp": 1691167149177
 }

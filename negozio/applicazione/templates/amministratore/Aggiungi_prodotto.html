@@ -31,6 +31,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
+                    <input type="hidden" name="prodotto_id" value="{{prodotto_id}}">
                     <input class="button" type="submit" value="Aggiungi il prodotto">
                 </form>
 

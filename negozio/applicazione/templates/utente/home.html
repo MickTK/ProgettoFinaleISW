@@ -11,6 +11,7 @@
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="{% static 'js/script.js' %}"> </script>
     </head>
 
     <body>      
@@ -59,12 +60,19 @@
                             <td> {{ prodotto.descrizione }} </td>
                             <td> {{ prodotto.prezzo }} </td>
                             <td> {{ prodotto.quantita }} </td>
-                            <td> <button id={{prodotto.id}} class="button" onclick="aggiungiProdottoCarrello()">Aggiungi prodotto</button> </td>
+
+                            <td><form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="prodotto_id" value="{{prodotto.id}}">
+                                <input class="button" type="submit" value="Aggiungi prodotto">
+                            </form></td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>        
             </div>
         </div>
+
+        
     </body>
 </html>

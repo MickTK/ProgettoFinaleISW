@@ -44,8 +44,13 @@
                             value="{{ prodottoCarrello.quantita }}"
                             min="1" max="{{prodottoCarrello.prodotto.quantita}}"
                         ></td>
-                        <td> <button id={{prodottoCarrello.id}} class="button" 
-                            onclick="rimuoviProdottoCarrello()">Rimuovi prodotto</button> </td>
+                        
+                        <td><form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="prodotto_id" value="{{prodottoCarrello.id}}">
+                            <input class="button" type="submit" value="Rimuovi prodotto">
+                        </form></td>
+
                         <td> {{ prodottoCarrello.totale }}</td>
                     {% endfor %}
                 </table>   
