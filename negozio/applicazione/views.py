@@ -99,8 +99,8 @@ def home_view(request):
       context["form"] = FiltroHomeUtenteForm(initial = valori_iniziali_form)
 
     # Aggiunta prodotto al carrello
-    prodotto_id = int(request.POST["prodotto_id"])
-    if prodotto_id is not None:
+    if "prodotto_id" in request.POST:
+      prodotto_id = int(request.POST["prodotto_id"])
       user = get_user(request)
       if user is not None:
         prodotto = Prodotto.objects.get(id = prodotto_id)
