@@ -192,7 +192,7 @@ def aggiungi_prodotto_view(request):
     form = AggiuntaNuovoProdottoForm(request.POST)
 
     # Modifica un prodotto
-    if form.is_valid() and request.POST["prodotto_id"] != "":
+    if form.is_valid() and request.POST["prodotto_id"] != "-1":
       nome = form.cleaned_data["nome"]
       tipologia = form.cleaned_data["tipologia"]
       descrizione = form.cleaned_data["descrizione"]
