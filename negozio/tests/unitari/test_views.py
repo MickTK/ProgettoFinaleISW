@@ -209,6 +209,7 @@ class CarrelloViewTestCase(TestCase):
           25
         )  
 
+
     def test_carrello_view_valid(self):
 
         # Effettuo il login
@@ -247,6 +248,7 @@ class CarrelloViewTestCase(TestCase):
         # Non essendo autenticato torno al login
         self.assertEqual(response.status_code, REDIRECT_STATUS_CODE) #loginrequired
 
+
 class CheckoutViewTestCase(TestCase):
     def setUp(self):
         user = User.objects.create_user(username = "testuser", password = "testpassword") 
@@ -276,13 +278,11 @@ class CheckoutViewTestCase(TestCase):
         # Dati form
         data = {
             "indirizzo": "Via Roma",
-            "codice_paypal": "103622",
+            "codice_paypal": "1243142409121414"
         }
-        response = self.client.post("/checkout/", data) 
-        #self.assertRedirects(response, "/home/")
-        self.assertEqual(response.status_code)
+        response = self.client.post("/checkout/", data, follow = True)
+        self.assertRedirects(response, "/home/")
 
-        
 
     def test_checkout_view_invalid(self):
 
@@ -290,6 +290,46 @@ class CheckoutViewTestCase(TestCase):
         response = self.client.get("/checkout/") 
         # Non essendo autenticato torno al login
         self.assertEqual(response.status_code, REDIRECT_STATUS_CODE) #loginrequired
+
+        # Effettuo il login
+        data = {
+            "username": "testuser",
+            "password": "testpassword",
+        }
+        self.client.post("/login/", data)
+
+        # Cerca e trova la pagina del checkout
+        response = self.client.get("/checkout/") 
+        self.assertEqual(response.status_code, 200)
+
+        # Dati form
+        data = {
+            "indirizzo": "Via Roma",
+            "codice_paypal": "7632"
+        }
+
+        # I dati del form sono sbagliati
+        response = self.client.post("/checkout/", data)
+        self.assertEqual(response.status_code, 200)
+
+
+class AggiungiProdottoViewTestCase(TestCase):
+    def setUp(self):
+        user = User.objects.create_user(username = "admin", password = "testpassword")
+        user.is_superuser = True
+        user.save() 
+        self.stock = Stock.objects.create(nome = NOME_STOCK)
+
+   # def test_aggiungi_prodotto_view_valid(self):
+
+    
+    def test_aggiungi_prodotto_view_invalid(self):
+
+        # Cerca la pagina del checkout
+        response = self.client.get("/Aggiungi_prodotto/") 
+        # Non essendo autenticato torno al login
+        self.assertEqual(response.status_code, REDIRECT_STATUS_CODE) #loginrequired 
+
 
 
       
