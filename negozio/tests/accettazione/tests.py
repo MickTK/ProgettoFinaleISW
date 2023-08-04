@@ -9,5 +9,5 @@ import os
 #test prova
 
 driver = webdriver.Chrome() 
-driver.get("login/") 
+driver.get("http://127.0.0.1:8000/login/") 
 time.sleep(15) 
