@@ -42,21 +42,25 @@
             <!-- Tabella contenente il resoconto -->
             <div>
                 <table id="resocontoVendite">
-                    <tr>
-                        <th><b>Nome prodotto</b></th>
-                        <th><b>Tipologia</b></th>
-                        <th><b>Prezzo</b></th>
-                        <th><b>N° pezzi venduti</b></th>
-                        <th><b>Totale</b></th>
-                    </tr>
-                    <!-- Qui verranno inserite le righe per i prodotti -->
-                    {% for prodottoVenduto in resocontoVendite %}
-                        <td> {{ prodottoVenduto.nome }} </td>
-                        <td> {{ prodottoVenduto.tipologia }} </td>
-                        <td> {{ prodottoVenduto.prezzo }} </td>
-                        <td> {{ prodottoVenduto.numeroPezziVenduti }} </td>
-                        <td> {{ prodottoVenduto.totale }}</td>
-                    {% endfor %}
+                    <thead>
+                        <tr>
+                            <th><b>Nome prodotto</b></th>
+                            <th><b>Tipologia</b></th>
+                            <th><b>Prezzo</b></th>
+                            <th><b>N° pezzi venduti</b></th>
+                            <th><b>Totale</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Qui verranno inserite le righe per i prodotti -->
+                        {% for prodottoVenduto in resocontoVendite %}
+                            <td> {{ prodottoVenduto.nome }} </td>
+                            <td> {{ prodottoVenduto.tipologia }} </td>
+                            <td> {{ prodottoVenduto.prezzo }} </td>
+                            <td> {{ prodottoVenduto.numeroPezziVenduti }} </td>
+                            <td> {{ prodottoVenduto.ricavo }}</td>
+                        {% endfor %}
+                    <tbody>
                 </table>  
                 
                 <!-- Indecisione su come implementare il totale -->
