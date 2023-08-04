@@ -12,6 +12,7 @@ class LoginViewTestCase(TestCase):
         User.objects.create_user(username = "provacl", password = "passwcli") 
         Stock.objects.create(nome = NOME_STOCK) 
  
+
     def test_login_view_valid(self): 
  
         # Cerca e trova la pagina di login 
@@ -25,6 +26,7 @@ class LoginViewTestCase(TestCase):
         } 
         response = self.client.post("/login/", data) 
         self.assertRedirects(response, "/home/") 
+
 
     def test_login_view_invalid(self): 
         # Cerca e trova la pagina di login 
@@ -60,10 +62,12 @@ class LoginViewTestCase(TestCase):
         response = self.client.post("/login/", data) 
         self.assertEqual(response.status_code, 200)
 
+
 class RegistrazioneViewTestCase(TestCase):
     def setUp(self):
         User.objects.create_user(username = "testuser", password = "testpassword") 
         Stock.objects.create(nome = NOME_STOCK) 
+
 
     def test_registrazione_view_valid(self):
 
@@ -78,6 +82,7 @@ class RegistrazioneViewTestCase(TestCase):
         }
         response = self.client.post("/registrazione/", data) 
         self.assertRedirects(response, "/home/")
+
 
     def test_registrazione_view_invalid(self):
         
@@ -114,6 +119,7 @@ class RegistrazioneViewTestCase(TestCase):
         response = self.client.post("/registrazione/", data) 
         self.assertEqual(response.status_code, 200)
 
+
 class HomeViewTestCase(TestCase):
     def setUp(self):
         User.objects.create_user(username = "testuser", password = "testpassword") 
@@ -131,6 +137,7 @@ class HomeViewTestCase(TestCase):
             "password": "testpassword",
         }
         self.client.post("/login/", data)
+
 
     def test_home_view_valid(self):
 
@@ -240,7 +247,8 @@ class CarrelloViewTestCase(TestCase):
         # Ricarico la pagina e verifico che il prodotto è aumentato
         response = self.client.get("/carrello/")
         self.assertEqual(len(response.context["prodottiCarrello"]), 0)
-    
+
+
     def test_carrello_view_invalid(self):
 
         # Cerca la pagina del carrello
@@ -261,6 +269,7 @@ class CheckoutViewTestCase(TestCase):
           499.99,
           25
         )
+
 
     def test_checkout_view_valid(self):
 
