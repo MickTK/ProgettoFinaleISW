@@ -223,20 +223,20 @@ def home_amministratore_view(request):
           tipologia_check = prodotto.tipologia.lower().find(tipologia.lower()) > -1
           
         if minPrezzo is not None:
-          prezzo_check = minPrezzo < prodotto.prezzo
+          prezzo_check = minPrezzo <= prodotto.prezzo
         if maxPrezzo is not None:
-          prezzo_check = prodotto.prezzo < maxPrezzo
+          prezzo_check = prodotto.prezzo <= maxPrezzo
           
         if minPrezzo is not None and maxPrezzo is not None:
           prezzo_check = minPrezzo < prodotto.prezzo and prodotto.prezzo < maxPrezzo
           
         if minNumPezzi is not None:
-          prodotti_disponibili_check = minNumPezzi < prodotto.quantita
+          prodotti_disponibili_check = minNumPezzi <= prodotto.quantita
         if maxNumPezzi is not None:
-          prodotti_disponibili_check = prodotto.quantita < maxNumPezzi
+          prodotti_disponibili_check = prodotto.quantita <= maxNumPezzi
           
         if minNumPezzi is not None and maxNumPezzi is not None:
-          prodotti_disponibili_check = minNumPezzi < prodotto.quantita and prodotto.quantita < maxNumPezzi
+          prodotti_disponibili_check = minNumPezzi <= prodotto.quantita and prodotto.quantita <= maxNumPezzi
 
         if (nome_check or nome_check is None) and (tipologia_check or tipologia_check is None) and (prezzo_check or prezzo_check is None) and (prodotti_disponibili_check or prodotti_disponibili_check is None):
           context["prodotti"].append(prodotto)
@@ -294,20 +294,20 @@ def resoconto_vendite_view(request):
           tipologia_check = prodottoVenduto.tipologia.lower().find(tipologia.lower()) > -1
           
         if minPrezzo is not None:
-          prezzo_check = minPrezzo < prodottoVenduto.prezzo
+          prezzo_check = minPrezzo <= prodottoVenduto.prezzo
         if maxPrezzo is not None:
-          prezzo_check = prodottoVenduto.prezzo < maxPrezzo
+          prezzo_check = prodottoVenduto.prezzo <= maxPrezzo
           
         if minPrezzo is not None and maxPrezzo is not None:
           prezzo_check = minPrezzo < prodottoVenduto.prezzo and prodottoVenduto.prezzo < maxPrezzo
           
         if minPezziVenduti is not None:
-          prodotti_venduti_check = minPezziVenduti < prodottoVenduto.quantita
+          prodotti_venduti_check = minPezziVenduti <= prodottoVenduto.quantita
         if maxPezziVenduti is not None:
-          prodotti_venduti_check = prodottoVenduto.quantita < maxPezziVenduti
+          prodotti_venduti_check = prodottoVenduto.quantita <= maxPezziVenduti
           
         if minPezziVenduti is not None and maxPezziVenduti is not None:
-          prodotti_venduti_check = minPezziVenduti < prodottoVenduto.quantita and prodottoVenduto.quantita < maxPezziVenduti
+          prodotti_venduti_check = minPezziVenduti <= prodottoVenduto.quantita and prodottoVenduto.quantita <= maxPezziVenduti
 
         if (nome_check or nome_check is None) and (tipologia_check or tipologia_check is None) and (prezzo_check or prezzo_check is None) and (prodotti_venduti_check or prodotti_venduti_check is None):
           context["resocontoVendite"].append(prodottoVenduto)
