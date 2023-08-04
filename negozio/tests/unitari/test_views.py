@@ -280,6 +280,8 @@ class CheckoutViewTestCase(TestCase):
         }
         self.client.post("/login/", data)
 
+        self.carrello.aggiungi_prodotto(self.prodotto, 1)
+
         # Cerca e trova la pagina del checkout
         response = self.client.get("/checkout/") 
         self.assertEqual(response.status_code, 200)
@@ -309,7 +311,7 @@ class CheckoutViewTestCase(TestCase):
 
         # Cerca e trova la pagina del checkout
         response = self.client.get("/checkout/") 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, REDIRECT_STATUS_CODE) 
 
         # Dati form
         data = {
@@ -319,7 +321,7 @@ class CheckoutViewTestCase(TestCase):
 
         # I dati del form sono sbagliati
         response = self.client.post("/checkout/", data)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, REDIRECT_STATUS_CODE) 
 
 
 class AggiungiProdottoViewTestCase(TestCase):
@@ -350,12 +352,5 @@ class AggiungiProdottoViewTestCase(TestCase):
         response = self.client.get("/Aggiungi_prodotto/") 
         # Non essendo autenticato torno al login
         self.assertEqual(response.status_code, REDIRECT_STATUS_CODE) #loginrequired 
-
-
-
-      
-      
-        
-    
 
                    
