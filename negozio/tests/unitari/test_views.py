@@ -144,13 +144,94 @@ class HomeViewTestCase(TestCase):
             "maxPrezzo": "", 
         }
         
-        
         response = self.client.post("/home/", data)
         contatore = len(response.context["prodotti"])        
         self.assertEqual(response.status_code, 200)  
         self.assertEqual(contatore, num_prodotti)
 
+        # Filtro per tipologia
+
+        data = { 
+            "nome": "", 
+            "tipologia": "Telefono", 
+            "minPrezzo": "", 
+            "maxPrezzo": "", 
+        }
+        
+        response = self.client.post("/home/", data)
+        contatore = len(response.context["prodotti"])        
+        self.assertEqual(response.status_code, 200)  
+        self.assertEqual(contatore, 0)
+
+        # Aggiungo due prodotti
+
+        self.stock.aggiungi_nuovo_prodotto(
+          "Iphone 10",
+          "Telefono",
+          "Un telefono bello",
+          599.99,
+          5
+        )
+
+        self.stock.aggiungi_nuovo_prodotto(
+          "Iphone 14",
+          "Telefono",
+          "Un telefono molto più bello",
+          899.99,
+          4
+        )
+
+        data = { 
+            "nome": "IphOne", 
+            "tipologia": "TElefono", 
+            "minPrezzo": "", 
+            "maxPrezzo": "", 
+        }
+
+        response = self.client.post("/home/", data)
+        contatore = len(response.context["prodotti"])        
+        self.assertEqual(response.status_code, 200)  
+        self.assertEqual(contatore, 2)
+
+
+class CarrelloViewTestCase(TestCase):
+    def setUp(self):
+        user = User.objects.create_user(username = "testuser", password = "testpassword") 
+        self.carrello = Carrello.objects.create(user = user)
+        self.stock = Stock.objects.create(nome = "Negozio")
+        self.stock.aggiungi_nuovo_prodotto(
+          "Motorino",
+          "Veicolo",
+          "Motorino elettrico ecologico.",
+          499.99,
+          25
+        )
+
+    def test_carrello_view_invalid(self):
+
+        # Cerca la pagina del carrello
+        response = self.client.get("/carrello/") 
+        # Non essendo autenticato torno al login
+        self.assertRedirects(response, "/login/", status_code=302, target_status_code=301)
+    
+    
+    def test_carrello_view_valid(self):
+
+        # Effettuo il login
+        data = {
+            "username": "testuser",
+            "password": "testpassword",
+        }
+        self.client.post("/login/", data)
+
+        # Cerca e trova la pagina del carrello
+        response = self.client.get("/carrello/") 
+        self.assertEqual(response.status_code, 200)
+
+        # Visualizzo il carrello
+
+      
+        
     
 
-        
-        
+                   
