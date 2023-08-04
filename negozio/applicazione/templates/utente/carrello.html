@@ -28,15 +28,20 @@
             <!-- Tabella contenente i prodotti presenti nel negozio -->
             <div>
                 <table id="prodottiCarrello">
-                    <tr>
-                        <th><b>Nome prodotto</b></th>
-                        <th><b>Tipologia</b></th>
-                        <th><b>Quantità</b></th>
-                        <th><b>Azione</b></th>
-                        <th><b>Prezzo</b></th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th><b>Nome prodotto</b></th>
+                            <th><b>Tipologia</b></th>
+                            <th><b>Quantità</b></th>
+                            <th><b>Azione</b></th>
+                            <th><b>Prezzo</b></th>
+                        </tr>
+                    </thead>
 
-                    <!-- Qui verranno inserite le righe per i prodotti -->
+                    <tbody>
+
+                        <!-- Qui verranno inserite le righe per i prodotti -->
+                    <tr>    
                     {% for prodottoCarrello in prodottiCarrello %}
                         <td> {{ prodottoCarrello.prodotto.nome }} </td>
                         <td> {{ prodottoCarrello.prodotto.tipologia }} </td>
@@ -52,8 +57,12 @@
                         </form></td>
 
                         <td> {{ prodottoCarrello.totale }}</td>
+                        </tr>
                     {% endfor %}
+                    </tbody>
                 </table>   
+
+                <br>
 
                 <!-- Prezzo totale di tutti i prodotti del carrello -->
                 <table id="totale">

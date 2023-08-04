@@ -14,13 +14,17 @@
     </head>
 
     <body>
-        <div>
-            <a href="../login"><button class="button" type="button" value="logout">Logout</button></a>
-        </div>
-
         <!-- div che contiene il form per la registrazione -->
         <div class="registrazione">
             <h1>Registration page</h1> 
+
+            <div>
+                <a href="../login"><button class="button" type="button" value="login">Login</button></a>
+            </div>
+
+            <br><hr><br>
+
+            <h2>Inserisci username e password</h2>
             <form method="post">
                 <p style="color:red">{{ errore }}</p>
                 {% csrf_token %}
