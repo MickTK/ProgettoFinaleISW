@@ -125,7 +125,8 @@ def registrazione_view(request):
       password = form.cleaned_data["password"]
       user = User.objects.filter(username = username)
       if user.count() == 0:
-        User.objects.create_user(username = username, password = password)
+        user = User.objects.create_user(username = username, password = password)
+        Carrello.objects.create(user = user)
         user = authenticate(request,
           username = form.cleaned_data["username"],
           password = form.cleaned_data["password"]
