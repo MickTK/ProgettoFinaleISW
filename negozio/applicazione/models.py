@@ -29,7 +29,7 @@ class Stock(models.Model):
   # Restituisce il totale sui prodotti venduti
   def totale_prodotti_venduti(self):
     totale = 0
-    for prodotto in self.prodotti_venduti:
+    for prodotto in self.prodotti_venduti.all():
       totale += prodotto.prezzo * prodotto.quantita
     return totale
 
