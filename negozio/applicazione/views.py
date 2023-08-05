@@ -43,6 +43,8 @@ def login_view(request):
         if user.is_superuser:
           return redirect("../Home_amministratore/")
         else:
+          if Carrello.objects.filter(user = user).count() == 0:
+            user.carrello = Carrello.objects.create(user = user)
           return redirect("../home/")
 
   return HttpResponse(template.render(context, request))
@@ -53,6 +55,8 @@ def login_view(request):
 
 @login_required
 def home_view(request):
+  if get_user(request).is_superuser: return redirect("../Home_amministratore")
+
   # Inizializzazione
   template = loader.get_template("utente/home.html")
   stock = Stock.objects.get(nome = NOME_STOCK)
@@ -113,6 +117,8 @@ def home_view(request):
   return HttpResponse(template.render(context, request))
 
 def registrazione_view(request):
+  if get_user(request).is_superuser: return redirect("../Home_amministratore")
+
   # Inizializzazione
   template = loader.get_template("utente/registrazione.html")
   context = {"form": RegistrazioneForm()}
@@ -140,6 +146,8 @@ def registrazione_view(request):
 
 @login_required
 def carrello_view(request):
+  if get_user(request).is_superuser: return redirect("../Home_amministratore")
+  
   template = loader.get_template("utente/carrello.html")
   user = get_user(request)
   context = {
@@ -152,12 +160,14 @@ def carrello_view(request):
     if prodotto_id is not None:
       user = get_user(request)
       if user is not None:
-        ProdottoCarrello.objects.get(id = prodotto_id).delete()
+        ProdottoCarrello.objects.get(id = prodotto_id).modifica_quantita(-1)
 
   return HttpResponse(template.render(context, request))
 
 @login_required
 def checkout_view(request):
+  if get_user(request).is_superuser: return redirect("../Home_amministratore")
+  
   template = loader.get_template("utente/checkout.html")
   context = {
     "form": CheckoutForm()
@@ -182,6 +192,8 @@ def checkout_view(request):
 
 @login_required
 def aggiungi_prodotto_view(request):
+  if not get_user(request).is_superuser: return redirect("../home")
+  
   template = loader.get_template("amministratore/Aggiungi_prodotto.html")
   context = {
     "prodotto_id": "-1",
@@ -248,23 +260,16 @@ def aggiungi_prodotto_view(request):
 
   return HttpResponse(template.render(context, request))
 
-
-
-
-
-
-
-
-######################################################
-#"prodottiNegozio"
+@login_required
 def home_amministratore_view(request):
+  if not get_user(request).is_superuser: return redirect("../home")
+  
   template = loader.get_template("amministratore/Home_amministratore.html")
   stock = Stock.objects.get(nome=NOME_STOCK)  
   context = {
     "prodotti" : Prodotto.objects.filter(stock=stock).all(),
     "form" : FiltroHomeAmministratoreForm()
   }
-
 
   if request.method == "POST":
     form = FiltroHomeAmministratoreForm(request.POST)  # Form per gestire i filtri
@@ -319,14 +324,9 @@ def home_amministratore_view(request):
 
   return HttpResponse(template.render(context, request))
 
-  
-  
-  
-  
-  
-
-#"resocontoVendite"
+@login_required
 def resoconto_vendite_view(request):
+  if not get_user(request).is_superuser: return redirect("../home")
   
   template = loader.get_template("amministratore/Resoconto_vendite.html")
   stock = Stock.objects.get(nome=NOME_STOCK)  

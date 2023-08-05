@@ -45,10 +45,7 @@
                     {% for prodottoCarrello in prodottiCarrello %}
                         <td> {{ prodottoCarrello.prodotto.nome }} </td>
                         <td> {{ prodottoCarrello.prodotto.tipologia }} </td>
-                        <td><input type="number" step="1" 
-                            value="{{ prodottoCarrello.quantita }}"
-                            min="1" max="{{prodottoCarrello.prodotto.quantita}}"
-                        ></td>
+                        <td> {{ prodottoCarrello.quantita }} </td>
                         
                         <td><form method="post">
                             {% csrf_token %}
