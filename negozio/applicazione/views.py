@@ -117,8 +117,7 @@ def home_view(request):
   return HttpResponse(template.render(context, request))
 
 def registrazione_view(request):
-  if get_user(request).is_superuser: return redirect("../Home_amministratore")
-
+  
   # Inizializzazione
   template = loader.get_template("utente/registrazione.html")
   context = {"form": RegistrazioneForm()}

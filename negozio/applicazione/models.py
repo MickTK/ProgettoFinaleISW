@@ -31,7 +31,7 @@ class Stock(models.Model):
     totale = 0
     for prodotto in self.prodotti_venduti.all():
       totale += prodotto.prezzo * prodotto.quantita
-    return format(totale,".2f")
+    return float(format(totale,".2f"))
 
 class Carrello(models.Model):
   user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='carrello')
@@ -72,7 +72,7 @@ class Carrello(models.Model):
     totale = 0
     for prodotto in prodotti:
       totale += prodotto.prodotto.prezzo * prodotto.quantita
-    return format(totale,".2f")
+    return float(format(totale,".2f"))
 
 #================================================
 # Prodotto
@@ -115,7 +115,7 @@ class ProdottoCarrello(models.Model):
     self.delete() if self.quantita < 1 else self.save()
 
   def totale(self):
-    return format(self.quantita * self.prodotto.prezzo,".2f")
+    return float(format(self.quantita * self.prodotto.prezzo,".2f"))
 
   # Rimuove il ProdottoCarrello corrente e ne crea una copia come ProdottoVenduto
   def acquista(self):
@@ -144,4 +144,4 @@ class ProdottoVenduto(models.Model):
 
   # Calcola il ricavo dato dalla vendita dei prodotti dello stesso tipo
   def ricavo(self):
-    return format(self.quantita * self.prezzo,".2f")
+    return float(format(self.quantita * self.prezzo,".2f"))
