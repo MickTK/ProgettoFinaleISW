@@ -2,8 +2,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 class LoginForm(forms.Form):
-  username = forms.CharField(label="Username", min_length=5, max_length=100)
-  password = forms.CharField(label="Password", min_length=5, widget=forms.PasswordInput)
+  username = forms.CharField(label="Username", min_length=5, max_length=100, widget=forms.TextInput(attrs={'id': 'username'}))
+  password = forms.CharField(label="Password", min_length=5, widget=forms.PasswordInput(attrs={'id': 'password'}))
 
 class RegistrazioneForm(forms.Form):
   username = forms.CharField(label="Username", min_length=5, max_length=100)
