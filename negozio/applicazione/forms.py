@@ -33,10 +33,10 @@ class AggiuntaNuovoProdottoForm(forms.Form):
 
 # filtro per cercare all'interno della home utente
 class FiltroHomeUtenteForm(forms.Form):
-  nome = forms.CharField(label="Nome", max_length=100, required=False)
-  tipologia = forms.CharField(label="Tipologia", max_length=100, required=False)
-  minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}), required=False)
-  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
+  nome = forms.CharField(label="Nome", max_length=100, required=False, widget=forms.TextInput(attrs={'id': 'nome'}))
+  tipologia = forms.CharField(label="Tipologia", max_length=100, required=False, widget=forms.TextInput(attrs={'id': 'tipologia'}))
+  minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01, 'id': 'minPrezzo'}), required=False)
+  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000, 'id': 'maxPrezzo'}), required=False)
   
   def clean(self):
         cleaned_data = super().clean()
@@ -51,12 +51,12 @@ class FiltroHomeUtenteForm(forms.Form):
   
 # filtro per cercare all'interno della home amministratore
 class FiltroHomeAmministratoreForm(forms.Form):
-  nome = forms.CharField(label="Nome", min_length=3, max_length=100, required=False)
-  tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, required=False)
-  minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}), required=False)
-  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
-  minNumPezzi = forms.IntegerField(label="minNumPezzi", min_value=1, widget=forms.NumberInput(attrs={'min': 1}), required=False)
-  maxNumPezzi = forms.IntegerField(label="maxNumPezzi", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
+  nome = forms.CharField(label="Nome", min_length=3, max_length=100, required=False, widget=forms.TextInput(attrs={'id': 'nome'}))
+  tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, required=False, widget=forms.TextInput(attrs={'id': 'tipologia'}))
+  minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01, 'id': 'minPrezzo'}), required=False)
+  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000, 'id': 'maxPrezzo'}), required=False)
+  minNumPezzi = forms.IntegerField(label="minNumPezzi", min_value=1, widget=forms.NumberInput(attrs={'min': 1, 'id': 'minNumPezzi'}), required=False)
+  maxNumPezzi = forms.IntegerField(label="maxNumPezzi", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000, 'id': 'maxNumPezzi'}), required=False)
   
   def clean(self):
         cleaned_data = super().clean()
@@ -78,12 +78,12 @@ class FiltroHomeAmministratoreForm(forms.Form):
       
      # filtro per cercare all'interno del resoconto vendite
 class FiltroResocontoVenditeForm(forms.Form):
-  nome = forms.CharField(label="Nome", min_length=3, max_length=100, required=False)
-  tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, required=False)
-  minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}), required=False)
-  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
-  minPezziVenduti = forms.IntegerField(label="minPezziVenduti", min_value=0, widget=forms.NumberInput(attrs={'min': 0}), required=False)
-  maxPezziVenduti = forms.IntegerField(label="maxPezziVenduti", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000}), required=False)
+  nome = forms.CharField(label="Nome", min_length=3, max_length=100, required=False, widget=forms.TextInput(attrs={'id': 'nome'}))
+  tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, required=False, widget=forms.TextInput(attrs={'id': 'tipologia'}))
+  minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01, 'id': 'minPrezzo'}), required=False)
+  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000, 'id': 'maxPrezzo'}), required=False)
+  minPezziVenduti = forms.IntegerField(label="minPezziVenduti", min_value=0, widget=forms.NumberInput(attrs={'min': 0, 'id': 'minPezziVenduti'}), required=False)
+  maxPezziVenduti = forms.IntegerField(label="maxPezziVenduti", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000, 'id': 'maxPezziVenduti'}), required=False)
   
   def clean(self):
     cleaned_data = super().clean()
