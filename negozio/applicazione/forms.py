@@ -6,26 +6,26 @@ class LoginForm(forms.Form):
   password = forms.CharField(label="Password", min_length=5, widget=forms.PasswordInput(attrs={'id': 'password'}))
 
 class RegistrazioneForm(forms.Form):
-  username = forms.CharField(label="Username", min_length=5, max_length=100)
-  password = forms.CharField(label="Password", min_length=5, widget=forms.PasswordInput)
+  username = forms.CharField(label="Username", min_length=5, max_length=100, widget=forms.TextInput(attrs={'id': 'username'}))
+  password = forms.CharField(label="Password", min_length=5, widget=forms.PasswordInput(attrs={'id': 'password'}))
 
 class CheckoutForm(forms.Form):
-  indirizzo = forms.CharField(label="Indirizzo", min_length=5, max_length=100)
-  codice_paypal = forms.CharField(label="Codice paypal", min_length=16, max_length=16)
+  indirizzo = forms.CharField(label="Indirizzo", min_length=5, max_length=100, widget=forms.TextInput(attrs={'id': 'indirizzo'}))
+  codice_paypal = forms.CharField(label="Codice paypal", min_length=16, max_length=16, widget=forms.TextInput(attrs={'id': 'codice_paypal'}))
 
 class ModificaProdottoForm(forms.Form):
-  nome = forms.CharField(label="Nome", min_length=3, max_length=100)
-  tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100)
-  descrizione = forms.CharField(label="Descrizione", min_length=1, max_length=500)
-  prezzo = forms.FloatField(label="Prezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}))
-  quantita = forms.IntegerField(label="Quantita", min_value=0, widget=forms.NumberInput(attrs={'min': 0}))
+  nome = forms.CharField(label="Nome", min_length=3, max_length=100, widget=forms.TextInput(attrs={'id': 'nome'}))
+  tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, widget=forms.TextInput(attrs={'id': 'tipologia'}))
+  descrizione = forms.CharField(label="Descrizione", min_length=1, max_length=500, widget=forms.TextInput(attrs={'id': 'descrizione'}))
+  prezzo = forms.FloatField(label="Prezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01, 'id': 'prezzo'}))
+  quantita = forms.IntegerField(label="Quantita", min_value=0, widget=forms.NumberInput(attrs={'min': 0, 'id': 'quantita'}))
 
 class AggiuntaNuovoProdottoForm(forms.Form):
-  nome = forms.CharField(label="Nome", min_length=3, max_length=100)
-  tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100)
-  descrizione = forms.CharField(label="Descrizione", min_length=1, max_length=500)
-  prezzo = forms.FloatField(label="Prezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01}))
-  quantita = forms.IntegerField(label="Quantita", min_value=0, widget=forms.NumberInput(attrs={'min': 0}))
+  nome = forms.CharField(label="Nome", min_length=3, max_length=100, widget=forms.TextInput(attrs={'id': 'nome'}))
+  tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, widget=forms.TextInput(attrs={'id': 'tipologia'}))
+  descrizione = forms.CharField(label="Descrizione", min_length=1, max_length=500, widget=forms.TextInput(attrs={'id': 'descrizione'}))
+  prezzo = forms.FloatField(label="Prezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01, 'id': 'prezzo'}))
+  quantita = forms.IntegerField(label="Quantita", min_value=0, widget=forms.NumberInput(attrs={'min': 0, 'id': 'quantita'}))
 
 
 
