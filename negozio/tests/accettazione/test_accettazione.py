@@ -7,6 +7,7 @@ from django.test import TestCase
 from selenium import webdriver
 
 from test.test_login import TestLogin
+from test.test_registrazione import TestRegistrazione
 
 if __name__ == '__main__':
     # Inizializza il browser
@@ -17,7 +18,9 @@ if __name__ == '__main__':
 
     # Esegue i test
     suite = unittest.TestSuite()
+    suite.addTest(unittest.makeSuite(TestRegistrazione))
     suite.addTest(unittest.makeSuite(TestLogin))
+    
 
     result = test_runner.run(suite)
 
