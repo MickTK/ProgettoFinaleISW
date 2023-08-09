@@ -38,6 +38,8 @@ class TestAggiungiProdottoAlCarrello(unittest.TestCase):
         assert presente_nel_carrello
         
         
+        
+        
 
     # chiusura del driver
     def tearDown(self):
