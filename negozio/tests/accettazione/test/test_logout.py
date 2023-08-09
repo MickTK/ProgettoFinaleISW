@@ -21,7 +21,7 @@ class TestLogout(unittest.TestCase):
     def test_successful_logout(self):
         self.login_page.login("cliente", "cliente")
         self.home_utente_page.logout()
-        # Aggiungi gli assert per verificare il successo del logout
+        # assert per verificare il successo del logout nella home utente
         expected_url = "http://127.0.0.1:8000/login/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url)  
@@ -41,7 +41,7 @@ class TestLogout(unittest.TestCase):
     def test_successful_logout(self):
         self.login_page.login("admin", "admin")
         self.home_amministratore_page.logout()
-        # Aggiungi gli assert per verificare il successo del logout
+        # assert per verificare il successo del logout nella home amministratore
         expected_url = "http://127.0.0.1:8000/login/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url)   

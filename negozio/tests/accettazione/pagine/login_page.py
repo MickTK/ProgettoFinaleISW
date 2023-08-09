@@ -24,6 +24,11 @@ class Login:
         login = self.driver.find_element(By.ID, "login")
         login.click()
         
+    # preme il link per andare nella pagina della registrazione    
+    def click_link_registrazione(self):
+        link_registrazione = self.driver.find_element(By.ID, "registrazione")
+        link_registrazione.click()
+        
     # corpo della funzione principale
     def login(self, username, password):
         self.open()

@@ -15,7 +15,7 @@ class TestLogin(unittest.TestCase):
     # test del login con dati corretti
     def test_successful_login(self):
         self.login_page.login("cliente", "cliente")
-        # Aggiungi gli assert per verificare il successo del login
+        # assert per verificare il successo del login
         expected_url = "http://127.0.0.1:8000/home/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url)  
@@ -23,7 +23,7 @@ class TestLogin(unittest.TestCase):
     # test del login con dati errati
     def test_failed_login(self):
         self.login_page.login("clicli", "cluclu")
-        # Aggiungi gli assert per verificare il fallimento del login
+        # assert per verificare il fallimento del login
         expected_url = "http://127.0.0.1:8000/login/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url)  

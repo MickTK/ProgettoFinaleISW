@@ -21,7 +21,7 @@
             <div>
                 <h1>Home</h1> 
 
-                <a href="../carrello"><button class="button" type="button" value="carrello">Carrello</button></a>
+                <a href="../carrello"><button class="button" id="accedi_carrello" type="button" value="carrello">Carrello</button></a>
                 <a href="../login"><button class="button" id="logout" type="button" value="logout">Logout</button></a>
             </div>
 
@@ -64,7 +64,7 @@
                             <td><form method="post">
                                 {% csrf_token %}
                                 <input type="hidden" name="prodotto_id" value="{{prodotto.id}}">
-                                <input class="button" type="submit" value="Aggiungi prodotto">
+                                <input class="button" id="aggiungi_prodotto_{{ prodotto.id }}" type="submit" value="Aggiungi prodotto">
                             </form></td>
                         </tr>
                         {% endfor %}
