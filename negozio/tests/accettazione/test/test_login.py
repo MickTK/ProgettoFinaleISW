@@ -4,13 +4,13 @@ import unittest
 # framework
 from selenium import webdriver
 
-from pagine.login_page import login
+from pagine.login_page import Login
 
 class TestLogin(unittest.TestCase):
     # inizializza il driver e l'istanza della classe login
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.login_page = login(self.driver)
+        self.login_page = Login(self.driver)
 
     # test del login con dati corretti
     def test_successful_login(self):

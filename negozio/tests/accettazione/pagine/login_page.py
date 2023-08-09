@@ -1,7 +1,7 @@
 # Utile per individuare elementi html in una pagina
 from selenium.webdriver.common.by import By
 
-class login:
+class Login:
     # inizializza la classe
     def __init__(self, driver):
         self.driver = driver
@@ -19,7 +19,7 @@ class login:
         username_input.send_keys(username)
         password_input.send_keys(password)
 
-    # preme il tasto per fare il login
+    # preme il tasto per fare il Login
     def click_login(self):
         login = self.driver.find_element(By.ID, "login")
         login.click()

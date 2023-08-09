@@ -1,7 +1,7 @@
 # Utile per individuare elementi html in una pagina
 from selenium.webdriver.common.by import By
 
-class registrazione:
+class Registrazione:
     # inizializza la classe
     def __init__(self, driver):
         self.driver = driver

@@ -4,17 +4,17 @@ import unittest
 # framework
 from selenium import webdriver
 
-from pagine.registrazione_page import registrazione
+from pagine.registrazione_page import Registrazione
 
 class TestRegistrazione(unittest.TestCase):
     # inizializza il driver e l'istanza della classe registrazione
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.registrazione_page = registrazione(self.driver)
+        self.registrazione_page = Registrazione(self.driver)
 
     # test del registrazione con dati corretti
     def test_successful_registrazione(self):
-        self.registrazione_page.registrazione("Cibty", "lolop")
+        self.registrazione_page.registrazione("Cberererererererererere", "lolop")
         # Aggiungi gli assert per verificare il successo del registrazione
         expected_url = "http://127.0.0.1:8000/home/"
         actual_url = self.driver.current_url
