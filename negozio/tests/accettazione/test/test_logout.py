@@ -16,7 +16,6 @@ class TestLogout(unittest.TestCase):
         self.driver = webdriver.Chrome()
         self.login_page = Login(self.driver)
         self.home_utente_page = Home_utente(self.driver)
-        self.home_amministratore_page = Home_amministratore(self.driver)
 
     # test del logout con url corretto
     def test_successful_logout(self):
@@ -30,12 +29,13 @@ class TestLogout(unittest.TestCase):
     # chiusura del driver
     def tearDown(self):
         self.driver.quit()
-'''
+
 
 # inizializza il driver e l'istanza della classe home amministratore
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.login_page = login(self.driver)
+        self.login_page = Login(self.driver)
+        self.home_amministratore_page = Home_amministratore(self.driver)
 
     # test del logout con url corretto
     def test_successful_logout(self):
@@ -51,7 +51,7 @@ class TestLogout(unittest.TestCase):
         self.driver.quit()
         
 
-'''
+
 
 # serve per eseguire il test quando il modulo è eseguito direttamente come script
 if __name__ == '__main__':

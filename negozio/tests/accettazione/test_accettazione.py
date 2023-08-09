@@ -20,8 +20,8 @@ if __name__ == '__main__':
     # Esegue i test
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(TestLogout))
-    #suite.addTest(unittest.makeSuite(TestRegistrazione))
-    #suite.addTest(unittest.makeSuite(TestLogin))
+    suite.addTest(unittest.makeSuite(TestRegistrazione))
+    suite.addTest(unittest.makeSuite(TestLogin))
     
 
     result = test_runner.run(suite)
