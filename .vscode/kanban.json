@@ -7,10 +7,6 @@
                 {
                     "text": "Test unitari (viste)",
                     "id": "clku02exl000d4164t1tt0kql"
-                },
-                {
-                    "text": "Test di accettazione",
-                    "id": "clkfq9c5t000f4164k09em0hg"
                 }
             ],
             "id": "clkfq8u1i000c4164wtmq9bgh",
@@ -20,12 +16,12 @@
             "title": "In corso",
             "tasks": [
                 {
-                    "text": "Viste",
-                    "id": "clktzz7fd000c4164mhn9e757"
-                },
-                {
                     "text": "Templates (django)",
                     "id": "clkfqb3xe000j4164zs3t8etc"
+                },
+                {
+                    "text": "Test di accettazione",
+                    "id": "clkfq9c5t000f4164k09em0hg"
                 }
             ],
             "id": "clkfq8u1i000d4164erfp1odt",
@@ -41,6 +37,10 @@
                 {
                     "text": "Diagrammi di sequenza",
                     "id": "clkjpdn8v000a4164b857uhf0"
+                },
+                {
+                    "text": "Viste",
+                    "id": "clktzz7fd000c4164mhn9e757"
                 },
                 {
                     "text": "Diagramma entità-relazioni",
@@ -81,5 +81,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1691167149177
+    "timestamp": 1691605100386
 }
