@@ -1,2 +1,2 @@
-cd negozio/tests/accettazione
-python test_accettazione.py || python3 test_accettazione.py
+cd negozio
+python manage.py test tests.accettazione.test_accettazione || python3 manage.py test tests.accettazione.test_accettazione
