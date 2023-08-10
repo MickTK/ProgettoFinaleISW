@@ -43,7 +43,7 @@
                         <!-- Qui verranno inserite le righe per i prodotti -->
                         
                     {% for prodottoCarrello in prodottiCarrello %}
-                    <tr id="prodotti_carrello">
+                    <tr id="{{ prodottoCarrello.prodotto.id }}">
                         <td> {{ prodottoCarrello.prodotto.nome }} </td>
                         <td> {{ prodottoCarrello.prodotto.tipologia }} </td>
                         <td> {{ prodottoCarrello.quantita }} </td>
