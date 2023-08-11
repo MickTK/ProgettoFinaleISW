@@ -19,8 +19,8 @@
             <!-- Div contenente la home e il logout -->
             <div>
                 <h1>Carrello</h1> 
-                <a href="../home"><button class="button" type="button" value="home">Home</button></a>
-                <a href="../login"><button class="button" type="button" value="logout">Logout</button></a>
+                <a href="../home"><button id="homeCarr" class="button" type="button" value="home">Home</button></a>
+                <a href="../login"><button id="logoutCarr" class="button" type="button" value="logout">Logout</button></a>
             </div>
 
             <br><hr><br>
@@ -51,7 +51,7 @@
                         <td><form method="post">
                             {% csrf_token %}
                             <input id="id_prodotto_carrello" type="hidden" name="prodotto_id" value="{{prodottoCarrello.id}}">
-                            <input class="button" type="submit" value="Rimuovi prodotto">
+                            <input class="button" id="rimuovi_prodotto_{{ prodottoCarrello.id }}" type="submit" value="Rimuovi prodotto">
                         </form></td>
 
                         <td> {{ prodottoCarrello.totale }}</td>
@@ -75,7 +75,7 @@
 
             <!-- Div per il checkout-->
             <div>
-                <a href="../checkout"><button class="button" type="button" value="checkout">Checkout</button></a>
+                <a href="../checkout"><button id="checkout" class="button" type="button" value="checkout">Checkout</button></a>
             </div>
 
         </div>

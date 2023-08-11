@@ -20,4 +20,32 @@ class Carrello:
         # restituisce true se la lunghezza della lista è maggiore di zero
         return len(prodottiCarrello) > 0
 
+# verifica se un determinato prodotto è stato rimosso dal carrello    
+    def verifica_prodotto_nel_carrello_rimosso(self, prodotto_id_cercato):
+        prodottiCarrello = self.driver.find_elements(By.ID, prodotto_id_cercato)
+        
+        # restituisce la lunghezza della lista
+        return len(prodottiCarrello) 
+    
+# torna alla home
+    def accedi_alla_home(self):
+        accedi_alla_home_button = self.driver.find_element(By.ID, "homeCarr")
+        accedi_alla_home_button.click()    
+        
+# logout dal carrello
+    def logout_dal_carrello(self):
+        logout_dal_carrello_button = self.driver.find_element(By.ID, "logoutCarr")
+        logout_dal_carrello_button.click()      
+        
+# accedi al checkout
+    def accedi_al_checkout(self):
+        accedi_al_checkout_button = self.driver.find_element(By.ID, "checkout")
+        accedi_al_checkout_button.click()
+        
+# rimuove un singolo prodotto dal carrello
+    def rimuovi_prodotto(self, prodottoCarrello_id):
+        rimuovi_prodotto_button = self.driver.find_element(By.ID, f"rimuovi_prodotto_{prodottoCarrello_id}")
+        rimuovi_prodotto_button.click()
+                         
+
             
