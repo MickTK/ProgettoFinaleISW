@@ -3,22 +3,13 @@
     "cols": [
         {
             "title": "Da fare",
-            "tasks": [
-                {
-                    "text": "Test unitari (viste)",
-                    "id": "clku02exl000d4164t1tt0kql"
-                }
-            ],
+            "tasks": [],
             "id": "clkfq8u1i000c4164wtmq9bgh",
             "color": "#fcb900"
         },
         {
             "title": "In corso",
             "tasks": [
-                {
-                    "text": "Templates (django)",
-                    "id": "clkfqb3xe000j4164zs3t8etc"
-                },
                 {
                     "text": "Test di accettazione",
                     "id": "clkfq9c5t000f4164k09em0hg"
@@ -73,6 +64,14 @@
                 {
                     "text": "Templates (css)",
                     "id": "clku04fln000f4164778o32hh"
+                },
+                {
+                    "text": "Templates (django)",
+                    "id": "clkfqb3xe000j4164zs3t8etc"
+                },
+                {
+                    "text": "Test unitari (viste)",
+                    "id": "clku02exl000d4164t1tt0kql"
                 }
             ],
             "id": "clkfq8u1i000e4164rmuhx3xh",
@@ -81,5 +80,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1691605100386
+    "timestamp": 1691744116639
 }
