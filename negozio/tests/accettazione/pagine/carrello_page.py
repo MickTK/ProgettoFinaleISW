@@ -43,8 +43,8 @@ class Carrello:
         accedi_al_checkout_button.click()
         
 # rimuove un singolo prodotto dal carrello
-    def rimuovi_prodotto(self, prodottoCarrello_id):
-        rimuovi_prodotto_button = self.driver.find_element(By.ID, f"rimuovi_prodotto_{prodottoCarrello_id}")
+    def rimuovi_prodotto(self, prodotto_id):
+        rimuovi_prodotto_button = self.driver.find_element(By.ID, f"rimuovi_prodotto_{prodotto_id}")
         rimuovi_prodotto_button.click()
                          
 
