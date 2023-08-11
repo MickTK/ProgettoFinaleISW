@@ -7,13 +7,14 @@ import time
 # framework
 from selenium import webdriver
 
-'''
-from test.test_login import TestLogin
-from test.test_registrazione import TestRegistrazione
-from test.test_logout import TestLogout
-from test.test_aggiungi_prodotto_al_carrello import TestAggiungiProdottoAlCarrello '''
 
+from tests.accettazione.pagine.registrazione_page import Registrazione
 from tests.accettazione.pagine.login_page import Login
+from tests.accettazione.pagine.home_page import Home
+from tests.accettazione.pagine.home_page import Home_utente
+from tests.accettazione.pagine.home_page import Home_amministratore
+from tests.accettazione.pagine.carrello_page import Carrello
+
 
 
 class AccettazioneTestCase(TestCase):
@@ -27,38 +28,89 @@ class AccettazioneTestCase(TestCase):
         # Chiudi il browser
         cls.driver.quit()
     
-
     def setUp(self):
         pass
+    
+    # TEST SULLA REGISTRAZIONE
+    
+    # test del registrazione con dati corretti
+    def test_successful_registrazione(self):
+        registrazione_page = Registrazione(self.driver)
+        registrazione_page.registrazione("nuovoUsername", "nuovaPassword")
+        # assert per verificare il successo del registrazione
+        expected_url = "http://127.0.0.1:8000/home/"
+        actual_url = self.driver.current_url
+        self.assertEqual(expected_url, actual_url)  
+        
+    # test del registrazione con dati errati
+    def test_failed_registrazione(self):
+        registrazione_page = Registrazione(self.driver)
+        registrazione_page.registrazione("cliente", "cliente")
+        # assert per verificare il fallimento del registrazione
+        expected_url = "http://127.0.0.1:8000/registrazione/"
+        actual_url = self.driver.current_url
+        self.assertEqual(expected_url, actual_url)      
 
+    # TEST SUL LOGIN
+    
+    # test del login con dati corretti
     def test_successful_login(self):
         login_page = Login(self.driver)
         login_page.login("cliente", "cliente")
         # assert per verificare il successo del login
         expected_url = "http://127.0.0.1:8000/home/"
         actual_url = self.driver.current_url
-        self.assertEqual(expected_url, actual_url)  
+        self.assertEqual(expected_url, actual_url) 
         time.sleep(10)
+        
+    # test del logout con url corretto
+    def test_successful_logout(self):
+        home_utente_page = Home_utente(self.driver)
+        home_utente_page.logout()
+        # assert per verificare il successo del logout nella home utente
+        expected_url = "http://127.0.0.1:8000/login/"
+        actual_url = self.driver.current_url
+        self.assertEqual(expected_url, actual_url)     
+    
+    # test del login con dati errati
+    def test_failed_login(self):
+        login_page = Login(self.driver)
+        login_page.login("clicli", "cluclu")
+        # assert per verificare il fallimento del login
+        expected_url = "http://127.0.0.1:8000/login/"
+        actual_url = self.driver.current_url
+        self.assertEqual(expected_url, actual_url) 
+        
+    
+    # test: prova ad aggiungere un prodotto presente nel negozio (stock)
+    def test_successful_prodotto_aggiunto_al_carrello(self):
+        login_page = Login(self.driver)
+        home_utente_page = Home_utente(self.driver)
+        carrello_page = Carrello(self.driver)
+        login_page.login("cliente", "cliente")
+        
+        # aggiunta di un prodotto al carrello
+        prodotto_id_desiderato = "1"
+        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato)
+        
+        # assert per verificare il il successo e l'aggiunta del prodotto al carrello
+        # verifica se il prodotto è stato aggiunto al carrello
+        home_utente_page.accedi_al_carrello()
+        presente_nel_carrello = carrello_page.verifica_prodotto_nel_carrello("1")
+
+        # assert per verificare che il prodotto sia presente nel carrello
+        assert presente_nel_carrello  
+        
+        # test del logout con url corretto
+        def test_successful_logout(self):
+            login_page = Login(self.driver)
+            home_amministratore_page = Home_amministratore(self.driver)
+            login_page.login("admin", "admin")
+            home_amministratore_page.logout()
+            # assert per verificare il successo del logout nella home amministratore
+            expected_url = "http://127.0.0.1:8000/login/"
+            actual_url = self.driver.current_url
+            self.assertEqual(expected_url, actual_url)   
 
     def tearDown(self):
         pass 
-
-'''if __name__ == '__main__':
-    # Inizializza il browser
-    #driver = webdriver.Chrome()
-
-    # Inizializza il runner dei test
-    test_runner = unittest.TextTestRunner()
-
-    # Esegue i test
-    suite = unittest.TestSuite()
-    #suite.addTest(unittest.makeSuite(TestAggiungiProdottoAlCarrello))
-    #suite.addTest(unittest.makeSuite(TestLogout))
-    #suite.addTest(unittest.makeSuite(TestRegistrazione))
-    suite.addTest(unittest.makeSuite(TestLogin))
-    
-
-    result = test_runner.run(suite)
-
-    # Chiudi il browser
-    driver.quit() '''
