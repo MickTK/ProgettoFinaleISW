@@ -20,6 +20,7 @@
         <!-- div che contiene il form per il login -->
         <div class="login">
             <form method="post">
+                <p style="color:red">{{ errore }}</p>
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input class="button" type="submit" name="login" id="login" value="login">

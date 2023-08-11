@@ -46,6 +46,11 @@ def login_view(request):
           if Carrello.objects.filter(user = user).count() == 0:
             user.carrello = Carrello.objects.create(user = user)
           return redirect("../home/")
+      else:
+        if len(User.objects.filter(username = form.cleaned_data["username"])) > 0:
+          context["errore"] = "Password non valida."
+        else:
+          context["errore"] = "Username non valido."
 
   return HttpResponse(template.render(context, request))
 
@@ -55,16 +60,18 @@ def login_view(request):
 
 @login_required
 def home_view(request):
-  if get_user(request).is_superuser: return redirect("../Home_amministratore")
+  user = get_user(request)
+  if user.is_superuser: return redirect("../Home_amministratore")
 
   # Inizializzazione
   template = loader.get_template("utente/home.html")
   stock = Stock.objects.get(nome = NOME_STOCK)
+
   context = {
     "prodotti" : Prodotto.objects.filter(stock = stock).all(),
     "form": FiltroHomeUtenteForm()
   }
-  
+
   # Gestione richieste
   if request.method =="POST":
 
@@ -78,6 +85,7 @@ def home_view(request):
 
       nome_check = tipologia_check = prezzo_check = None
 
+      # Salva i prodotti che soddisfano il filtro
       prodotti = context["prodotti"]
       context["prodotti"] = list()
       for prodotto in prodotti:
@@ -105,14 +113,22 @@ def home_view(request):
     # Aggiunta prodotto al carrello
     if "prodotto_id" in request.POST:
       prodotto_id = int(request.POST["prodotto_id"])
-      user = get_user(request)
-      if user is not None:
-        prodotto = Prodotto.objects.get(id = prodotto_id)
-        prodotto_carrello = user.carrello.prodotti.filter(prodotto = prodotto)
-        if prodotto_carrello.count() == 0 or (prodotto_carrello.count() > 0 and prodotto_carrello.all()[0].quantita < prodotto.quantita):
-          user.carrello.aggiungi_prodotto(prodotto)
+      prodotto = Prodotto.objects.get(id = prodotto_id)
+      prodotto_carrello = user.carrello.prodotti.filter(prodotto = prodotto)
+      if prodotto_carrello.count() == 0 or (prodotto_carrello.count() > 0 and prodotto_carrello.all()[0].quantita < prodotto.quantita):
+        user.carrello.aggiungi_prodotto(prodotto)
 
-
+  # Modifica il numero di prodotti visualizzati in base al numero di prodotti dello stesso tipo dentro il carrello
+  prodotti = context["prodotti"]
+  for prodotto in prodotti:
+    if len(user.carrello.prodotti.filter(prodotto = prodotto)) > 0:
+      pc = user.carrello.prodotti.get(prodotto = prodotto)
+      if pc.quantita > prodotto.quantita:
+        pc.quantita = prodotto.quantita
+        pc.save()
+      prodotto.quantita = prodotto.quantita - pc.quantita
+  context["prodotti"] = prodotti
+  
 
   return HttpResponse(template.render(context, request))
 
@@ -145,22 +161,25 @@ def registrazione_view(request):
 
 @login_required
 def carrello_view(request):
-  if get_user(request).is_superuser: return redirect("../Home_amministratore")
+  user = get_user(request)
+  if user.is_superuser: return redirect("../Home_amministratore")
   
   template = loader.get_template("utente/carrello.html")
   user = get_user(request)
   context = {
-    "prodottiCarrello": user.carrello.prodotti.all(),
     "carrello": user.carrello,
   }
-
   if request.method =="POST":
     prodotto_id = int(request.POST["prodotto_id"])
     if prodotto_id is not None:
-      user = get_user(request)
-      if user is not None:
-        ProdottoCarrello.objects.get(id = prodotto_id).modifica_quantita(-1)
+      ProdottoCarrello.objects.get(id = prodotto_id).modifica_quantita(-1)
 
+  # Controlla che nel carrello non ci siano più prodotti di quelli disponibili
+  prodotti = user.carrello.prodotti.all()
+  for prodotto in prodotti:
+    if prodotto.quantita > prodotto.prodotto.quantita:
+      prodotto.quantita = prodotto.prodotto.quantita
+  context["prodottiCarrello"] = prodotti
   return HttpResponse(template.render(context, request))
 
 @login_required
