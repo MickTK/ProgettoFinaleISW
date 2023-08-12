@@ -23,9 +23,18 @@ class Carrello:
 # verifica se un determinato prodotto è stato rimosso dal carrello    
     def verifica_prodotto_nel_carrello_rimosso(self, prodotto_id_cercato):
         prodottiCarrello = self.driver.find_elements(By.ID, prodotto_id_cercato)
+        if len(prodottiCarrello) > 0:
+            prodottiCarrello = int(prodottiCarrello[0].text)
+        else:
+            return 0
+            
+
+
         
+        
+            
         # restituisce la lunghezza della lista
-        return len(prodottiCarrello) 
+        return prodottiCarrello 
     
 # torna alla home
     def accedi_alla_home(self):

@@ -43,15 +43,15 @@
                         <!-- Qui verranno inserite le righe per i prodotti -->
                         
                     {% for prodottoCarrello in prodottiCarrello %}
-                    <tr id="{{ prodottoCarrello.prodotto.id }}">
+                    <tr>
                         <td> {{ prodottoCarrello.prodotto.nome }} </td>
                         <td> {{ prodottoCarrello.prodotto.tipologia }} </td>
-                        <td> {{ prodottoCarrello.quantita }} </td>
+                        <td id="{{ prodottoCarrello.prodotto.id }}"> {{ prodottoCarrello.quantita }} </td>
                         
                         <td><form method="post">
                             {% csrf_token %}
                             <input id="id_prodotto_carrello" type="hidden" name="prodotto_id" value="{{prodottoCarrello.id}}">
-                            <input class="button" id="rimuovi_prodotto_{{ prodottoCarrello.id }}" type="submit" value="Rimuovi prodotto">
+                            <input class="button" id="rimuovi_prodotto_{{ prodottoCarrello.prodotto.id }}" type="submit" value="Rimuovi prodotto">
                         </form></td>
 
                         <td> {{ prodottoCarrello.totale }}</td>
