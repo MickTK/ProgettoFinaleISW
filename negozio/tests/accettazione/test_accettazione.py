@@ -20,6 +20,8 @@ from tests.accettazione.pagine.checkout_page import Checkout
 # BISOGNA METTERE time.sleep() E ORDINARE I TEST!!!!!
 # ---------------------------------------------------
 
+# Tempo generale
+TIME_SLEEP = 5
 
 class AccettazioneTestCase(TestCase):
     
@@ -39,22 +41,26 @@ class AccettazioneTestCase(TestCase):
     # TEST SULLA REGISTRAZIONE
     
     # test del registrazione con dati corretti
-    def test_successful_registrazione(self):
+    def test_0_successful_registrazione(self):
         registrazione_page = Registrazione(self.driver)
-        registrazione_page.registrazione("nuovoUsasdeaaaaasasasaarname", "nuovaPassword")
+        registrazione_page.registrazione("nuovoUssdddarfffname", "nuovaPassword")
+        time.sleep(TIME_SLEEP)
         # assert per verificare il successo del registrazione
         expected_url = "http://127.0.0.1:8000/home/"
         actual_url = self.driver.current_url
-        self.assertEqual(expected_url, actual_url)  
+        self.assertEqual(expected_url, actual_url) 
+        time.sleep(TIME_SLEEP) 
         
     # test del registrazione con dati errati
-    def test_failed_registrazione(self):
+    def test_a_failed_registrazione(self):
         registrazione_page = Registrazione(self.driver)
         registrazione_page.registrazione("cliente", "cliente")
+        time.sleep(TIME_SLEEP)
         # assert per verificare il fallimento del registrazione
         expected_url = "http://127.0.0.1:8000/registrazione/"
         actual_url = self.driver.current_url
-        self.assertEqual(expected_url, actual_url)      
+        self.assertEqual(expected_url, actual_url)    
+        time.sleep(TIME_SLEEP)  
 
     # TEST SUL LOGIN
     
@@ -66,7 +72,7 @@ class AccettazioneTestCase(TestCase):
         expected_url = "http://127.0.0.1:8000/home/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
-        time.sleep(10)
+        time.sleep(TIME_SLEEP)
         
     # test del logout con url corretto
     def test_successful_logout(self):
@@ -75,7 +81,8 @@ class AccettazioneTestCase(TestCase):
         # assert per verificare il successo del logout nella home utente
         expected_url = "http://127.0.0.1:8000/login/"
         actual_url = self.driver.current_url
-        self.assertEqual(expected_url, actual_url)     
+        self.assertEqual(expected_url, actual_url) 
+        time.sleep(TIME_SLEEP)    
     
     # test del login con dati errati
     def test_failed_login(self):
@@ -85,6 +92,7 @@ class AccettazioneTestCase(TestCase):
         expected_url = "http://127.0.0.1:8000/login/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
+        time.sleep(TIME_SLEEP)
         
     
     # test: prova ad aggiungere un prodotto presente nel negozio (stock)
@@ -105,6 +113,7 @@ class AccettazioneTestCase(TestCase):
 
         # assert per verificare che il prodotto sia presente nel carrello
         assert presente_nel_carrello  
+        time.sleep(TIME_SLEEP)
         
     # test del login (amministratore) con dati corretti
     def test_successful_login_amministratore(self):
@@ -114,7 +123,8 @@ class AccettazioneTestCase(TestCase):
         expected_url = "http://127.0.0.1:8000/Home_amministratore/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
-        time.sleep(10)    
+        time.sleep(TIME_SLEEP)
+          
         
     # test del login (amministratore) con dati corretti
     def test_failed_login_amministratore(self):
@@ -124,7 +134,8 @@ class AccettazioneTestCase(TestCase):
         expected_url = "http://127.0.0.1:8000/home/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
-        time.sleep(10)      
+        time.sleep(TIME_SLEEP)
+             
         
     # test del logout con url corretto
     def test_successful_logout_amministratore(self):
@@ -135,7 +146,8 @@ class AccettazioneTestCase(TestCase):
         # assert per verificare il successo del logout nella home amministratore
         expected_url = "http://127.0.0.1:8000/login/"
         actual_url = self.driver.current_url
-        self.assertEqual(expected_url, actual_url)   
+        self.assertEqual(expected_url, actual_url) 
+        time.sleep(TIME_SLEEP)  
         
     
     # test rimuovi un prodotto dal carrello
@@ -148,14 +160,17 @@ class AccettazioneTestCase(TestCase):
         # aggiunta di un prodotto al carrello
         prodotto_id_desiderato = "1"
         home_utente_page.aggiungi_prodotto(prodotto_id_desiderato)
-             
+                
         home_utente_page.accedi_al_carrello()
         numInizialeQuantitaProdotto = carrello_page.verifica_prodotto_nel_carrello_rimosso("1")
+    
         carrello_page.rimuovi_prodotto("1")
         numFinaleQuantitaProdotto = carrello_page.verifica_prodotto_nel_carrello_rimosso("1")
 
         # assert per verificare che il prodotto sia presente nel carrello
-        self.assertNotEqual(numInizialeQuantitaProdotto, numFinaleQuantitaProdotto)
+        self.assertGreater(numInizialeQuantitaProdotto, numFinaleQuantitaProdotto)
+        time.sleep(TIME_SLEEP)
+    
     
         
     # test per completare il checkout
@@ -176,25 +191,26 @@ class AccettazioneTestCase(TestCase):
         
         checkout_page.inserimento_dati("", "")
         checkout_page.ordina()
-        checkout_page.inserimento_dati("Via roma 18", "")
+        checkout_page.inserimento_dati("Via Roma 18", "")
         checkout_page.ordina()
         checkout_page.reset_form_checkout()
         checkout_page.inserimento_dati("", "5455988754516532")
         checkout_page.ordina()
         checkout_page.reset_form_checkout()
-        checkout_page.inserimento_dati("via", "54559887")
+        checkout_page.inserimento_dati("Via", "54559887")
         checkout_page.ordina()
         checkout_page.reset_form_checkout()
-        checkout_page.inserimento_dati("Via roma 18", "54559887")
+        checkout_page.inserimento_dati("Via Roma 18", "54559887")
         checkout_page.ordina()
         checkout_page.reset_form_checkout()
-        checkout_page.inserimento_dati("Via roma 18", "5455988754516532")
+        checkout_page.inserimento_dati("Via Roma 18", "5455988754516532")
         checkout_page.ordina()
         
         # verifica checkout
         expected_url = "http://127.0.0.1:8000/home/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url)  
+        time.sleep(TIME_SLEEP)
         
         
         
