@@ -41,7 +41,7 @@ class AccettazioneTestCase(TestCase):
     # test del registrazione con dati corretti
     def test_successful_registrazione(self):
         registrazione_page = Registrazione(self.driver)
-        registrazione_page.registrazione("nuovoUsaeaaaasasasaarname", "nuovaPassword")
+        registrazione_page.registrazione("nuovoUsasdeaaaaasasasaarname", "nuovaPassword")
         # assert per verificare il successo del registrazione
         expected_url = "http://127.0.0.1:8000/home/"
         actual_url = self.driver.current_url
@@ -86,7 +86,7 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
         
-    '''
+    
     # test: prova ad aggiungere un prodotto presente nel negozio (stock)
     def test_successful_prodotto_aggiunto_al_carrello(self):
         login_page = Login(self.driver)
@@ -105,7 +105,7 @@ class AccettazioneTestCase(TestCase):
 
         # assert per verificare che il prodotto sia presente nel carrello
         assert presente_nel_carrello  
-    '''    
+        
     # test del login (amministratore) con dati corretti
     def test_successful_login_amministratore(self):
         login_page = Login(self.driver)
@@ -137,13 +137,18 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url)   
         
-    '''
+    
     # test rimuovi un prodotto dal carrello
     def test_rimuovi_prodotto_carrello(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
-        login_page.login("cliente", "cliente")       
+        login_page.login("cliente", "cliente")  
+        
+        # aggiunta di un prodotto al carrello
+        prodotto_id_desiderato = "1"
+        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato)
+             
         home_utente_page.accedi_al_carrello()
         numInizialeQuantitaProdotto = carrello_page.verifica_prodotto_nel_carrello_rimosso("1")
         carrello_page.rimuovi_prodotto("1")
@@ -151,7 +156,7 @@ class AccettazioneTestCase(TestCase):
 
         # assert per verificare che il prodotto sia presente nel carrello
         self.assertNotEqual(numInizialeQuantitaProdotto, numFinaleQuantitaProdotto)
-    '''
+    
         
     # test per completare il checkout
     def test_completa_checkout(self):
@@ -161,6 +166,11 @@ class AccettazioneTestCase(TestCase):
         checkout_page = Checkout(self.driver)
         
         login_page.login("cliente", "cliente") 
+        
+        # aggiunta di un prodotto al carrello
+        prodotto_id_desiderato = "1"
+        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato)
+        
         home_utente_page.accedi_al_carrello()
         carrello_page.accedi_al_checkout()
         
