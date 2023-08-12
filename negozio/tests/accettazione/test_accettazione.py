@@ -14,10 +14,15 @@ from tests.accettazione.pagine.home_page import Home
 from tests.accettazione.pagine.home_page import Home_utente
 from tests.accettazione.pagine.home_page import Home_amministratore
 from tests.accettazione.pagine.carrello_page import Carrello
+from tests.accettazione.pagine.checkout_page import Checkout
 
+# ---------------------------------------------------
+# BISOGNA METTERE time.sleep() E ORDINARE I TEST!!!!!
+# ---------------------------------------------------
 
 
 class AccettazioneTestCase(TestCase):
+    
     @classmethod
     def setUpClass(cls):
         # Inizializza il browser   
@@ -132,6 +137,7 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url)   
         
+    '''
     # test rimuovi un prodotto dal carrello
     def test_rimuovi_prodotto_carrello(self):
         login_page = Login(self.driver)
@@ -145,6 +151,47 @@ class AccettazioneTestCase(TestCase):
 
         # assert per verificare che il prodotto sia presente nel carrello
         self.assertNotEqual(numInizialeQuantitaProdotto, numFinaleQuantitaProdotto)
+    '''
+        
+    # test per completare il checkout
+    def test_completa_checkout(self):
+        login_page = Login(self.driver)
+        home_utente_page = Home_utente(self.driver)
+        carrello_page = Carrello(self.driver)
+        checkout_page = Checkout(self.driver)
+        
+        login_page.login("cliente", "cliente") 
+        home_utente_page.accedi_al_carrello()
+        carrello_page.accedi_al_checkout()
+        
+        checkout_page.inserimento_dati("", "")
+        checkout_page.ordina()
+        checkout_page.inserimento_dati("Via roma 18", "")
+        checkout_page.ordina()
+        checkout_page.reset_form_checkout()
+        checkout_page.inserimento_dati("", "5455988754516532")
+        checkout_page.ordina()
+        checkout_page.reset_form_checkout()
+        checkout_page.inserimento_dati("via", "54559887")
+        checkout_page.ordina()
+        checkout_page.reset_form_checkout()
+        checkout_page.inserimento_dati("Via roma 18", "54559887")
+        checkout_page.ordina()
+        checkout_page.reset_form_checkout()
+        checkout_page.inserimento_dati("Via roma 18", "5455988754516532")
+        checkout_page.ordina()
+        
+        # verifica checkout
+        expected_url = "http://127.0.0.1:8000/home/"
+        actual_url = self.driver.current_url
+        self.assertEqual(expected_url, actual_url)  
+        
+        
+        
+        
+         
+        
+        
         
         
         

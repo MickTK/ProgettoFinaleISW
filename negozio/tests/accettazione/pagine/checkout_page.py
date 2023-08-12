@@ -23,9 +23,17 @@ class Checkout:
         ordina_button.click() 
         
     # inserisce i dati per il checkout
-    def inserimento_credenziali(self, indirizzo, codice_paypal):
+    def inserimento_dati(self, indirizzo, codice_paypal):
         indirizzo_input = self.driver.find_element(By.ID, "indirizzo")
         codice_paypal_input = self.driver.find_element(By.ID, "codice_paypal")
 
         indirizzo_input.send_keys(indirizzo)
         codice_paypal_input.send_keys(codice_paypal)
+    
+    # pulire i campi del form checkout
+    def reset_form_checkout(self):
+        indirizzo_input = self.driver.find_element(By.ID, "indirizzo")
+        codice_paypal_input = self.driver.find_element(By.ID, "codice_paypal")
+        
+        indirizzo_input.clear()
+        codice_paypal_input.clear()

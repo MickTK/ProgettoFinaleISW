@@ -11,7 +11,7 @@ class RegistrazioneForm(forms.Form):
 
 class CheckoutForm(forms.Form):
   indirizzo = forms.CharField(label="Indirizzo", min_length=5, max_length=100, widget=forms.TextInput(attrs={'id': 'indirizzo'}))
-  codice_paypal = forms.CharField(label="Codice paypal", min_length=16, max_length=16, widget=forms.TextInput(attrs={'id': 'codice_paypal'}))
+  codice_paypal = forms.CharField(label="Codice paypal", min_length=16, max_length=16, widget=forms.NumberInput(attrs={'id': 'codice_paypal'}))
 
 class ModificaProdottoForm(forms.Form):
   nome = forms.CharField(label="Nome", min_length=3, max_length=100, widget=forms.TextInput(attrs={'id': 'nome'}))
