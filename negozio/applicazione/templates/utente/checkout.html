@@ -18,7 +18,7 @@
         <div class="checkout">
             <div>
                 <h1>Checkout</h1>  
-                <a href="../carrello"><button class="button" type="button" value="carrello">Carrello</button></a>
+                <a href="../carrello"><button id="carrelloCheckout" class="button" type="button" value="carrello">Carrello</button></a>
             </div>
 
             <br><hr><br>
@@ -28,7 +28,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <input class="button" type="submit" value="Ordina">
+                    <input id="ordina" class="button" type="submit" value="Ordina">
                 </form>
             </div>
         </div>
