@@ -219,7 +219,10 @@ def aggiungi_prodotto_view(request):
   }
 
   if request.method =="POST":
-    form = AggiuntaNuovoProdottoForm(request.POST)
+    if request.POST["prodotto_id"] != "-1":
+      form = ModificaProdottoForm(request.POST)
+    else:
+      form = AggiuntaNuovoProdottoForm(request.POST)
 
     # Modifica un prodotto
     if form.is_valid() and request.POST["prodotto_id"] != "-1":
@@ -230,7 +233,7 @@ def aggiungi_prodotto_view(request):
       quantita = form.cleaned_data["quantita"]
 
       prodotto = Prodotto.objects.get(id = int(request.POST["prodotto_id"]))
-
+      
       # Elimina il prodotto
       if quantita < 1:
         prodotto.delete()
@@ -274,7 +277,7 @@ def aggiungi_prodotto_view(request):
         "quantita": prodotto.quantita
       }
       context["prodotto_id"] = prodotto.id
-      context["form"] = AggiuntaNuovoProdottoForm(initial = valori_iniziali_form)
+      context["form"] = ModificaProdottoForm(initial = valori_iniziali_form)
 
   return HttpResponse(template.render(context, request))
 

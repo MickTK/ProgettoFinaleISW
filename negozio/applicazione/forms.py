@@ -25,7 +25,7 @@ class AggiuntaNuovoProdottoForm(forms.Form):
   tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, widget=forms.TextInput(attrs={'id': 'tipologia'}))
   descrizione = forms.CharField(label="Descrizione", min_length=1, max_length=500, widget=forms.TextInput(attrs={'id': 'descrizione'}))
   prezzo = forms.FloatField(label="Prezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01, 'id': 'prezzo'}))
-  quantita = forms.IntegerField(label="Quantita", min_value=0, widget=forms.NumberInput(attrs={'min': 0, 'id': 'quantita'}))
+  quantita = forms.IntegerField(label="Quantita", min_value=1, widget=forms.NumberInput(attrs={'min': 0, 'id': 'quantita'}))
 
 
 
