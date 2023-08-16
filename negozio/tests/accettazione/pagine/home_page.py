@@ -53,12 +53,18 @@ class Home_utente(Home):
         
     # verifica se i prodotti sono tutti con lo stesso nome
     def verifica_filtro_nome(self, prodotto_nome):
-        prodotto_cercato = self.driver.find_element(By.ID, f"nome_prodotto_{prodotto_nome}")
-        prodotti_presenti = self.driver.find_element(By.ID, f"nome_prodotto_*")
-        if len(prodotto_cercato) > 1 and len(prodotti_presenti) != len(prodotto_cercato):
-            return True
-        else: 
-            return False
+        prodotti_presenti = self.driver.find_elements(By.CLASS_NAME, "prodotto")
+        
+        nomi = list()
+        for element in prodotti_presenti:
+            nome = (element.find_element(By.CLASS_NAME, "nome").text)
+            nomi.append(nome)
+            
+        for nome in nomi:
+            if nome.lower() != prodotto_nome.lower():
+                return False
+        return True          
+      
         
         
         

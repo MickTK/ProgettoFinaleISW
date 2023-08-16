@@ -53,9 +53,9 @@
                     </thead>
                     <tbody>
                         <!-- Qui verranno inserite le righe per i prodotti -->
-                        <tr>
                         {% for prodotto in prodotti %}
-                            <td id="nome_prodotto_{{prodotto.nome}}"> {{ prodotto.nome }} </td>
+                        <tr class="prodotto">
+                            <td class="nome"> {{ prodotto.nome }} </td>
                             <td> {{ prodotto.tipologia }} </td>
                             <td> {{ prodotto.descrizione }} </td>
                             <td> {{ prodotto.prezzo }} </td>
