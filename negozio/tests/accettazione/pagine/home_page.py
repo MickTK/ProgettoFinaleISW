@@ -61,7 +61,7 @@ class Home_utente(Home):
             nomi.append(nome)
             
         for nome in nomi:
-            if nome.lower() != prodotto_nome.lower():
+            if not (prodotto_nome.lower() in nome.lower()):
                 return False
         return True          
       
