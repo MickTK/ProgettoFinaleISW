@@ -32,7 +32,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <input class="button" type="submit" value="Filtra">
+                    <input class="button" id="filtra" type="submit" value="Filtra">
                 </form> 
             </div>
 
@@ -55,7 +55,7 @@
                         <!-- Qui verranno inserite le righe per i prodotti -->
                         <tr>
                         {% for prodotto in prodotti %}
-                            <td> {{ prodotto.nome }} </td>
+                            <td id="nome_prodotto_{{prodotto.nome}}"> {{ prodotto.nome }} </td>
                             <td> {{ prodotto.tipologia }} </td>
                             <td> {{ prodotto.descrizione }} </td>
                             <td> {{ prodotto.prezzo }} </td>

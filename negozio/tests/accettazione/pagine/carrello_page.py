@@ -28,11 +28,6 @@ class Carrello:
         else:
             return 0
             
-
-
-        
-        
-            
         # restituisce la lunghezza della lista
         return prodottiCarrello 
     

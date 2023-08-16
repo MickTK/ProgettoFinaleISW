@@ -36,6 +36,33 @@ class Home_utente(Home):
     def accedi_al_carrello(self):
         accedi_al_carrello_button = self.driver.find_element(By.ID, "accedi_carrello")
         accedi_al_carrello_button.click()    
+    
+    # filtra i prodotti
+    def filtra_prodotti(self, nome, tipologia, minPrezzo, maxPrezzo):
+        nome_input = self.driver.find_element(By.ID, "nome")
+        tipologia_input = self.driver.find_element(By.ID, "tipologia")
+        minPrezzo_input = self.driver.find_element(By.ID, "minPrezzo")
+        maxPrezzo_input = self.driver.find_element(By.ID, "maxPrezzo")
+        filtra_button = self.driver.find_element(By.ID, "filtra")
+        
+        nome_input.send_keys(nome)
+        tipologia_input.send_keys(tipologia)
+        minPrezzo_input.send_keys(minPrezzo)
+        maxPrezzo_input.send_keys(maxPrezzo)
+        filtra_button.click()
+        
+    # verifica se i prodotti sono tutti con lo stesso nome
+    def verifica_filtro_nome(self, prodotto_nome):
+        prodotto_cercato = self.driver.find_element(By.ID, f"nome_prodotto_{prodotto_nome}")
+        prodotti_presenti = self.driver.find_element(By.ID, f"nome_prodotto_*")
+        if len(prodotto_cercato) > 1 and len(prodotti_presenti) != len(prodotto_cercato):
+            return True
+        else: 
+            return False
+        
+        
+        
+        
         
 
 class Home_amministratore(Home):

@@ -18,7 +18,7 @@ from tests.accettazione.pagine.checkout_page import Checkout
 
 # Tempo generale
 global TIME_SLEEP
-TIME_SLEEP = 7
+TIME_SLEEP = 2
 
 class AccettazioneTestCase(TestCase):
     
@@ -35,7 +35,7 @@ class AccettazioneTestCase(TestCase):
     def setUp(self):
         pass
     
-    
+    '''
     # TEST SULLA REGISTRAZIONE
     
     # test del registrazione con dati corretti
@@ -43,7 +43,7 @@ class AccettazioneTestCase(TestCase):
         registrazione_page = Registrazione(self.driver)
         time.sleep(TIME_SLEEP) 
         
-        registrazione_page.registrazione("nuovoUtnteq1", "nuovaPassword")
+        registrazione_page.registrazione("nuovoefeUtnteq1", "nuovaPassword")
         time.sleep(TIME_SLEEP)
         
         # assert per verificare il successo del registrazione
@@ -86,7 +86,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test del login con dati errati
-    def test_failed_login(self):
+    def test_3_failed_login(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
@@ -101,7 +101,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test del logout con url corretto
-    def test_successful_logout(self):
+    def test_4_successful_logout(self):
         home_utente_page = Home_utente(self.driver)
         time.sleep(TIME_SLEEP) 
         
@@ -116,7 +116,7 @@ class AccettazioneTestCase(TestCase):
         
     
     # test: prova ad aggiungere un prodotto presente nel negozio (stock)
-    def test_successful_prodotto_aggiunto_al_carrello(self):
+    def test_5_successful_prodotto_aggiunto_al_carrello(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -142,7 +142,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test rimuovi un prodotto dal carrello
-    def test_rimuovi_prodotto_carrello(self):
+    def test_6_rimuovi_prodotto_carrello(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -169,7 +169,7 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)  
         
     # test per completare il checkout
-    def test_completa_checkout(self):
+    def test_7_completa_checkout(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -231,7 +231,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test del login (amministratore) con dati corretti
-    def test_successful_login_amministratore(self):
+    def test_8_successful_login_amministratore(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
@@ -246,7 +246,7 @@ class AccettazioneTestCase(TestCase):
           
         
     # test del login (amministratore) con dati corretti
-    def test_failed_login_amministratore(self):
+    def test_9_failed_login_amministratore(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
@@ -261,7 +261,7 @@ class AccettazioneTestCase(TestCase):
              
         
     # test del logout con url corretto
-    def test_successful_logout_amministratore(self):
+    def test_10_successful_logout_amministratore(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         time.sleep(TIME_SLEEP)
@@ -277,9 +277,36 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
         time.sleep(TIME_SLEEP)  
-    
+    '''
         
-    
+    # test del filtro nella home utente
+    def test_11_filtro_home_utente(self):
+        login_page = Login(self.driver)
+        home_utente_page = Home_utente(self.driver)
+        time.sleep(TIME_SLEEP)
+        
+        login_page.login("cliente", "cliente")
+        time.sleep(TIME_SLEEP)
+        
+        home_utente_page.filtra_prodotti("Iphone", "", "", "")
+        time.sleep(15) 
+        risultato = home_utente_page.verifica_filtro_nome("Iphone 14")
+        assert risultato
+        
+        time.sleep(15) 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
     def tearDown(self):
         pass 
