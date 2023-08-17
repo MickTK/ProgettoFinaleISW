@@ -277,7 +277,7 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
         time.sleep(TIME_SLEEP)  
-    '''
+    
         
     # test del filtro nella home utente
     def test_11_filtro_home_utente(self):
@@ -302,6 +302,29 @@ class AccettazioneTestCase(TestCase):
         assert risultato_minPrezzo
         
         time.sleep(TIME_SLEEP) 
+    
+    
+    # test del filtro nella home amministratore
+    def test_12_filtro_home_amministratore(self):
+        login_page = Login(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        time.sleep(TIME_SLEEP)
+        
+        login_page.login("admin", "admin")
+        time.sleep(TIME_SLEEP)
+        
+        home_amministratore_page.filtra_prodotti_amministratore("Iphone", "", "", "", "6", "")
+        time.sleep(TIME_SLEEP) 
+        
+        risultato_nome = home_amministratore_page.verifica_filtro_nome("Iphone 14")
+        risultato_minNumPezzi = home_amministratore_page.verifica_filtro_minNumPezzi("6")
+        time.sleep(TIME_SLEEP) 
+        
+        assert risultato_nome
+        assert risultato_minNumPezzi
+        
+        time.sleep(TIME_SLEEP) 
+    '''
         
         
         

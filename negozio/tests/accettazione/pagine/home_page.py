@@ -40,7 +40,7 @@ class Home_utente(Home):
         accedi_al_carrello_button = self.driver.find_element(By.ID, "accedi_carrello")
         accedi_al_carrello_button.click()    
     
-    # filtra i prodotti
+    # filtra i prodotti nella home utente
     def filtra_prodotti(self, nome, tipologia, minPrezzo, maxPrezzo):
         nome_input = self.driver.find_element(By.ID, "nome")
         tipologia_input = self.driver.find_element(By.ID, "tipologia")
@@ -69,8 +69,6 @@ class Home_utente(Home):
         return True   
     
     
-    
-    
     # verifica che il prezzo dei prodotti sia >= minPrezzo inserito nel filtro
     def verifica_filtro_minPrezzo(self, prodotto_minPrezzo):
         prodotti_presenti = self.driver.find_elements(By.CLASS_NAME, "prodotto")
@@ -85,12 +83,7 @@ class Home_utente(Home):
                 return False
         return True  
     
-    
-    
-    
-    
-    
-    
+
     # pulire i campi del filtro nella home utente
     def reset_filtro_home_utente(self):
         nome_input = self.driver.find_element(By.ID, "nome")
@@ -115,6 +108,64 @@ class Home_amministratore(Home):
     def logout(self):
         logout_button = self.driver.find_element(By.ID, "logout")
         logout_button.click()
+        
+    def aggiungi_prodotto(self):
+        aggiungi_prodotto_button = self.driver.find_element(By.ID, "aggiungiProdotto")
+        aggiungi_prodotto_button.click() 
+        
+    def modifica_prodotto(self):
+        modifica_prodotto_button = self.driver.find_element(By.ID, "modificaProdotto")
+        modifica_prodotto_button.click() 
+        
+    def resoconto_vendite(self):
+        resoconto_vendite_button = self.driver.find_element(By.ID, "resocontoVendite")
+        resoconto_vendite_button.click() 
+        
+    # filtra i prodotti nella home amministratore
+    def filtra_prodotti_amministratore(self, nome, tipologia, minPrezzo, maxPrezzo, minNumPezzi, maxNumPezzi):
+        nome_input = self.driver.find_element(By.ID, "nome")
+        tipologia_input = self.driver.find_element(By.ID, "tipologia")
+        minPrezzo_input = self.driver.find_element(By.ID, "minPrezzo")
+        maxPrezzo_input = self.driver.find_element(By.ID, "maxPrezzo")
+        minNumPezzi_input = self.driver.find_element(By.ID, "minNumPezzi")
+        maxNumPezzi_input = self.driver.find_element(By.ID, "maxNumPezzi")
+        filtra_button = self.driver.find_element(By.ID, "filtra")
+        
+        nome_input.send_keys(nome)
+        tipologia_input.send_keys(tipologia)
+        minPrezzo_input.send_keys(minPrezzo)
+        maxPrezzo_input.send_keys(maxPrezzo)
+        minNumPezzi_input.send_keys(minNumPezzi)
+        minNumPezzi_input.send_keys(maxNumPezzi)
+        filtra_button.click()  
+        
+    # verifica se i prodotti sono tutti con lo stesso nome
+    def verifica_filtro_nome(self, prodotto_nome):
+        prodotti_presenti = self.driver.find_elements(By.CLASS_NAME, "prodotto")
+        
+        nomi = list()
+        for element in prodotti_presenti:
+            nome = (element.find_element(By.CLASS_NAME, "nome").text)
+            nomi.append(nome)
+            
+        for nome in nomi:
+            if not (prodotto_nome.lower() in nome.lower()):
+                return False
+        return True  
+    
+    # verifica che il numero di pezzi disponibili dei prodotti sia >= minNumPezzi inserito nel filtro
+    def verifica_filtro_minNumPezzi(self, prodotto_minNumPezzi):
+        prodotti_presenti = self.driver.find_elements(By.CLASS_NAME, "prodotto")
+        
+        lista_quantita = list()
+        for element in prodotti_presenti:
+            quantita = int(element.find_element(By.CLASS_NAME, "quantita").text)
+            lista_quantita.append(quantita)
+            
+        for quantita in lista_quantita:
+            if quantita < int(prodotto_minNumPezzi):
+                return False
+        return True    
     
     # pulire i campi del filtro nella home amminsitratore
     def reset_filtro_home_amministratore(self):

@@ -20,7 +20,7 @@
             <div>
                 <h1>Home amministratore</h1> 
 
-                <a href="../Aggiungi_prodotto"><button class="button" type="button" 
+                <a href="../Aggiungi_prodotto"><button class="button" id="aggiungiProdotto" type="button" 
                     value="aggiungiProdotto">Aggiungi prodotto</button></a>
                 <a href="../login"><button id="logout" class="button" type="button" value="logout">Logout</button></a>
             </div>
@@ -32,7 +32,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <input class="button" type="submit" value="Filtra">
+                    <input id="filtra" class="button" type="submit" value="Filtra">
                 </form> 
             </div>
 
@@ -51,17 +51,17 @@
                     </tr>
                     <!-- Qui verranno inserite le righe per i prodotti -->
                     {% for prodotto in prodotti %}
-                    <tr>
-                        <td> {{ prodotto.nome }} </td>
-                        <td> {{ prodotto.tipologia }} </td>
-                        <td> {{ prodotto.descrizione }} </td>
-                        <td> {{ prodotto.prezzo }} </td>
-                        <td> {{ prodotto.quantita }} </td>
+                    <tr class="prodotto">
+                        <td class="nome"> {{ prodotto.nome }} </td>
+                        <td class="tipologia"> {{ prodotto.tipologia }} </td>
+                        <td class="descrizione"> {{ prodotto.descrizione }} </td>
+                        <td class="prezzo"> {{ prodotto.prezzo }} </td>
+                        <td class="quantita"> {{ prodotto.quantita }} </td>
 
                         <td><form method="post" action="../Modifica_prodotto/">
                             {% csrf_token %}
                             <input type="hidden" name="prodotto_id" value="{{prodotto.id}}">
-                            <input class="button" type="submit" value="Modifica prodotto">
+                            <input class="button" id="modifica_prodotto_{{ prodotto.id }}" type="submit" value="Modifica prodotto">
                         </form></td>
 
                     </tr>        
@@ -72,7 +72,7 @@
             <br><hr><br>
     
             <div>
-                <a href="../Resoconto_vendite"><button class="button" type="button" 
+                <a href="../Resoconto_vendite"><button class="button" id="resocontoVendite" type="button" 
                     value="aggiungiProdotto">Resoconto vendite</button></a>
             </div>
         </div>
