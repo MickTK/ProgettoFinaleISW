@@ -288,13 +288,13 @@ class AccettazioneTestCase(TestCase):
         login_page.login("cliente", "cliente")
         time.sleep(TIME_SLEEP)
         
-        home_utente_page.filtra_prodotti("Iphone", "", "", "")
+        home_utente_page.filtra_prodotti("Iphone", "", "600.00", "")
         time.sleep(TIME_SLEEP) 
         risultato_nome = home_utente_page.verifica_filtro_nome("Iphone 14")
         
-        home_utente_page.reset_filtro_home_utente()
+        # home_utente_page.reset_filtro_home_utente()
         
-        home_utente_page.filtra_prodotti("", "", "600.00", "")
+        # home_utente_page.filtra_prodotti("", "", "600.00", "")
         risultato_minPrezzo = home_utente_page.verifica_filtro_minPrezzo("600.00")
         time.sleep(TIME_SLEEP) 
         
