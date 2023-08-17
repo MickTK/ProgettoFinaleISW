@@ -20,7 +20,7 @@
             <div>
                 <h1>Aggiungi prodotto</h1> 
                 
-                <a href="../Home_amministratore"><button class="button" type="button" value="home">Home</button></a>
+                <a href="../Home_amministratore"><button class="button" id="home" type="button" value="home">Home</button></a>
             </div>
 
             <br><hr><br>
@@ -32,7 +32,7 @@
                     {% csrf_token %}
                     {{ form.as_p }}
                     <input type="hidden" name="prodotto_id" value="{{prodotto_id}}">
-                    <input class="button" type="submit" value="Aggiungi il prodotto">
+                    <input class="button" id="aggiungiProdotto" type="submit" value="Aggiungi il prodotto">
                 </form>
 
         </div>

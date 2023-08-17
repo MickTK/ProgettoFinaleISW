@@ -38,7 +38,12 @@ class Home_utente(Home):
     # accede al carrello
     def accedi_al_carrello(self):
         accedi_al_carrello_button = self.driver.find_element(By.ID, "accedi_carrello")
-        accedi_al_carrello_button.click()    
+        accedi_al_carrello_button.click()   
+    
+    # preme il bottone del filtro home utente
+    def filtra(self):
+        filtra_button = self.driver.find_element(By.ID, "filtra")
+        filtra_button.click() 
     
     # filtra i prodotti nella home utente
     def filtra_prodotti(self, nome, tipologia, minPrezzo, maxPrezzo):
@@ -46,13 +51,11 @@ class Home_utente(Home):
         tipologia_input = self.driver.find_element(By.ID, "tipologia")
         minPrezzo_input = self.driver.find_element(By.ID, "minPrezzo")
         maxPrezzo_input = self.driver.find_element(By.ID, "maxPrezzo")
-        filtra_button = self.driver.find_element(By.ID, "filtra")
         
         nome_input.send_keys(nome)
         tipologia_input.send_keys(tipologia)
         minPrezzo_input.send_keys(minPrezzo)
         maxPrezzo_input.send_keys(maxPrezzo)
-        filtra_button.click()
         
     # verifica se i prodotti sono tutti con lo stesso nome
     def verifica_filtro_nome(self, prodotto_nome):
@@ -120,6 +123,11 @@ class Home_amministratore(Home):
     def resoconto_vendite(self):
         resoconto_vendite_button = self.driver.find_element(By.ID, "resocontoVendite")
         resoconto_vendite_button.click() 
+    
+    # preme il bottone del filtro home amministratore
+    def filtra(self):
+        filtra_button = self.driver.find_element(By.ID, "filtra")
+        filtra_button.click() 
         
     # filtra i prodotti nella home amministratore
     def filtra_prodotti_amministratore(self, nome, tipologia, minPrezzo, maxPrezzo, minNumPezzi, maxNumPezzi):
@@ -129,7 +137,6 @@ class Home_amministratore(Home):
         maxPrezzo_input = self.driver.find_element(By.ID, "maxPrezzo")
         minNumPezzi_input = self.driver.find_element(By.ID, "minNumPezzi")
         maxNumPezzi_input = self.driver.find_element(By.ID, "maxNumPezzi")
-        filtra_button = self.driver.find_element(By.ID, "filtra")
         
         nome_input.send_keys(nome)
         tipologia_input.send_keys(tipologia)
@@ -137,7 +144,6 @@ class Home_amministratore(Home):
         maxPrezzo_input.send_keys(maxPrezzo)
         minNumPezzi_input.send_keys(minNumPezzi)
         minNumPezzi_input.send_keys(maxNumPezzi)
-        filtra_button.click()  
         
     # verifica se i prodotti sono tutti con lo stesso nome
     def verifica_filtro_nome(self, prodotto_nome):

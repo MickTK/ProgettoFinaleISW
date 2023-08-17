@@ -15,6 +15,7 @@ from tests.accettazione.pagine.home_page import Home_utente
 from tests.accettazione.pagine.home_page import Home_amministratore
 from tests.accettazione.pagine.carrello_page import Carrello
 from tests.accettazione.pagine.checkout_page import Checkout
+from tests.accettazione.pagine.aggiungi_prodotto_page import AggiungiProdotto
 
 # Tempo generale
 global TIME_SLEEP
@@ -288,14 +289,18 @@ class AccettazioneTestCase(TestCase):
         login_page.login("cliente", "cliente")
         time.sleep(TIME_SLEEP)
         
-        home_utente_page.filtra_prodotti("Iphone", "", "600.00", "")
+        home_utente_page.filtra_prodotti("Iphone", "", "200.00", "")
         time.sleep(TIME_SLEEP) 
+        
+        home_utente_page.filtra()
+        time.sleep(TIME_SLEEP) 
+        
         risultato_nome = home_utente_page.verifica_filtro_nome("Iphone 14")
         
         # home_utente_page.reset_filtro_home_utente()
         
         # home_utente_page.filtra_prodotti("", "", "600.00", "")
-        risultato_minPrezzo = home_utente_page.verifica_filtro_minPrezzo("600.00")
+        risultato_minPrezzo = home_utente_page.verifica_filtro_minPrezzo("200.00")
         time.sleep(TIME_SLEEP) 
         
         assert risultato_nome
@@ -316,6 +321,9 @@ class AccettazioneTestCase(TestCase):
         home_amministratore_page.filtra_prodotti_amministratore("Iphone", "", "", "", "6", "")
         time.sleep(TIME_SLEEP) 
         
+        home_amministratore_page.filtra()
+        time.sleep(TIME_SLEEP) 
+        
         risultato_nome = home_amministratore_page.verifica_filtro_nome("Iphone 14")
         risultato_minNumPezzi = home_amministratore_page.verifica_filtro_minNumPezzi("6")
         time.sleep(TIME_SLEEP) 
@@ -325,6 +333,33 @@ class AccettazioneTestCase(TestCase):
         
         time.sleep(TIME_SLEEP) 
     '''
+    # test inserimento nuovo prodotto (aggiungi prodotto - amministratore)
+    def test_13_aggiungi_prodotto(self):
+        login_page = Login(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
+        time.sleep(TIME_SLEEP)
+        
+        login_page.login("admin", "admin")
+        time.sleep(TIME_SLEEP)    
+        
+        home_amministratore_page.aggiungi_prodotto()
+        time.sleep(TIME_SLEEP)
+        
+        aggiungi_prodotto_page.aggiungi_prodotto("Ventyl 15", "Ventilatore", "Un bel ventilatore", "7500", "10")
+        time.sleep(TIME_SLEEP)
+        
+        aggiungi_prodotto_page.aggiungi_prodotto_button()
+        time.sleep(TIME_SLEEP)
+        
+        risultato_nome = home_amministratore_page.verifica_filtro_nome("Ventyl 15")
+        time.sleep(TIME_SLEEP)
+        
+        assert risultato_nome
+        
+        
+        
+    
         
         
         
