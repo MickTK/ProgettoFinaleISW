@@ -16,6 +16,9 @@ class Home:
         logout_button = self.driver.find_element(By.ID, "logout")
         logout_button.click()
         
+        
+        
+        
 class Home_utente(Home):
     # inizializza la classe
     def __init__(self, driver):
@@ -63,14 +66,45 @@ class Home_utente(Home):
         for nome in nomi:
             if not (prodotto_nome.lower() in nome.lower()):
                 return False
-        return True          
+        return True   
+    
+    
+    
+    
+    # verifica che il prezzo dei prodotti sia >= minPrezzo inserito nel filtro
+    def verifica_filtro_minPrezzo(self, prodotto_minPrezzo):
+        prodotti_presenti = self.driver.find_elements(By.CLASS_NAME, "prodotto")
+        
+        prezzi = list()
+        for element in prodotti_presenti:
+            prezzo = float(element.find_element(By.CLASS_NAME, "prezzo").text)
+            prezzi.append(prezzo)
+            
+        for prezzo in prezzi:
+            if prezzo < float(prodotto_minPrezzo):
+                return False
+        return True  
+    
+    
+    
+    
+    
+    
+    
+    # pulire i campi del filtro nella home utente
+    def reset_filtro_home_utente(self):
+        nome_input = self.driver.find_element(By.ID, "nome")
+        tipologia_input = self.driver.find_element(By.ID, "tipologia")
+        minPrezzo_input = self.driver.find_element(By.ID, "minPrezzo")
+        maxPrezzo_input = self.driver.find_element(By.ID, "maxPrezzo")
+       
+        nome_input.clear()
+        tipologia_input.clear() 
+        minPrezzo_input.clear()
+        maxPrezzo_input.clear()      
       
-        
-        
-        
-        
-        
-
+      
+      
 class Home_amministratore(Home):
     # inizializza la classe
     def __init__(self, driver):
@@ -81,3 +115,20 @@ class Home_amministratore(Home):
     def logout(self):
         logout_button = self.driver.find_element(By.ID, "logout")
         logout_button.click()
+    
+    # pulire i campi del filtro nella home amminsitratore
+    def reset_filtro_home_amministratore(self):
+        nome_input = self.driver.find_element(By.ID, "nome")
+        tipologia_input = self.driver.find_element(By.ID, "tipologia")
+        minPrezzo_input = self.driver.find_element(By.ID, "minPrezzo")
+        maxPrezzo_input = self.driver.find_element(By.ID, "maxPrezzo")
+        minNumPezzi_input = self.driver.find_element(By.ID, "minNumPezzi")
+        maxNumPezzi_input = self.driver.find_element(By.ID, "maxNumPezzi")
+       
+        nome_input.clear()
+        tipologia_input.clear() 
+        minPrezzo_input.clear()
+        maxPrezzo_input.clear()
+        minNumPezzi_input.clear()
+        maxNumPezzi_input.clear()      
+      

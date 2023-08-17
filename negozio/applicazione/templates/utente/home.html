@@ -56,10 +56,10 @@
                         {% for prodotto in prodotti %}
                         <tr class="prodotto">
                             <td class="nome"> {{ prodotto.nome }} </td>
-                            <td> {{ prodotto.tipologia }} </td>
-                            <td> {{ prodotto.descrizione }} </td>
-                            <td> {{ prodotto.prezzo }} </td>
-                            <td> {{ prodotto.quantita }} </td>
+                            <td class="tipologia"> {{ prodotto.tipologia }} </td>
+                            <td class="descrizione"> {{ prodotto.descrizione }} </td>
+                            <td class="prezzo"> {{ prodotto.prezzo }} </td>
+                            <td class="quantita"> {{ prodotto.quantita }} </td>
 
                             <td><form method="post">
                                 {% csrf_token %}
