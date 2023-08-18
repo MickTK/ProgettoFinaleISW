@@ -116,9 +116,10 @@ class Home_amministratore(Home):
         aggiungi_prodotto_button = self.driver.find_element(By.ID, "aggiungiProdotto")
         aggiungi_prodotto_button.click() 
         
-    def modifica_prodotto(self):
-        modifica_prodotto_button = self.driver.find_element(By.ID, "modificaProdotto")
-        modifica_prodotto_button.click() 
+    # aggiunge un prodotto al carrello
+    def modifica_prodotto(self, prodotto_id):
+        modifica_prodotto_button = self.driver.find_element(By.ID, f"modifica_prodotto_{prodotto_id}")
+        modifica_prodotto_button.click()
         
     def resoconto_vendite(self):
         resoconto_vendite_button = self.driver.find_element(By.ID, "resocontoVendite")

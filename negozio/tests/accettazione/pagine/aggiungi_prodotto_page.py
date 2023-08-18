@@ -29,6 +29,7 @@ class AggiungiProdotto:
         prezzo_input = self.driver.find_element(By.ID, "prezzo")
         quantita_input = self.driver.find_element(By.ID, "quantita")
         
+        
         nome_input.send_keys(nome)
         tipologia_input.send_keys(tipologia)
         descrizione_input.send_keys(descrizione)
