@@ -390,7 +390,7 @@ class AccettazioneTestCase(TestCase):
         assert risultato_nome
     '''
     # test del filtro nella home amministratore
-    def test_12_filtro_home_amministratore(self):
+    def test_12_filtro_resoconto_vendite(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         resoconto_vendite_page = ResocontoVendite(self.driver)
