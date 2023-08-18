@@ -17,6 +17,7 @@ from tests.accettazione.pagine.carrello_page import Carrello
 from tests.accettazione.pagine.checkout_page import Checkout
 from tests.accettazione.pagine.aggiungi_prodotto_page import AggiungiProdotto
 from tests.accettazione.pagine.modifica_prodotto_page import ModificaProdotto
+from tests.accettazione.pagine.resoconto_vendite_page import ResocontoVendite
 
 # Tempo generale
 global TIME_SLEEP
@@ -360,7 +361,7 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)
         
         assert risultato_nome
-    '''
+    
     
     # test modifica prodotto (modifica prodotto - amministratore)
     def test_14_modifica_prodotto(self):
@@ -387,22 +388,34 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)
         
         assert risultato_nome
+    '''
+    # test del filtro nella home amministratore
+    def test_12_filtro_home_amministratore(self):
+        login_page = Login(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        resoconto_vendite_page = ResocontoVendite(self.driver)
+        time.sleep(TIME_SLEEP)
         
+        login_page.login("admin", "admin")
+        time.sleep(TIME_SLEEP)
         
+        home_amministratore_page.resoconto_vendite()
+        time.sleep(TIME_SLEEP) 
         
+        resoconto_vendite_page.filtra_prodotti("Playstation 5", "", "", "", "1", "")
+        time.sleep(TIME_SLEEP) 
         
+        resoconto_vendite_page.filtra()
+        time.sleep(TIME_SLEEP)
         
+        risultato_nome = resoconto_vendite_page.verifica_filtro_nome("Playstation 5")
+        risultato_minNumPezzi = resoconto_vendite_page.verifica_filtro_minPezziVenduti("1")
+        time.sleep(TIME_SLEEP) 
         
-    
+        assert risultato_nome
+        assert risultato_minNumPezzi
         
-        
-        
-        
-        
-        
-        
-        
-        
+        time.sleep(TIME_SLEEP) 
         
         
         

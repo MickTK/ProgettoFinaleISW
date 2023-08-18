@@ -20,7 +20,7 @@
             <div>
                 <h1>Resoconto vendite</h1> 
 
-                <a href="../Home_amministratore"><button class="button" type="button" value="home">Home</button></a>
+                <a href="../Home_amministratore"><button class="button" id="home" type="button" value="home">Home</button></a>
                 
             </div>
 
@@ -32,7 +32,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <input class="button" type="submit" value="Filtra">
+                    <input class="button" id="filtra" type="submit" value="Filtra">
                 </form> 
             </div>
             
@@ -53,13 +53,13 @@
                     </thead>
                     <tbody>
                         <!-- Qui verranno inserite le righe per i prodotti -->
-                        <tr>
                         {% for prodottoVenduto in resocontoVendite %}
-                            <td> {{ prodottoVenduto.nome }} </td>
-                            <td> {{ prodottoVenduto.tipologia }} </td>
-                            <td> {{ prodottoVenduto.prezzo }} </td>
-                            <td> {{ prodottoVenduto.quantita }} </td>
-                            <td> {{ prodottoVenduto.ricavo }}</td>
+                        <tr class="prodottoVenduto">
+                            <td class="nome"> {{ prodottoVenduto.nome }} </td>
+                            <td class="tipologia"> {{ prodottoVenduto.tipologia }} </td>
+                            <td class="prezzo"> {{ prodottoVenduto.prezzo }} </td>
+                            <td class="quantita"> {{ prodottoVenduto.quantita }} </td>
+                            <td class="ricavo"> {{ prodottoVenduto.ricavo }}</td>
                         </tr>
                         {% endfor %}
                     <tbody>
