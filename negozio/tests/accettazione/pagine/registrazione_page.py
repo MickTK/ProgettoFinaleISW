@@ -23,9 +23,23 @@ class Registrazione:
     def click_registrati(self):
         registrati = self.driver.find_element(By.ID, "registrati")
         registrati.click()
+    
+    def click_login(self):
+        login = self.driver.find_element(By.ID, "login")
+        login.click()
         
     # corpo della funzione principale
     def registrazione(self, username, password):
         self.open()
         self.inserimento_credenziali(username, password)
         self.click_registrati()
+        
+    # pulire i campi del filtro nella home amminsitratore
+    def reset_campi_registrazione(self):
+        username_input = self.driver.find_element(By.ID, "username")
+        password_input = self.driver.find_element(By.ID, "password")
+
+        username_input.clear()
+        password_input.clear()
+        
+        
