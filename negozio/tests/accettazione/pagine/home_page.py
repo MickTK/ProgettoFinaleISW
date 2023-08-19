@@ -160,6 +160,15 @@ class Home_amministratore(Home):
                 return False
         return True  
     
+    # Controlla se un dato nome appare nel negozio come prodotto
+    def verifica_presenza_in_negozio(self, nome_cercato):
+        prodotti = self.driver.find_elements(By.CLASS_NAME, "prodotto")
+        for prodotto in prodotti:
+            nome_prodotto = (prodotto.find_element(By.CLASS_NAME, "nome").text)
+            if nome_prodotto.lower() == nome_cercato.lower():
+                return True
+        return False
+
     # verifica che il numero di pezzi disponibili dei prodotti sia >= minNumPezzi inserito nel filtro
     def verifica_filtro_minNumPezzi(self, prodotto_minNumPezzi):
         prodotti_presenti = self.driver.find_elements(By.CLASS_NAME, "prodotto")
