@@ -362,7 +362,7 @@ class AccettazioneTestCase(TestCase):
         
         assert risultato_nome
     
-    '''
+    
     # test modifica prodotto (modifica prodotto - amministratore)
     def test_14_modifica_prodotto(self):
         login_page = Login(self.driver)
@@ -388,7 +388,7 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)
         
         assert risultato_nome
-    '''
+    
     # test del filtro nella home amministratore
     def test_12_filtro_resoconto_vendite(self):
         login_page = Login(self.driver)
