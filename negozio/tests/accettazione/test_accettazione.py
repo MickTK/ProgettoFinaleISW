@@ -312,6 +312,17 @@ class AccettazioneTestCase(TestCase):
         login_page.login("cliente", "cliente")
         time.sleep(TIME_SLEEP)
         
+        home_utente_page.filtra_prodotti("Iphone", "", "", "")
+        time.sleep(TIME_SLEEP) 
+        
+        home_utente_page.filtra()
+        time.sleep(TIME_SLEEP) 
+        
+        risultato_nome_1 = home_utente_page.verifica_filtro_nome("Iphone 14")
+        
+        home_utente_page.reset_filtro_home_utente()
+        time.sleep(TIME_SLEEP)
+        
         home_utente_page.filtra_prodotti("Iphone", "", "200.00", "")
         time.sleep(TIME_SLEEP) 
         
@@ -320,12 +331,11 @@ class AccettazioneTestCase(TestCase):
         
         risultato_nome = home_utente_page.verifica_filtro_nome("Iphone 14")
         
-        # home_utente_page.reset_filtro_home_utente()
         
-        # home_utente_page.filtra_prodotti("", "", "600.00", "")
         risultato_minPrezzo = home_utente_page.verifica_filtro_minPrezzo("200.00")
         time.sleep(TIME_SLEEP) 
         
+        assert risultato_nome_1
         assert risultato_nome
         assert risultato_minPrezzo
         
@@ -348,8 +358,10 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP) 
         
         risultato_nome_1 = home_amministratore_page.verifica_filtro_nome("Iphone 14")
-        
         time.sleep(TIME_SLEEP) 
+        
+        home_amministratore_page.reset_filtro_home_amministratore()
+        time.sleep(TIME_SLEEP)
         
         home_amministratore_page.filtra_prodotti_amministratore("Iphone", "", "", "", "6", "")
         time.sleep(TIME_SLEEP) 
@@ -520,16 +532,29 @@ class AccettazioneTestCase(TestCase):
         home_amministratore_page.resoconto_vendite()
         time.sleep(TIME_SLEEP) 
         
-        resoconto_vendite_page.filtra_prodotti("Iphone", "", "", "", "2", "")
+        resoconto_vendite_page.filtra_prodotti("Iphone", "", "", "", "", "")
+        time.sleep(TIME_SLEEP) 
+        
+        resoconto_vendite_page.filtra()
+        time.sleep(TIME_SLEEP)
+        
+        risultato_nome_1 = resoconto_vendite_page.verifica_filtro_nome("Iphone 14")
+        time.sleep(TIME_SLEEP)
+        
+        resoconto_vendite_page.reset_filtro_resoconto_vendite()
+        time.sleep(TIME_SLEEP)
+        
+        resoconto_vendite_page.filtra_prodotti("Iphone", "", "", "", "3", "")
         time.sleep(TIME_SLEEP) 
         
         resoconto_vendite_page.filtra()
         time.sleep(TIME_SLEEP)
         
         risultato_nome = resoconto_vendite_page.verifica_filtro_nome("Iphone 14")
-        risultato_minNumPezzi = resoconto_vendite_page.verifica_filtro_minPezziVenduti("2")
+        risultato_minNumPezzi = resoconto_vendite_page.verifica_filtro_minPezziVenduti("3")
         time.sleep(TIME_SLEEP) 
         
+        assert risultato_nome_1
         assert risultato_nome
         assert risultato_minNumPezzi
         
