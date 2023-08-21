@@ -4,7 +4,7 @@ import time
 
 # Tempo generale
 global TIME_SLEEP
-TIME_SLEEP = 2
+TIME_SLEEP = 0
 
 class Registrazione:
     # inizializza la classe
