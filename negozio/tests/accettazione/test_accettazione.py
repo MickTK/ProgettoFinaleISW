@@ -46,7 +46,7 @@ class AccettazioneTestCase(TestCase):
         registrazione_page = Registrazione(self.driver)
         time.sleep(TIME_SLEEP) 
         
-        registrazione_page.registrazione("nuovoeffdfdseUtntsdseq1", "nuovaPassword")
+        registrazione_page.registrazione("nuovoUtente", "nuovaPassword")
         time.sleep(TIME_SLEEP)
         
         # assert per verificare il successo del registrazione
