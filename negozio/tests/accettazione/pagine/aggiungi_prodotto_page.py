@@ -41,4 +41,19 @@ class AggiungiProdotto:
         self.aggiungi_prodotto(nome, tipologia, descrizione, prezzo, quantita)
         self.aggiungi_prodotto_button()
         self.home()
+    
+    # metodo per compilare il form con i dati del prodotto da aggiungere
+    def reset_campi_aggiungi_prodotto(self):
+        nome_input = self.driver.find_element(By.ID, "nome")
+        tipologia_input = self.driver.find_element(By.ID, "tipologia")
+        descrizione_input = self.driver.find_element(By.ID, "descrizione")
+        prezzo_input = self.driver.find_element(By.ID, "prezzo")
+        quantita_input = self.driver.find_element(By.ID, "quantita")
+        
+        
+        nome_input.clear()
+        tipologia_input.clear()
+        descrizione_input.clear()
+        prezzo_input.clear()
+        quantita_input.clear()
         

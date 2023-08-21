@@ -382,6 +382,9 @@ class AccettazioneTestCase(TestCase):
         home_amministratore_page.aggiungi_prodotto()
         time.sleep(TIME_SLEEP)
         
+        aggiungi_prodotto_page.reset_campi_aggiungi_prodotto()
+        time.sleep(TIME_SLEEP)
+        
         aggiungi_prodotto_page.aggiungi_prodotto("Ventyl 15", "Ventilatore", "Un bel ventilatore", "7500", "10")
         time.sleep(TIME_SLEEP)
         
@@ -406,7 +409,38 @@ class AccettazioneTestCase(TestCase):
         home_amministratore_page.aggiungi_prodotto()
         time.sleep(TIME_SLEEP)
         
+        aggiungi_prodotto_page.reset_campi_aggiungi_prodotto()
+        time.sleep(TIME_SLEEP)
+        
         aggiungi_prodotto_page.aggiungi_prodotto("Ventyl 15", "Ventilatore", "", "", "")
+        time.sleep(TIME_SLEEP)
+        
+        aggiungi_prodotto_page.aggiungi_prodotto_button()
+        time.sleep(TIME_SLEEP)
+        
+        # assert per verificare che l'operazione sia andata a buon fine (deve restare nella pagina aggiungi prodotto)
+        expected_url = "http://127.0.0.1:8000/Aggiungi_prodotto/"
+        actual_url = self.driver.current_url
+        self.assertEqual(expected_url, actual_url) 
+        time.sleep(TIME_SLEEP)
+        
+        # test inserimento nuovo prodotto inserendo la quantità = 0
+    def test_13_aggiungi_prodotto_error_quantita(self):
+        login_page = Login(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
+        time.sleep(TIME_SLEEP)
+        
+        login_page.login("admin", "admin")
+        time.sleep(TIME_SLEEP)    
+        
+        home_amministratore_page.aggiungi_prodotto()
+        time.sleep(TIME_SLEEP)
+        
+        aggiungi_prodotto_page.reset_campi_aggiungi_prodotto()
+        time.sleep(TIME_SLEEP)
+        
+        aggiungi_prodotto_page.aggiungi_prodotto("Scrivany 845", "Scrivania moderna", "Una bella scrivania costosa", "7500", "0")
         time.sleep(TIME_SLEEP)
         
         aggiungi_prodotto_page.aggiungi_prodotto_button()
