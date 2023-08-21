@@ -243,6 +243,7 @@ class AccettazioneTestCase(TestCase):
         # aggiunta di un prodotto al carrello
         prodotto_id_desiderato = "1"
         home_utente_page.aggiungi_prodotto(prodotto_id_desiderato)
+        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato)
         time.sleep(TIME_SLEEP)
         
         home_utente_page.accedi_al_carrello()
