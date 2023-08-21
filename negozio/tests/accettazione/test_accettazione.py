@@ -42,7 +42,7 @@ class AccettazioneTestCase(TestCase):
     # TEST SULLA REGISTRAZIONE
     
     # test del registrazione con dati corretti
-    def test_0_successful_registrazione(self):
+    def test_00_successful_registrazione(self):
         registrazione_page = Registrazione(self.driver)
         time.sleep(TIME_SLEEP) 
         
@@ -57,7 +57,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test del registrazione con dati errati
-    def test_1_failed_registrazione(self):
+    def test_01_failed_registrazione(self):
         registrazione_page = Registrazione(self.driver)
         time.sleep(TIME_SLEEP) 
         
@@ -74,7 +74,7 @@ class AccettazioneTestCase(TestCase):
     # TEST SUL LOGIN
     
     # test del login con dati corretti
-    def test_2_successful_login(self):
+    def test_02_successful_login(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP) 
         
@@ -89,7 +89,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test del login con username errato
-    def test_3_failed_login_username(self):
+    def test_03_failed_login_username(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
@@ -103,7 +103,7 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)
     
     # test del login con password errata
-    def test_4_failed_login_passw(self):
+    def test_04_failed_login_passw(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
@@ -118,7 +118,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test del logout con url corretto
-    def test_5_successful_logout(self):
+    def test_05_successful_logout(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         time.sleep(TIME_SLEEP) 
@@ -137,7 +137,7 @@ class AccettazioneTestCase(TestCase):
        
     
     # test: prova ad aggiungere un prodotto presente nel negozio (stock)
-    def test_6_successful_prodotto_aggiunto_al_carrello(self):
+    def test_06_successful_prodotto_aggiunto_al_carrello(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -169,7 +169,7 @@ class AccettazioneTestCase(TestCase):
        
         
     # test rimuovi un prodotto dal carrello
-    def test_7_rimuovi_prodotto_carrello(self):
+    def test_07_rimuovi_prodotto_carrello(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -205,7 +205,7 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)  
        
     # test per completare il checkout
-    def test_8_completa_checkout(self):
+    def test_08_completa_checkout(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -267,7 +267,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test del login (amministratore) con dati corretti
-    def test_9_successful_login_amministratore(self):
+    def test_09_successful_login_amministratore(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
