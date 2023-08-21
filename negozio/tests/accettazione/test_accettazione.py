@@ -21,7 +21,7 @@ from tests.accettazione.pagine.resoconto_vendite_page import ResocontoVendite
 
 # Tempo generale
 global TIME_SLEEP
-TIME_SLEEP = 4
+TIME_SLEEP = 2
 
 class AccettazioneTestCase(TestCase):
     
@@ -93,7 +93,7 @@ class AccettazioneTestCase(TestCase):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
-        login_page.login("clicli", "cluclu")
+        login_page.login("UsernameErrata", "cluclu")
         time.sleep(TIME_SLEEP)
         
         # assert per verificare il fallimento del login
@@ -385,7 +385,7 @@ class AccettazioneTestCase(TestCase):
         aggiungi_prodotto_page.reset_campi_aggiungi_prodotto()
         time.sleep(TIME_SLEEP)
         
-        aggiungi_prodotto_page.aggiungi_prodotto("Ventyl 15", "Ventilatore", "Un bel ventilatore", "7500", "10")
+        aggiungi_prodotto_page.aggiungi_prodotto("Ventyl 15", "Ventilatore", "Un bel ventilatore", "70", "10")
         time.sleep(TIME_SLEEP)
         
         aggiungi_prodotto_page.aggiungi_prodotto_button()

@@ -5,7 +5,7 @@ import time
 
 # Tempo generale
 global TIME_SLEEP
-TIME_SLEEP = 4
+TIME_SLEEP = 2
 
 class Checkout:
     # inizializza la classe
