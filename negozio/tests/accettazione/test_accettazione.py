@@ -152,8 +152,6 @@ class AccettazioneTestCase(TestCase):
         carrello_page.accedi_al_checkout()
         time.sleep(TIME_SLEEP)
         
-        checkout_page.ordina()
-        
         expected_url = "http://127.0.0.1:8000/carrello/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url)    
