@@ -412,7 +412,7 @@ class AccettazioneTestCase(TestCase):
         aggiungi_prodotto_page.reset_campi_aggiungi_prodotto()
         time.sleep(TIME_SLEEP)
         
-        aggiungi_prodotto_page.aggiungi_prodotto("Ventyl 15", "Ventilatore", "", "", "")
+        aggiungi_prodotto_page.aggiungi_prodotto("GameBoy", "Console Nintendo", "", "", "")
         time.sleep(TIME_SLEEP)
         
         aggiungi_prodotto_page.aggiungi_prodotto_button()
@@ -521,14 +521,14 @@ class AccettazioneTestCase(TestCase):
         home_amministratore_page.resoconto_vendite()
         time.sleep(TIME_SLEEP) 
         
-        resoconto_vendite_page.filtra_prodotti("Playstation 5", "", "", "", "1", "")
+        resoconto_vendite_page.filtra_prodotti("Iphone", "", "", "", "2", "")
         time.sleep(TIME_SLEEP) 
         
         resoconto_vendite_page.filtra()
         time.sleep(TIME_SLEEP)
         
-        risultato_nome = resoconto_vendite_page.verifica_filtro_nome("Playstation 5")
-        risultato_minNumPezzi = resoconto_vendite_page.verifica_filtro_minPezziVenduti("1")
+        risultato_nome = resoconto_vendite_page.verifica_filtro_nome("Iphone 14")
+        risultato_minNumPezzi = resoconto_vendite_page.verifica_filtro_minPezziVenduti("2")
         time.sleep(TIME_SLEEP) 
         
         assert risultato_nome
