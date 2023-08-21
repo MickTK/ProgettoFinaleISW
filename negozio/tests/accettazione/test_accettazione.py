@@ -163,6 +163,8 @@ class AccettazioneTestCase(TestCase):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
         time.sleep(TIME_SLEEP)
         
         login_page.login("cliente", "cliente")
@@ -195,6 +197,8 @@ class AccettazioneTestCase(TestCase):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
         time.sleep(TIME_SLEEP)
         
         login_page.login("cliente", "cliente")  
@@ -235,6 +239,8 @@ class AccettazioneTestCase(TestCase):
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
         checkout_page = Checkout(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
         time.sleep(TIME_SLEEP)
         
         login_page.login("cliente", "cliente") 
@@ -331,6 +337,8 @@ class AccettazioneTestCase(TestCase):
     def test_12_filtro_home_utente(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
         time.sleep(TIME_SLEEP)
         
         login_page.login("cliente", "cliente")
@@ -370,6 +378,7 @@ class AccettazioneTestCase(TestCase):
     def test_13_filtro_home_amministratore(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
         time.sleep(TIME_SLEEP)
         
         login_page.login("admin", "admin")
@@ -493,6 +502,7 @@ class AccettazioneTestCase(TestCase):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         modifica_prodotto_page = ModificaProdotto(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
         time.sleep(TIME_SLEEP)
         
         login_page.login("admin", "admin")
@@ -519,6 +529,7 @@ class AccettazioneTestCase(TestCase):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         modifica_prodotto_page = ModificaProdotto(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
         time.sleep(TIME_SLEEP)
         
         login_page.login("admin", "admin")
@@ -546,6 +557,9 @@ class AccettazioneTestCase(TestCase):
     # test del filtro nella home amministratore
     def test_19_filtro_resoconto_vendite(self):
         login_page = Login(self.driver)
+        home_utente_page = Home_utente(self.driver)
+        carrello_page = Carrello(self.driver)
+        checkout_page = Checkout(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         resoconto_vendite_page = ResocontoVendite(self.driver)
         time.sleep(TIME_SLEEP)
