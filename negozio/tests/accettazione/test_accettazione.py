@@ -388,14 +388,14 @@ class AccettazioneTestCase(TestCase):
         home_amministratore_page.reset_filtro_home_amministratore()
         time.sleep(TIME_SLEEP)
         
-        home_amministratore_page.filtra_prodotti_amministratore("Iphone", "", "", "", "6", "")
+        home_amministratore_page.filtra_prodotti_amministratore("Iphone", "", "", "", "15", "")
         time.sleep(TIME_SLEEP) 
         
         home_amministratore_page.filtra()
         time.sleep(TIME_SLEEP) 
         
         risultato_nome = home_amministratore_page.verifica_filtro_nome("Iphone 14")
-        risultato_minNumPezzi = home_amministratore_page.verifica_filtro_minNumPezzi("6")
+        risultato_minNumPezzi = home_amministratore_page.verifica_filtro_minNumPezzi("15")
         time.sleep(TIME_SLEEP) 
         
         assert risultato_nome_1
