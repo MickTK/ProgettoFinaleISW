@@ -1,6 +1,11 @@
 # Utile per individuare elementi html in una pagina
 from selenium.webdriver.common.by import By
 from django.test import TestCase
+import time
+
+# Tempo generale
+global TIME_SLEEP
+TIME_SLEEP = 4
 
 class Carrello:
     # inizializza la classe
@@ -34,20 +39,28 @@ class Carrello:
 # torna alla home
     def accedi_alla_home(self):
         accedi_alla_home_button = self.driver.find_element(By.ID, "homeCarr")
+        time.sleep(TIME_SLEEP)
+        
         accedi_alla_home_button.click()    
         
 # logout dal carrello
     def logout_dal_carrello(self):
         logout_dal_carrello_button = self.driver.find_element(By.ID, "logoutCarr")
+        time.sleep(TIME_SLEEP)
+        
         logout_dal_carrello_button.click()      
         
 # accedi al checkout
     def accedi_al_checkout(self):
         accedi_al_checkout_button = self.driver.find_element(By.ID, "checkout")
+        time.sleep(TIME_SLEEP)
+        
         accedi_al_checkout_button.click()
         
 # rimuove un singolo prodotto dal carrello
     def rimuovi_prodotto(self, prodotto_id):
         rimuovi_prodotto_button = self.driver.find_element(By.ID, f"rimuovi_prodotto_{prodotto_id}")
+        time.sleep(TIME_SLEEP)
+        
         rimuovi_prodotto_button.click()
                          

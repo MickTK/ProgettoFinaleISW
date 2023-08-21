@@ -21,7 +21,7 @@ from tests.accettazione.pagine.resoconto_vendite_page import ResocontoVendite
 
 # Tempo generale
 global TIME_SLEEP
-TIME_SLEEP = 0
+TIME_SLEEP = 4
 
 class AccettazioneTestCase(TestCase):
     
