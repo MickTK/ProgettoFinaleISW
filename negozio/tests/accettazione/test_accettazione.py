@@ -133,11 +133,35 @@ class AccettazioneTestCase(TestCase):
         expected_url = "http://127.0.0.1:8000/login/"
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
-        time.sleep(TIME_SLEEP)    
+        time.sleep(TIME_SLEEP)   
+    
+    # test del checkout con zero prodotti nel carrello
+    def test_06_checkout_senza_prodotti(self):
+        login_page = Login(self.driver)
+        home_utente_page = Home_utente(self.driver)
+        carrello_page = Carrello(self.driver)
+        checkout_page = Checkout(self.driver)
+        time.sleep(TIME_SLEEP)
+        
+        login_page.login("cliente", "cliente") 
+        time.sleep(TIME_SLEEP)
+        
+        home_utente_page.accedi_al_carrello()
+        time.sleep(TIME_SLEEP)
+        
+        carrello_page.accedi_al_checkout()
+        time.sleep(TIME_SLEEP)
+        
+        checkout_page.ordina()
+        
+        expected_url = "http://127.0.0.1:8000/carrello/"
+        actual_url = self.driver.current_url
+        self.assertEqual(expected_url, actual_url)    
+        time.sleep(TIME_SLEEP)  
        
     
     # test: prova ad aggiungere un prodotto presente nel negozio (stock)
-    def test_06_successful_prodotto_aggiunto_al_carrello(self):
+    def test_07_successful_prodotto_aggiunto_al_carrello(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -169,7 +193,7 @@ class AccettazioneTestCase(TestCase):
        
         
     # test rimuovi un prodotto dal carrello
-    def test_07_rimuovi_prodotto_carrello(self):
+    def test_08_rimuovi_prodotto_carrello(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -206,29 +230,6 @@ class AccettazioneTestCase(TestCase):
         self.assertGreater(numInizialeQuantitaProdotto_2, numFinaleQuantitaProdotto_2)
         time.sleep(TIME_SLEEP)  
         
-    # test del checkout con zero prodotti nel carrello
-    def test_08_checkout_senza_prodotti(self):
-        login_page = Login(self.driver)
-        home_utente_page = Home_utente(self.driver)
-        carrello_page = Carrello(self.driver)
-        checkout_page = Checkout(self.driver)
-        time.sleep(TIME_SLEEP)
-        
-        login_page.login("cliente", "cliente") 
-        time.sleep(TIME_SLEEP)
-        
-        home_utente_page.accedi_al_carrello()
-        time.sleep(TIME_SLEEP)
-        
-        carrello_page.accedi_al_checkout()
-        time.sleep(TIME_SLEEP)
-        
-        checkout_page.ordina()
-        
-        expected_url = "http://127.0.0.1:8000/carrello/"
-        actual_url = self.driver.current_url
-        self.assertEqual(expected_url, actual_url)    
-        time.sleep(TIME_SLEEP) 
        
     # test per completare il checkout
     def test_09_completa_checkout(self):
