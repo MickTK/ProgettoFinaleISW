@@ -21,7 +21,7 @@ from tests.accettazione.pagine.resoconto_vendite_page import ResocontoVendite
 
 # Tempo generale
 global TIME_SLEEP
-TIME_SLEEP = 2
+TIME_SLEEP = 0
 
 class AccettazioneTestCase(TestCase):
     
@@ -38,7 +38,7 @@ class AccettazioneTestCase(TestCase):
     def setUp(self):
         pass
     
-    '''
+    
     # TEST SULLA REGISTRAZIONE
     
     # test del registrazione con dati corretti
@@ -46,7 +46,7 @@ class AccettazioneTestCase(TestCase):
         registrazione_page = Registrazione(self.driver)
         time.sleep(TIME_SLEEP) 
         
-        registrazione_page.registrazione("nuovoefeUtnteq1", "nuovaPassword")
+        registrazione_page.registrazione("nuovoeffdfdseUtntsdseq1", "nuovaPassword")
         time.sleep(TIME_SLEEP)
         
         # assert per verificare il successo del registrazione
@@ -88,8 +88,8 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)
         
         
-    # test del login con dati errati
-    def test_3_failed_login(self):
+    # test del login con username errato
+    def test_3_failed_login_username(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
@@ -101,12 +101,30 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
         time.sleep(TIME_SLEEP)
+    
+    # test del login con password errata
+    def test_3_failed_login_passw(self):
+        login_page = Login(self.driver)
+        time.sleep(TIME_SLEEP)
+        
+        login_page.login("cliente", "cluclu")
+        time.sleep(TIME_SLEEP)
+        
+        # assert per verificare il fallimento del login
+        expected_url = "http://127.0.0.1:8000/login/"
+        actual_url = self.driver.current_url
+        self.assertEqual(expected_url, actual_url) 
+        time.sleep(TIME_SLEEP)
         
         
     # test del logout con url corretto
     def test_4_successful_logout(self):
+        login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         time.sleep(TIME_SLEEP) 
+        
+        login_page.login("cliente", "cliente")
+        time.sleep(TIME_SLEEP)
         
         home_utente_page.logout()
         time.sleep(TIME_SLEEP) 
@@ -309,7 +327,7 @@ class AccettazioneTestCase(TestCase):
         assert risultato_minPrezzo
         
         time.sleep(TIME_SLEEP) 
-    '''
+    
     
     # test del filtro nella home amministratore
     def test_12_filtro_home_amministratore(self):
@@ -334,10 +352,8 @@ class AccettazioneTestCase(TestCase):
         assert risultato_minNumPezzi
         
         time.sleep(TIME_SLEEP) 
-    '''
     
-    # NON PASSA L'ASSERT!!!!!!!!!!!!!!!!
-    '''
+    
     # test inserimento nuovo prodotto (aggiungi prodotto - amministratore)
     def test_13_aggiungi_prodotto(self):
         login_page = Login(self.driver)
