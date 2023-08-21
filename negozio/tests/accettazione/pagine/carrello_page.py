@@ -51,5 +51,3 @@ class Carrello:
         rimuovi_prodotto_button = self.driver.find_element(By.ID, f"rimuovi_prodotto_{prodotto_id}")
         rimuovi_prodotto_button.click()
                          
-
-            

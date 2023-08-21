@@ -198,4 +198,7 @@ class Home_amministratore(Home):
         maxPrezzo_input.clear()
         minNumPezzi_input.clear()
         maxNumPezzi_input.clear()      
+    
+    
+        
       

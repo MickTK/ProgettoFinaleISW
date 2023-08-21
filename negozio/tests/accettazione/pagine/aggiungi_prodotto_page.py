@@ -35,3 +35,10 @@ class AggiungiProdotto:
         descrizione_input.send_keys(descrizione)
         prezzo_input.send_keys(prezzo)
         quantita_input.send_keys(quantita)
+
+    # metodo completo per aggiungere un prodotto nel negozio
+    def aggiungi_un_prodotto_nel_negozio(self, nome, tipologia, descrizione, prezzo, quantita):
+        self.aggiungi_prodotto(nome, tipologia, descrizione, prezzo, quantita)
+        self.aggiungi_prodotto_button()
+        self.home()
+        

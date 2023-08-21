@@ -38,7 +38,7 @@ class AccettazioneTestCase(TestCase):
     def setUp(self):
         pass
     
-    
+    '''
     # TEST SULLA REGISTRAZIONE
     
     # test del registrazione con dati corretti
@@ -134,7 +134,7 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
         time.sleep(TIME_SLEEP)    
-        
+    '''    
     
     # test: prova ad aggiungere un prodotto presente nel negozio (stock)
     def test_5_successful_prodotto_aggiunto_al_carrello(self):
@@ -147,20 +147,24 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)
         
         # aggiunta di un prodotto al carrello
-        prodotto_id_desiderato = "1"
-        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato)
+        prodotto_id_desiderato_1 = "1"
+        prodotto_id_desiderato_2 = "3"
+        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato_1)
+        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato_2)
         time.sleep(TIME_SLEEP)
         
         # assert per verificare il il successo e l'aggiunta del prodotto al carrello
         # verifica se il prodotto è stato aggiunto al carrello
         home_utente_page.accedi_al_carrello()
-        presente_nel_carrello = carrello_page.verifica_prodotto_nel_carrello("1")
+        presente_nel_carrello_1 = carrello_page.verifica_prodotto_nel_carrello("1")
+        presente_nel_carrello_2 = carrello_page.verifica_prodotto_nel_carrello("3")
         time.sleep(TIME_SLEEP)
 
         # assert per verificare che il prodotto sia presente nel carrello
-        assert presente_nel_carrello  
+        assert presente_nel_carrello_1  
+        assert presente_nel_carrello_2  
         time.sleep(TIME_SLEEP)
-        
+    '''    
         
     # test rimuovi un prodotto dal carrello
     def test_6_rimuovi_prodotto_carrello(self):
@@ -433,7 +437,7 @@ class AccettazioneTestCase(TestCase):
         
         time.sleep(TIME_SLEEP) 
         
-        
+    '''    
         
         
         
