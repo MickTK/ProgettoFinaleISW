@@ -134,7 +134,7 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
         time.sleep(TIME_SLEEP)    
-        
+       
     
     # test: prova ad aggiungere un prodotto presente nel negozio (stock)
     def test_5_successful_prodotto_aggiunto_al_carrello(self):
@@ -151,6 +151,7 @@ class AccettazioneTestCase(TestCase):
         prodotto_id_desiderato_2 = "3"
         home_utente_page.aggiungi_prodotto(prodotto_id_desiderato_1)
         home_utente_page.aggiungi_prodotto(prodotto_id_desiderato_2)
+        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato_2)
         time.sleep(TIME_SLEEP)
         
         # assert per verificare il il successo e l'aggiunta del prodotto al carrello
@@ -159,12 +160,13 @@ class AccettazioneTestCase(TestCase):
         presente_nel_carrello_1 = carrello_page.verifica_prodotto_nel_carrello("1")
         presente_nel_carrello_2 = carrello_page.verifica_prodotto_nel_carrello("3")
         time.sleep(TIME_SLEEP)
+        
 
         # assert per verificare che il prodotto sia presente nel carrello
         assert presente_nel_carrello_1  
-        assert presente_nel_carrello_2  
+        assert presente_nel_carrello_2
         time.sleep(TIME_SLEEP)
-    '''    
+       
         
     # test rimuovi un prodotto dal carrello
     def test_6_rimuovi_prodotto_carrello(self):
@@ -201,7 +203,7 @@ class AccettazioneTestCase(TestCase):
         self.assertGreater(numInizialeQuantitaProdotto, numFinaleQuantitaProdotto)
         self.assertGreater(numInizialeQuantitaProdotto_2, numFinaleQuantitaProdotto_2)
         time.sleep(TIME_SLEEP)  
-    '''    
+       
     # test per completare il checkout
     def test_7_completa_checkout(self):
         login_page = Login(self.driver)
@@ -366,7 +368,7 @@ class AccettazioneTestCase(TestCase):
         
         time.sleep(TIME_SLEEP) 
     
-    
+    '''
     # test inserimento nuovo prodotto (aggiungi prodotto - amministratore)
     def test_13_aggiungi_prodotto(self):
         login_page = Login(self.driver)
@@ -390,7 +392,32 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)
         
         assert risultato_nome
-    
+        
+    # test inserimento nuovo prodotto senza inserire tutti i campi
+    def test_13_aggiungi_prodotto_error(self):
+        login_page = Login(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        aggiungi_prodotto_page = AggiungiProdotto(self.driver)
+        time.sleep(TIME_SLEEP)
+        
+        login_page.login("admin", "admin")
+        time.sleep(TIME_SLEEP)    
+        
+        home_amministratore_page.aggiungi_prodotto()
+        time.sleep(TIME_SLEEP)
+        
+        aggiungi_prodotto_page.aggiungi_prodotto("Ventyl 15", "Ventilatore", "", "", "")
+        time.sleep(TIME_SLEEP)
+        
+        aggiungi_prodotto_page.aggiungi_prodotto_button()
+        time.sleep(TIME_SLEEP)
+        
+        # assert per verificare che l'operazione sia andata a buon fine (deve restare nella pagina aggiungi prodotto)
+        expected_url = "http://127.0.0.1:8000/Aggiungi_prodotto/"
+        actual_url = self.driver.current_url
+        self.assertEqual(expected_url, actual_url) 
+        time.sleep(TIME_SLEEP)
+    '''
     
     # test modifica prodotto (modifica prodotto - amministratore)
     def test_14_modifica_prodotto(self):
