@@ -168,6 +168,7 @@ class Home_amministratore(Home):
             if nome_prodotto.lower() == nome_cercato.lower():
                 return True
         return False
+    
 
     # verifica che il numero di pezzi disponibili dei prodotti sia >= minNumPezzi inserito nel filtro
     def verifica_filtro_minNumPezzi(self, prodotto_minNumPezzi):

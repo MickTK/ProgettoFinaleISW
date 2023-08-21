@@ -368,7 +368,7 @@ class AccettazioneTestCase(TestCase):
         
         time.sleep(TIME_SLEEP) 
     
-    '''
+    
     # test inserimento nuovo prodotto (aggiungi prodotto - amministratore)
     def test_13_aggiungi_prodotto(self):
         login_page = Login(self.driver)
@@ -468,7 +468,33 @@ class AccettazioneTestCase(TestCase):
         home_amministratore_page.modifica_prodotto("1")
         time.sleep(TIME_SLEEP)
         
-        modifica_prodotto_page.modifica_prodotto("Iphone 20", "", "", "", "")
+        modifica_prodotto_page.modifica_prodotto("Iphone 20", "", "", "", "30")
+        time.sleep(TIME_SLEEP)
+        
+        modifica_prodotto_page.modifica_prodotto_button()
+        time.sleep(TIME_SLEEP)
+        
+        risultato_nome = home_amministratore_page.verifica_presenza_in_negozio("Iphone 20")
+        time.sleep(TIME_SLEEP)
+    
+        
+        assert risultato_nome
+        
+    def test_14_modifica_prodotto_quantita_zero(self):
+        login_page = Login(self.driver)
+        home_amministratore_page = Home_amministratore(self.driver)
+        modifica_prodotto_page = ModificaProdotto(self.driver)
+        time.sleep(TIME_SLEEP)
+        
+        login_page.login("admin", "admin")
+        time.sleep(TIME_SLEEP) 
+        
+        # bisogna prima aggiungere un prodotto lato amministratore, poi modificare la riga sotto ("1" --> prodotto appena aggiunto)
+        
+        home_amministratore_page.modifica_prodotto("1")
+        time.sleep(TIME_SLEEP)
+        
+        modifica_prodotto_page.modifica_prodotto("Iphone 20", "", "", "", "0")
         time.sleep(TIME_SLEEP)
         
         modifica_prodotto_page.modifica_prodotto_button()
@@ -477,8 +503,11 @@ class AccettazioneTestCase(TestCase):
         risultato_nome = home_amministratore_page.verifica_presenza_in_negozio("Iphone 20")
         time.sleep(TIME_SLEEP)
         
-        assert risultato_nome
-    
+        
+        
+        assert not risultato_nome
+        
+    '''
     # test del filtro nella home amministratore
     def test_12_filtro_resoconto_vendite(self):
         login_page = Login(self.driver)
