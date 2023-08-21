@@ -38,7 +38,7 @@ class AccettazioneTestCase(TestCase):
     def setUp(self):
         pass
     
-    '''
+    
     # TEST SULLA REGISTRAZIONE
     
     # test del registrazione con dati corretti
@@ -103,7 +103,7 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)
     
     # test del login con password errata
-    def test_3_failed_login_passw(self):
+    def test_4_failed_login_passw(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
@@ -118,7 +118,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test del logout con url corretto
-    def test_4_successful_logout(self):
+    def test_5_successful_logout(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         time.sleep(TIME_SLEEP) 
@@ -137,7 +137,7 @@ class AccettazioneTestCase(TestCase):
        
     
     # test: prova ad aggiungere un prodotto presente nel negozio (stock)
-    def test_5_successful_prodotto_aggiunto_al_carrello(self):
+    def test_6_successful_prodotto_aggiunto_al_carrello(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -169,7 +169,7 @@ class AccettazioneTestCase(TestCase):
        
         
     # test rimuovi un prodotto dal carrello
-    def test_6_rimuovi_prodotto_carrello(self):
+    def test_7_rimuovi_prodotto_carrello(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -205,7 +205,7 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)  
        
     # test per completare il checkout
-    def test_7_completa_checkout(self):
+    def test_8_completa_checkout(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         carrello_page = Carrello(self.driver)
@@ -267,7 +267,7 @@ class AccettazioneTestCase(TestCase):
         
         
     # test del login (amministratore) con dati corretti
-    def test_8_successful_login_amministratore(self):
+    def test_9_successful_login_amministratore(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
@@ -282,7 +282,7 @@ class AccettazioneTestCase(TestCase):
           
         
     # test del login (amministratore) con dati corretti
-    def test_9_failed_login_amministratore(self):
+    def test_10_failed_login_amministratore(self):
         login_page = Login(self.driver)
         time.sleep(TIME_SLEEP)
         
@@ -297,7 +297,7 @@ class AccettazioneTestCase(TestCase):
              
         
     # test del logout con url corretto
-    def test_10_successful_logout_amministratore(self):
+    def test_11_successful_logout_amministratore(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         time.sleep(TIME_SLEEP)
@@ -316,7 +316,7 @@ class AccettazioneTestCase(TestCase):
     
         
     # test del filtro nella home utente
-    def test_11_filtro_home_utente(self):
+    def test_12_filtro_home_utente(self):
         login_page = Login(self.driver)
         home_utente_page = Home_utente(self.driver)
         time.sleep(TIME_SLEEP)
@@ -345,7 +345,7 @@ class AccettazioneTestCase(TestCase):
     
     
     # test del filtro nella home amministratore
-    def test_12_filtro_home_amministratore(self):
+    def test_13_filtro_home_amministratore(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         time.sleep(TIME_SLEEP)
@@ -370,7 +370,7 @@ class AccettazioneTestCase(TestCase):
     
     
     # test inserimento nuovo prodotto (aggiungi prodotto - amministratore)
-    def test_13_aggiungi_prodotto(self):
+    def test_14_aggiungi_prodotto(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         aggiungi_prodotto_page = AggiungiProdotto(self.driver)
@@ -397,7 +397,7 @@ class AccettazioneTestCase(TestCase):
         assert risultato_nome
         
     # test inserimento nuovo prodotto senza inserire tutti i campi
-    def test_13_aggiungi_prodotto_error(self):
+    def test_15_aggiungi_prodotto_error(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         aggiungi_prodotto_page = AggiungiProdotto(self.driver)
@@ -425,7 +425,7 @@ class AccettazioneTestCase(TestCase):
         time.sleep(TIME_SLEEP)
         
         # test inserimento nuovo prodotto inserendo la quantità = 0
-    def test_13_aggiungi_prodotto_error_quantita(self):
+    def test_16_aggiungi_prodotto_error_quantita(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         aggiungi_prodotto_page = AggiungiProdotto(self.driver)
@@ -451,10 +451,10 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
         time.sleep(TIME_SLEEP)
-    '''
+    
     
     # test modifica prodotto (modifica prodotto - amministratore)
-    def test_14_modifica_prodotto(self):
+    def test_17_modifica_prodotto(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         modifica_prodotto_page = ModificaProdotto(self.driver)
@@ -480,7 +480,7 @@ class AccettazioneTestCase(TestCase):
         
         assert risultato_nome
         
-    def test_14_modifica_prodotto_quantita_zero(self):
+    def test_18_modifica_prodotto_quantita_zero(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         modifica_prodotto_page = ModificaProdotto(self.driver)
@@ -507,9 +507,9 @@ class AccettazioneTestCase(TestCase):
         
         assert not risultato_nome
         
-    '''
+    
     # test del filtro nella home amministratore
-    def test_12_filtro_resoconto_vendite(self):
+    def test_19_filtro_resoconto_vendite(self):
         login_page = Login(self.driver)
         home_amministratore_page = Home_amministratore(self.driver)
         resoconto_vendite_page = ResocontoVendite(self.driver)
@@ -536,7 +536,7 @@ class AccettazioneTestCase(TestCase):
         
         time.sleep(TIME_SLEEP) 
         
-    '''    
+        
         
         
         
