@@ -134,7 +134,7 @@ class AccettazioneTestCase(TestCase):
         actual_url = self.driver.current_url
         self.assertEqual(expected_url, actual_url) 
         time.sleep(TIME_SLEEP)    
-    '''    
+        
     
     # test: prova ad aggiungere un prodotto presente nel negozio (stock)
     def test_5_successful_prodotto_aggiunto_al_carrello(self):
@@ -178,21 +178,30 @@ class AccettazioneTestCase(TestCase):
         
         # aggiunta di un prodotto al carrello
         prodotto_id_desiderato = "1"
+        prodotto_id_desiderato_2 = "3"
         home_utente_page.aggiungi_prodotto(prodotto_id_desiderato)
+        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato_2)
+        home_utente_page.aggiungi_prodotto(prodotto_id_desiderato_2)
+
         time.sleep(TIME_SLEEP)
                 
         home_utente_page.accedi_al_carrello()
         numInizialeQuantitaProdotto = carrello_page.verifica_prodotto_nel_carrello_rimosso("1")
+        numInizialeQuantitaProdotto_2 = carrello_page.verifica_prodotto_nel_carrello_rimosso("3")
         time.sleep(TIME_SLEEP)
     
         carrello_page.rimuovi_prodotto("1")
+        carrello_page.rimuovi_prodotto("3")
+        carrello_page.rimuovi_prodotto("3")
         numFinaleQuantitaProdotto = carrello_page.verifica_prodotto_nel_carrello_rimosso("1")
+        numFinaleQuantitaProdotto_2 = carrello_page.verifica_prodotto_nel_carrello_rimosso("1")
         time.sleep(TIME_SLEEP)
 
         # assert per verificare che il prodotto sia presente nel carrello
         self.assertGreater(numInizialeQuantitaProdotto, numFinaleQuantitaProdotto)
+        self.assertGreater(numInizialeQuantitaProdotto_2, numFinaleQuantitaProdotto_2)
         time.sleep(TIME_SLEEP)  
-        
+    '''    
     # test per completare il checkout
     def test_7_completa_checkout(self):
         login_page = Login(self.driver)
