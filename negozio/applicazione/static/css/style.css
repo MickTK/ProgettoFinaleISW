@@ -68,16 +68,19 @@ p {
     font-size: 20px;
 }
 
+/* Modifica del form del logout*/
 #logout {
     float: right;
     margin-right: 20px;
 }
 
+/* Modifica del form del logout dal Carrello*/
 #logoutCarr {
     float: right;
     margin-right: 20px;
 }
 
+/* Modifica del form del footer*/
 .centered-footer {
     text-align: center;
     padding: 10px;
