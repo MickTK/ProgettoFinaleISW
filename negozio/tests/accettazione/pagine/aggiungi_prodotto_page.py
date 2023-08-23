@@ -60,7 +60,7 @@ class AggiungiProdotto:
         self.aggiungi_prodotto_button()
         self.home()
     
-    # metodo per compilare il form con i dati del prodotto da aggiungere
+    # metodo per resettare i campi del form utilizzato per aggiungere un oggetto
     def reset_campi_aggiungi_prodotto(self):
         nome_input = self.driver.find_element(By.ID, "nome")
         tipologia_input = self.driver.find_element(By.ID, "tipologia")

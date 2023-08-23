@@ -47,7 +47,7 @@ class Registrazione:
         self.inserimento_credenziali(username, password)
         self.click_registrati()
         
-    # pulire i campi del filtro nella home amminsitratore
+    # pulire i campi del form registrazione
     def reset_campi_registrazione(self):
         username_input = self.driver.find_element(By.ID, "username")
         password_input = self.driver.find_element(By.ID, "password")
