@@ -15,17 +15,17 @@ h2{
 }
 
  /* Modifica dello stile dei bottoni */
- .button {
-    background-color: #02bd8e; 
-    border: 2px solid #6171ff;
-    color: white;
-    padding: 9px 26px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-  }
+.button {
+background-color: #02bd8e; 
+border: 2px solid #6171ff;
+color: white;
+padding: 9px 26px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+border-radius: 8px;
+}
 
 /* Modifica dello stile dei bottoni quando vengono puntati dal cursore */
 .button:hover {
@@ -58,7 +58,7 @@ p {
 }
 
 /* Modifica del form del login*/
-.login{
+.login, .RegistrazioneForm{
     background-color: white;
     margin: auto;
     width: 37%;
@@ -87,4 +87,30 @@ p {
     font-weight: normal;
 }
 
+/**/
 
+table {
+    border: 2px solid #02BD8E;
+    background-color: white;
+    margin: auto;
+}
+
+.FiltroHomeUtente, .CheckoutForm, .FiltroHomeAmmin,
+.FiltroResocontoVendite, .AggiungiProdottoForm {
+    background-color: white;
+    margin: auto;
+    width: 37%;
+    border: 2px solid #02BD8E;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    text-align: left;
+}
+
+.FiltroHomeUtente input,
+.CheckoutForm input,
+.FiltroHomeAmmin input,
+.FiltroResocontoVendite input,
+.AggiungiProdottoForm input{
+    width: 100%;
+}

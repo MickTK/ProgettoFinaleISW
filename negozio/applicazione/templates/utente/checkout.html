@@ -24,7 +24,7 @@
             <br><hr><br>
 
         <!-- Div per il form inerente l'indirizzo e il metodo di pagamento -->
-            <div>
+            <div class="CheckoutForm">
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}

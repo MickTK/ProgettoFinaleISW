@@ -26,8 +26,8 @@
             <br><hr><br>
 
             <!-- Form per inserire un nuovo prodotto -->
-            <div>
-                <h2>Inserisci le informazioni del prodotto</h2>
+            <div class="AggiungiProdottoForm">
+                <h4>Inserisci le informazioni del prodotto</h4>
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}

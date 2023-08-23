@@ -53,10 +53,10 @@ class FiltroHomeUtenteForm(forms.Form):
 class FiltroHomeAmministratoreForm(forms.Form):
   nome = forms.CharField(label="Nome", min_length=3, max_length=100, required=False, widget=forms.TextInput(attrs={'id': 'nome'}))
   tipologia = forms.CharField(label="Tipologia", min_length=2, max_length=100, required=False, widget=forms.TextInput(attrs={'id': 'tipologia'}))
-  minPrezzo = forms.FloatField(label="minPrezzo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01, 'id': 'minPrezzo'}), required=False)
-  maxPrezzo = forms.FloatField(label="maxPrezzo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000, 'id': 'maxPrezzo'}), required=False)
-  minNumPezzi = forms.IntegerField(label="minNumPezzi", min_value=1, widget=forms.NumberInput(attrs={'min': 1, 'id': 'minNumPezzi'}), required=False)
-  maxNumPezzi = forms.IntegerField(label="maxNumPezzi", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000, 'id': 'maxNumPezzi'}), required=False)
+  minPrezzo = forms.FloatField(label="Prezzo minimo", min_value=0.01, widget=forms.NumberInput(attrs={'min': 0.01, 'id': 'minPrezzo'}), required=False)
+  maxPrezzo = forms.FloatField(label="Prezzo minimo", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000, 'id': 'maxPrezzo'}), required=False)
+  minNumPezzi = forms.IntegerField(label="Numero minimo di pezzi", min_value=1, widget=forms.NumberInput(attrs={'min': 1, 'id': 'minNumPezzi'}), required=False)
+  maxNumPezzi = forms.IntegerField(label="Numero massimo di pezzi", max_value=10000, widget=forms.NumberInput(attrs={'max': 10000, 'id': 'maxNumPezzi'}), required=False)
   
   def clean(self):
         cleaned_data = super().clean()
