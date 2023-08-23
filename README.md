@@ -1,7 +1,8 @@
-### Informazioni
-```python
-Stock.nome = "Negozio"
+# ProgettoFinaleISW
+Credenziali utente cliente:
+- Username: cliente
+- Password: cliente
 
-Amministratore.username = "admin"
-Amministratore.password = "admin"
-```
+Credenziali utente amministratore:
+- Username: admin
+- Password: admin
